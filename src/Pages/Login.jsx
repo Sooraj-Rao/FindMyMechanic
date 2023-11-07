@@ -27,7 +27,7 @@ const Login = ({ logged, setlogged }) => {
     e.preventDefault();
     try {
       setloader(true);
-      const res = await axios.post("http://localhost:3001/login", input);
+      const res = await axios.post("https://findmymechanic.onrender.com/login", input);
       if (res.data.message !== "Login Succesfully") {
         setloader(false);
         return toast.info(res.data.message);

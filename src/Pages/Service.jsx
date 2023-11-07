@@ -28,7 +28,7 @@ const Service = ({ booked, setbooked, Message }) => {
   const fetchData = async () => {
     try {
       const shops = await axios.get(
-        `http://localhost:3001/BookService/services/${id}/${vehicle}`
+        `https://findmymechanic.onrender.com/BookService/services/${id}/${vehicle}`
       );
       setshopsList(shops.data);
     } catch (error) {
@@ -41,7 +41,7 @@ const Service = ({ booked, setbooked, Message }) => {
     let data = { serviceId, userId, shopId };
     try {
       const book = await axios.post(
-        `http://localhost:3001/BookService/book`,
+        `https://findmymechanic.onrender.com/BookService/book`,
         data
       );
       if (book.data.code) {

@@ -47,7 +47,7 @@ const Contact = ({ logged }) => {
 
     try {
       setloader(true);
-      const res = await axios.post("http://localhost:3001/contact", input);
+      const res = await axios.post("https://findmymechanic.onrender.com/contact", input);
       if (res.data.message !== "Message sent") {
         setloader(false);
         return toast.info(res.data.message);
