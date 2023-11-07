@@ -20,7 +20,7 @@ export default FetchUserDetail.reducer;
 
 export const getData = () => {
   return async function getDataThunk(dispatch, getState) {
-    const res = await axios.get(`http://localhost:3001/manageProfile/${user}`);
+    const res = await axios.get(`https://findmymechanic.onrender.com/manageProfile/${user}`);
     dispatch(FetchedUserData(res.data));
   };
 };

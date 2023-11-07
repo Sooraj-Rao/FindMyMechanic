@@ -19,7 +19,7 @@ const Shop = () => {
   const fetchData = async () => {
     try {
       const shops = await axios.get(
-        `http://localhost:3001/BookService/shops/${pincode}`
+        `https://findmymechanic.onrender.com/BookService/shops/${pincode}`
       );
       setshopsList(shops.data);
     } catch (error) {

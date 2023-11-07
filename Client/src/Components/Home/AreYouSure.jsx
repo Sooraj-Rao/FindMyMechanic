@@ -6,7 +6,7 @@ const AreYouSure = ({ setlogged, setlogShow, SideBarLog, setSideBarLog }) => {
     localStorage.setItem("user", "");
     setlogged(false);
     setlogShow(false);
-    setSideBarLog(!SideBarLog);
+    SideBarLog && setSideBarLog(!SideBarLog);
   };
 
   const No = () => {

@@ -22,14 +22,14 @@ const Notification = () => {
       try {
         if (toggle) {
           const res = await axios.get(
-            "http://localhost:3001/notification/view"
+            "https://findmymechanic.onrender.com/notification/view"
           );
           setloader(false);
           setmessage(res.data.message);
           setcode(res.data.code);
         } else {
           const res = await axios.get(
-            `http://localhost:3001/notification/sent/${userId}`
+            `https://findmymechanic.onrender.com/notification/sent/${userId}`
           );
           setloader(false);
           setmessage(res.data.message);

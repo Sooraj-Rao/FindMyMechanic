@@ -28,7 +28,7 @@ const ServiceDetails = ({ Message }) => {
   const fetchService = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:3001/serviceDetails/${userId}`
+        `https://findmymechanic.onrender.com/serviceDetails/${userId}`
       );
       setloader({ ...loader, load1: false });
       setdata(res.data);
@@ -41,7 +41,7 @@ const ServiceDetails = ({ Message }) => {
     try {
       setloader({ ...loader, load2: true });
       const res = await axios.post(
-        `http://localhost:3001/serviceDetails/cancel/${id}`
+        `https://findmymechanic.onrender.com/serviceDetails/cancel/${id}`
       );
       toast.success(res.data.message);
       setloader({ ...loader, load2: false });

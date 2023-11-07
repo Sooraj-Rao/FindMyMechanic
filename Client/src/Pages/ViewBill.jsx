@@ -10,7 +10,7 @@ const ViewBill = ({ Message, setbillOpen }) => {
 
   const fetch = async () => {
     try {
-      const res = await axios.get(`http://localhost:3001/bill/${userId}`);
+      const res = await axios.get(`https://findmymechanic.onrender.com/bill/${userId}`);
       setdata(res.data);
     } catch (error) {
       console.log(error);
