@@ -5,10 +5,28 @@ import { Animate2 } from "../../Framer/Framer";
 import { Animate3 } from "../../Framer/Framer";
 import { Animate4 } from "../../Framer/Framer";
 import { Mycontext } from "../Context";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import PulseLoader from "react-spinners/PulseLoader";
 
 const Footer = () => {
+  const [load, setload] = useState(false);
+  const [email, setemail] = useState("");
   const context = useContext(Mycontext);
   const { Dark, setDark } = context;
+
+  const handle = (e) => {
+    e.preventDefault();
+    if (email.length < 5) {
+      return toast.error('Enter valid Email')
+    }
+    setload(true);
+    setTimeout(() => {
+      setemail("");
+      setload(false);
+      toast.success("Email sucbcription succesfull");
+    }, 1000);
+  };
 
   return (
     <div className=" h-80">
@@ -84,15 +102,26 @@ const Footer = () => {
         >
           <h1 className=" text-2xl pt-9 text-center">NewsLetter</h1>
           <div className=" py-2 w-5/6 mx-auto text-center text-lg">
-            <div className=" w-3/4 mx-auto">
+            <form className=" w-3/4 mx-auto">
               <input
                 placeholder="Add your E-mail"
-                type="text"
+                type="type"
+                required
                 className=" h-10 my-5 w-full"
+                value={email}
+                onChange={(e) => setemail(e.target.value)}
               />
               <br />
-              <button className=" w-full  h-10 text-white">Submit</button>
-            </div>
+              <button onClick={handle} className=" w-full  h-10 text-white">
+                {load ? (
+                  <span className=" flex justify-center items-center">
+                    <PulseLoader  color="white" size={6} />
+                  </span>
+                ) : (
+                  "Submit"
+                )}
+              </button>
+            </form>
           </div>
         </motion.div>
       </motion.div>
@@ -103,6 +132,18 @@ const Footer = () => {
       >
         <h1>Copyright @ FindMyMechanic</h1>
       </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable={false}
+        pauseOnHover
+        theme="light"
+      />
     </div>
   );
 };

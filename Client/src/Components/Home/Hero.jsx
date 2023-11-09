@@ -1,37 +1,74 @@
 import React, { useContext } from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import {Mycontext} from '../Context'
+import { Mycontext } from "../Context";
+import { motion } from "framer-motion";
+import { Animate4 } from "../../Framer/Framer";
 
 const Hero = () => {
-
   const context = useContext(Mycontext);
   const { Dark, setDark } = context;
 
-  
   return (
-    <div className={` w-screen  ${Dark?'Dark2':'Light'}  h-fit  py-10 "`}>
-      <div
-        className="mx-auto
-      xl:w-1/2
-    md:w-4/6
-    sm:w-5/6 
-    w-full
-    h-[30rem]
-    "
+    <div className={` ${Dark ? "Dark2" : "Light"}`}>
+      <motion.div
+        className={`flex justify-between gap-10 w-screen 
+     
+         p-10  h-fit  pt-20 
+        lg:flex-row
+        flex-col
+      `}
+        initial={"Offscreen"}
+        whileInView={"onScreen"}
+        viewport={{ once: false, amount: 0.1 }}
+        transition={{ staggerChildren: 0.1 }}
+        variants={Animate4}
       >
-        <Carousel autoPlay={true} infiniteLoop={true}>
-          <div>
-            <img src="https://p1.rs/Qjz2Z" alt="Image 1" />
+        <div
+          className="
+        rounded-lg
+       overflow-hidden
+      lg:w-1/2
+      lg:h-[30rem]
+      h-[25rem]
+      "
+        >
+          <Carousel autoPlay={true} infiniteLoop={true}>
+            <div>
+              <img src="../../../service1.jpg" alt="Image 1" />
+            </div>
+            <div>
+              <img
+                src="../../../Bike.jpg"
+                style={{ backgroundSize: "cover" }}
+                alt="Image 1"
+              />
+            </div>
+            <div>
+              <img src="../../../Car-service.jpg" alt="Image 1" />
+            </div>
+          </Carousel>
+        </div>
+        <div
+          className="  pt-10
+      lg:w-1/2
+      w-full
+      "
+        >
+          <div className=" text-5xl  font-Poppins2">
+            <h1 className=" pb-2">No More Worries..</h1>
+            <h1>Car Repairs at Your Fingertips!</h1>
           </div>
-          <div>
-            <img src="../../../public/Bike.jpg" style={{backgroundSize:'cover'}} alt="Image 1" />
+          <div className=" pt-10 text-2xl font-Poppins1">
+            <span>
+              Discover the future of automotive care with our online mechanic
+              shop. Our website simplifies the process of finding services for
+              your vehicle and booking appointments. It's the ultimate solution
+              for a hassle-free, efficient, and expert car service experience.
+            </span>
           </div>
-          <div>
-            <img src="../../../public/Car.jpg" alt="Image 1" />
-          </div>
-        </Carousel>
-      </div>
+        </div>
+      </motion.div>
     </div>
   );
 };

@@ -160,7 +160,7 @@ export const SideNavbar = ({
 }) => {
   return (
     <div
-      className={`SideNavbar  h-screen z-50 right-0 top-20
+      className={`SideNavbar  h-screen z-50 right-0 sm:top-20 top-14
       lg:hidden fixed
       overflow-hidden
       whitespace-nowrap

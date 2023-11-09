@@ -7,6 +7,7 @@ import { Animate4 } from "../Framer/Framer";
 import PulseLoader from "react-spinners/PulseLoader";
 import axios from "axios";
 import { Mycontext } from "../Components/Context";
+import AniNotification from "../LoadingAnimate/AniNotifification";
 
 const Notification = () => {
   const [message, setmessage] = useState([]);
@@ -46,21 +47,29 @@ const Notification = () => {
     <div
       className={`  ${
         Dark ? " bg-slate-900 text-white" : "Light4"
-      } mt-20 pb-20 `}
+      } mt-10 pb-20 `}
     >
-      <div className=" flex justify-end gap-2 pt-4 pr-5 items-center  ">
+      <div className=" flex justify-end gap-2  pr-5 items-center  
+      xl:pt-14
+      sm:pt-20
+      pt-10
+      ">
         <span className=" text-lg font-Poppins1 ">
           {toggle ? "View Sent Messages" : "View Notifications"}
         </span>
         <div
-          className={` relative w-20 h-10 border-2 rounded-full flex cursor-pointer
+          className={` relative border-2 rounded-full flex cursor-pointer
+          lg:w-20 lg:h-10
+          w-16 h-8 
           ${Dark ? " border-white" : "border-black"}
           `}
           style={{ justifyContent: toggle ? "start" : "end" }}
           onClick={() => settoggle(!toggle)}
         >
           <div
-            className={` absolute w-8 h-8 rounded-full  m-[.15rem] 
+            className={` absolute  rounded-full  m-[.15rem] 
+            lg:w-8 lg:h-8
+            w-6 h-6
           ${Dark ? " bg-white" : " bg-slate-600"}
           `}
           ></div>
@@ -104,27 +113,27 @@ export const Body = ({ loader, message, code, title, toggle }) => {
   const context = useContext(Mycontext);
   const { Dark, setDark } = context;
   return (
+
     <motion.div
-      className="h-fit "
+      className="h-fit 
+      lg:-mt-10
+      -mt-5
+      "
       initial={"Offscreen"}
       whileInView={"onScreen"}
-      viewport={{ once: false, amount: 0.5 }}
+      viewport={{ once: true, amount: 0.5 }}
       transition={{ staggerChildren: 0.1 }}
       variants={Animate4}
     >
       <h1 className=" text-center text-3xl py-10 font-Poppins1">{title}</h1>
-      {loader ? (
-        <div className=" flex justify-center my-32">
-          {" "}
-          <PulseLoader color="white" size={10} />
-        </div>
-      ) : (
-        <div
-          className={` rounded-3xl  h-fit  mx-auto
+      <div
+        className={` rounded-3xl  h-fit  mx-auto
         md:p-10
-        md:w-1/2
+        p-3
+        xl:w-1/2
+        lg:w-2/3
         w-11/12
-        ${Dark ? "Dark4" : "Light4"}
+        ${Dark ? "Dark2" : "Light4"}
         ${
           !Dark
             ? "        shadow-[0rem_0rem_2rem_-4px] "
@@ -132,16 +141,19 @@ export const Body = ({ loader, message, code, title, toggle }) => {
         }
         ${!Dark ? "shadow-blue-900" : " shadow-gray-500"}
         `}
-        >
-          {message.map((item, i) => {
+      >
+        {message.length == 0 ? (
+          <AniNotification />
+        ) : (
+          message.map((item, i) => {
             return (
               <>
                 <div
                   className={` w-full   p-4 mx-auto 
                   sm:my-4 
-                  my-1
-                  sm:rounded-lg
-                  ${Dark ? "Dark2" : "Light"}
+                  my-4
+                  rounded-lg
+                  ${Dark ? "Dark3" : "Light"}
                   `}
                   key={i}
                 >
@@ -168,9 +180,9 @@ export const Body = ({ loader, message, code, title, toggle }) => {
                 </div>
               </>
             );
-          })}
-        </div>
-      )}
+          })
+        )}
+      </div>
     </motion.div>
   );
 };

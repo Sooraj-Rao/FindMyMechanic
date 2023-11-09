@@ -402,3 +402,37 @@ button:disabled:hover {
         background-position: -20rem;
     }
 }
+
+
+
+
+.Loader {
+    animation: Loader 2s infinite linear;
+    background: linear-gradient(to left, #dadcde 4%, #b7b6b6 25%, #d7d9dc 36%);
+    background-size: 1000px 100%;
+}
+
+@keyframes Loader {
+    0% {
+        background-position: -1000px 0;
+    }
+
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+.DarkLoader {
+    animation: DarkLoader 2s infinite linear;
+    background: linear-gradient(to left, rgb(20, 28, 34) 4%, #3d4149 25%, #151b23 36%);
+    background-size: 1000px 100%;
+}
+
+@keyframes DarkLoader {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}

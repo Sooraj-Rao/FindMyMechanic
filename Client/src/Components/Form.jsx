@@ -25,7 +25,7 @@ const Form = ({ msg }) => {
     const data = [msg, input];
     try {
       setloader(true);
-      const res = await axios.post("http://localhost:3001/shopMsg", data);
+      const res = await axios.post("https://findmymechanic.onrender.com/shopMsg", data);
       setloader(false);
       dispatch(FormShow());
       if (res.data.message == "Message Sent") {

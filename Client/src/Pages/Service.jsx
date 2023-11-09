@@ -10,8 +10,13 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PulseLoader from "react-spinners/PulseLoader";
 import { Mycontext } from "../Components/Context";
+import AniShop from "../LoadingAnimate/AniShop";
 
 const Service = ({ booked, setbooked, Message }) => {
+  const [load, setload] = useState({
+    one: true,
+    two: false,
+  });
   const [shopsList, setshopsList] = useState([]);
 
   const ServiceData = JSON.parse(localStorage.getItem("Service"));
@@ -30,8 +35,10 @@ const Service = ({ booked, setbooked, Message }) => {
       const shops = await axios.get(
         `https://findmymechanic.onrender.com/BookService/services/${id}/${vehicle}`
       );
+      setload({ ...load, one: false });
       setshopsList(shops.data);
     } catch (error) {
+      setload({ ...load, one: false });
       console.log(error);
     }
   };
@@ -40,10 +47,12 @@ const Service = ({ booked, setbooked, Message }) => {
     let shopId = id;
     let data = { serviceId, userId, shopId };
     try {
+      setload({ ...load, two: true });
       const book = await axios.post(
         `https://findmymechanic.onrender.com/BookService/book`,
         data
       );
+      setload({ ...load, two: false });
       if (book.data.code) {
         Message(book.data.message);
         setbooked(true);
@@ -51,6 +60,7 @@ const Service = ({ booked, setbooked, Message }) => {
         toast.error(book.data.message);
       }
     } catch (error) {
+      setload({ ...load, two: false });
       console.log(error);
     }
   };
@@ -60,17 +70,24 @@ const Service = ({ booked, setbooked, Message }) => {
   }, []);
 
   return (
-    <div>
+    <div className={`py-32   ${Dark ? "Dark3" : "Light3"}`}>
+     <h1 className={`  text-center pb-10 px-2 font-Poppins2 text-2xl`}>
+        {load.one
+          ? `Fetching Services for your ${vehicle}...`
+          : `Choose a Service`}
+      </h1>
       <motion.div
         initial={"Offscreen"}
         whileInView={"onScreen"}
         viewport={{ once: false, amount: 0.5 }}
         transition={{ staggerChildren: 0.1 }}
-        className={` flex gap-10 font-Poppins1 flex-wrap flex-grow justify-center py-32 
-        ${Dark ? "Dark3" : "Light3"}
+        className={` flex gap-10 font-Poppins1 flex-wrap flex-grow justify-center 
+      
         `}
       >
-        {shopsList.length > 0 ? (
+        {load.one ? (
+          <AniShop num={2} />
+        ) : (
           shopsList.map((item, index) => {
             return (
               <div
@@ -92,16 +109,23 @@ const Service = ({ booked, setbooked, Message }) => {
                     className=" px-4 py-2 mt-2"
                     onClick={() => BookService(item._id)}
                   >
-                    <h1>Book Service</h1>
+                    <h1>{load.two ? <PulseLoader color="white" size={8} /> : "Book Service"}</h1>
                   </button>
                 </div>
               </div>
             );
           })
-        ) : (
+        )}
+        {!load.one && shopsList.length == 0 && (
           <div className=" text-center">
-            <h1 className=" text-3xl">No Service found for {vehicle}</h1>
-            <button className=" p-3 mt-14" onClick={() => navigate("/shop")}>
+            <h1 className=" text-3xl">
+              No Service found for{" "}
+              {vehicle == "2_Wheeler" ? "2 wheeler" : vehicle}
+            </h1>
+            <button
+              className=" p-3 mt-14 text-white"
+              onClick={() => navigate("/shop")}
+            >
               Check other shops
             </button>
           </div>
