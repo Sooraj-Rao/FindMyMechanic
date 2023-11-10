@@ -21,18 +21,18 @@ const ServiceBooked = ({ booked, setbooked, msg }) => {
   return (
     <div className=" flex justify-center overflow-hidden">
       <div
-        className={` absolute w-fit top-1/3  z-10 h-fit p-10  rounded-xl
+        className={` absolute w-fit top-1/3  z-10 h-fit p-10  rounded-xl font-Poppins2
       ${Dark ? "Dark" : "Light"}
       ${!Dark ? "text-black" : "text-white"}
       `}
       >
         <h1
           onClick={close}
-          className=" border-blue-700 border-2 absolute top-0 right-0 font-bold  px-5 py-1 rounded cursor-pointer"
+          className=" bg-red-400 text-2xl px-4 absolute top-0 right-0 font-bold  rounded cursor-pointer"
         >
           X
         </h1>
-        <h1 className=" text-xl text-center font-Poppins2
+        <h1 className=" text-xl text-center 
         sm:text-3xl
         ">{msg}</h1>
         <div className=" flex justify-center  text-xl mt-7">

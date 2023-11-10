@@ -11,6 +11,11 @@
     background-color: rgb(1, 1, 40);
     color: white;
 }
+.Dark4 {
+    background-color: rgba(0, 0, 5, 0.482);
+    color: white;
+}
+
 
 .Dark2 {
     background-color: rgb(0, 0, 16);
@@ -258,12 +263,14 @@ img {
 }
 
 .LandingPage {
-    background: url('/public/img.jpg') no-repeat;
+    background: url('/img.jpg') no-repeat;
     background-size: cover;
 
     /* background-position-y: -50px; */
 }
-
+.Carosel{
+    background-size: cover;
+}
 .Landing-In {
     background: rgba(0, 0, 0, 0.758);
 }
@@ -283,28 +290,10 @@ img {
     font-weight: 600;
 }
 
-.SingIn-shadow {
-    animation: ani2 10s linear infinite;
-    transition: .5s;
-    box-shadow: 0px 0px 5rem -3px rgb(5, 30, 70);
-    transition: 1s;
-}
-
-@keyframes ani2 {
-    33% {
-        box-shadow: 0px 0px 5rem -3px rgb(3, 95, 40);
-        transition: 1s;
-    }
-
-    66% {
-        box-shadow: 0px 0px 5rem -3px rgb(106, 42, 3);
-        transition: 1s;
-    }
-
-    100% {
-        box-shadow: 0px 0px 5rem -3px rgb(29, 4, 88);
-        transition: 1s;
-    }
+.Login-Bg{
+    background: url('../login-bg2.jpg') no-repeat ;
+    background-size: cover;
+    /* background-position-x: 100px; */
 }
 
 .Dropdown {
@@ -357,7 +346,7 @@ button:disabled:hover {
 }
 
 .Contact {
-    background: url('https://p1.rs/Sq6Lq');
+    background: url('../Contact-Image.jpg');
     background-size: contain;
     background-position: -20rem;
 }
@@ -432,7 +421,35 @@ button:disabled:hover {
     0% {
         background-position: -1000px 0;
     }
+
     100% {
         background-position: 1000px 0;
     }
+}
+
+.bookServiceTextbox {
+    border: 2px solid red;
+    animation: shake .1s linear 10;
+}
+
+@keyframes shake {
+    25% {
+        transform: translateX(-2px);
+    }
+
+    50% {
+        transform: translateX(0px);
+    }
+
+    75% {
+        transform: translateX(2px);
+    }
+
+    100% {
+        transform: translateX(0px);
+    }
+}
+
+.Bg-Filter{
+    filter: blur(1rem);
 }

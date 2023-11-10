@@ -7,6 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PulseLoader from "react-spinners/PulseLoader";
 import { Mycontext } from "../Components/Context";
+import { data } from "../Texts/Texts";
 
 const Login = ({ logged, setlogged }) => {
   const navigate = useNavigate();
@@ -15,6 +16,8 @@ const Login = ({ logged, setlogged }) => {
     password: "",
     email: "",
   });
+
+  const { Forgot } = data;
 
   const handleChange = (e) => {
     setinput({ ...input, [e.target.name]: e.target.value });
@@ -27,19 +30,21 @@ const Login = ({ logged, setlogged }) => {
     e.preventDefault();
     try {
       setloader(true);
-      const res = await axios.post("https://findmymechanic.onrender.com/login", input);
+      const res = await axios.post(
+        "https://findmymechanic.onrender.com/login",
+        input
+      );
       if (res.data.message !== "Login Succesfully") {
         setloader(false);
         return toast.info(res.data.message);
       } else {
         toast.success(res.data.message);
         localStorage.setItem("user", res.data.id);
-        setlogged(true);
         setloader(false);
+        setlogged(true);
         setinput({ password: "", email: "" });
-
         setTimeout(() => {
-          navigate("/");
+          window.location.href='/';
         }, 4000);
       }
     } catch (error) {
@@ -49,8 +54,9 @@ const Login = ({ logged, setlogged }) => {
     }
   };
 
+
   return (
-    <div className=" py-32 mt-20">
+    <div className=" py-32 sm:mt-20 mt-10 Login-Bg">
       <motion.form
         onSubmit={handleSubmit}
         className={`SingIn-shadow  h-fit   text-lg rounded-3xl mx-auto font-Mont
@@ -94,14 +100,14 @@ const Login = ({ logged, setlogged }) => {
             type="text"
           />
           <br />
-          <a
-            href=""
-            className={` text-base 
+          <h1
+            onClick={() => navigate("/building/" + Forgot)}
+            className={` text-base  cursor-pointer
               ${Dark ? " text-blue-400 " : "text-blue-900 "}
           `}
           >
-            Forgot Password ?
-          </a>
+            {Forgot} ?
+          </h1>
           <button className=" h-10 mt-4 font-Poppins text-lg text-white">
             {loader ? <PulseLoader color="white" size={10} /> : "Submit"}
           </button>
@@ -116,18 +122,6 @@ const Login = ({ logged, setlogged }) => {
             </span>
           </h2>
         </div>
-        <ToastContainer
-          position="top-right"
-          autoClose={2500}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable={false}
-          pauseOnHover
-          theme="light"
-        />
       </motion.form>
     </div>
   );

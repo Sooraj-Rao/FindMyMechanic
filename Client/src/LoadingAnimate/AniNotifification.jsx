@@ -11,19 +11,17 @@ const AniNotification = () => {
         .fill("")
         .map((item, i) => {
           return (
-            <>
+            <div key={i}>
               <div
                 className={` w-full   p-4 mx-auto 
-          sm:my-4 
-          my-1
+          my-4
           rounded-lg
-          xl:h-20
-          h-72
+          xl:h-32
+          h-40
           ${Dark ? "DarkLoader" : "Loader"}
           `}
-                key={i}
               ></div>
-            </>
+            </div>
           );
         })}
     </>

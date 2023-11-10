@@ -14,15 +14,15 @@ const ChooseVehicle = () => {
   const [shopsList, setshopsList] = useState([
     {
       vehicle: "Car",
-      img: "../../public/Car.jpg",
+      img: "../../Car.jpg",
     },
     {
       vehicle: "Truck",
-      img: "../../public/Truck.jpg",
+      img: "../../Truck.jpg",
     },
     {
       vehicle: "2_Wheeler",
-      img: "../../public/Bikes.jpg",
+      img: "../../Bikes.jpg",
     },
   ]);
 

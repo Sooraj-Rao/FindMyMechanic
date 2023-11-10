@@ -1,17 +1,35 @@
 import React, { useContext } from "react";
 import { Mycontext } from "../Context";
+import { useNavigate } from "react-router-dom";
 
-const AreYouSure = ({ setlogged, setlogShow, SideBarLog, setSideBarLog }) => {
+const AreYouSure = ({
+  setlogged,
+  setlogShow,
+  SideBarLog,
+  setSideBarLog,
+  Okcancel,
+  setOkcancel,
+}) => {
+  const navigate = useNavigate();
   const Yes = () => {
-    localStorage.setItem("user", "");
-    setlogged(false);
-    setlogShow(false);
-    SideBarLog && setSideBarLog(!SideBarLog);
+    if (Okcancel.one) {
+      setOkcancel({ one: false, two: true });
+    } else {
+      localStorage.setItem("user", "");
+      setlogged(false);
+      setlogShow(false);
+      window.location.href = "/";
+      SideBarLog && setSideBarLog(!SideBarLog);
+    }
   };
 
   const No = () => {
-    setlogShow(false);
-    SideBarLog && setSideBarLog(!SideBarLog);
+    if (Okcancel.one) {
+      setOkcancel({ one: false, two: false });
+    } else {
+      setlogShow(false);
+      SideBarLog && setSideBarLog(!SideBarLog);
+    }
   };
 
   window.scrollTo(0, 0);

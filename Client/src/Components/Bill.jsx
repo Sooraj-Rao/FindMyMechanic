@@ -13,7 +13,8 @@ const Bill = ({ msg, billOpen, setbillOpen }) => {
     sm:translate-x-1/2 
     sm:w-1/2
     w-full
-    mt-3
+    sm:mt-3
+mt-5
     font-Mont1
 ${Dark ? "Dark" : "Light5"}
     `}
@@ -65,7 +66,7 @@ ${Dark ? "Dark" : "Light5"}
 
         <div className=" xl:mt-0 mt-5 text-xl">
           <h2
-            className={`  text-teal-950
+            className={`  
             ${!Dark ? " text-teal-950" : " text-teal-500"} 
           `}
           >

@@ -6,16 +6,20 @@ import { Mycontext } from "../Components/Context";
 import AniBill from "../LoadingAnimate/AniBill";
 
 const ViewBill = ({ Message, setbillOpen }) => {
+  const [load, setload] = useState(false);
   const [data, setdata] = useState([]);
   const userId = localStorage.getItem("user");
 
   const fetch = async () => {
     try {
+      setload(true);
       const res = await axios.get(
         `https://findmymechanic.onrender.com/bill/${userId}`
       );
+      setload(false);
       setdata(res.data);
     } catch (error) {
+      setload(false);
       console.log(error);
     }
   };
@@ -33,7 +37,7 @@ const ViewBill = ({ Message, setbillOpen }) => {
   }, []);
 
   return (
-    <div className={`  ${Dark ? " bg-teal-900 text-white" : "Light4"}`}>
+    <div className={`  ${Dark ? " bg-slate-900 text-white" : "Light4"}`}>
       <motion.div
         className={` h-fit py-20
       sm:mt-20
@@ -57,13 +61,20 @@ const ViewBill = ({ Message, setbillOpen }) => {
     w-11/12 
     sm:w-5/6
     text-lg
+    sm:p-10
     p-4
-    ${Dark ? "Dark4" : "Light"}
+    ${Dark ? "Dark3" : "Light4"}
+    ${
+      !Dark
+        ? "        shadow-[0rem_0rem_2rem_-4px] "
+        : "        shadow-[0rem_0rem_2rem_-4px] "
+    }
+    ${!Dark ? "shadow-blue-900" : " shadow-gray-700"}
     `}
         >
-          {data.length == 0 ? (
+          {load ? (
             <AniBill />
-          ) : (
+          ) : data.length > 0 ? (
             data.map((item, i) => {
               return (
                 <div
@@ -107,6 +118,10 @@ const ViewBill = ({ Message, setbillOpen }) => {
                 </div>
               );
             })
+          ) : (
+            <h1 className={`rounded-xl font-Mont1 sm:text-2xl text-lg text-center sm:py-16 py-5 
+            ${Dark?'Dark4':'Light2'}
+            `}>No bills found..</h1>
           )}
         </div>
       </motion.div>

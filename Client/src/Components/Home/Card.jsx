@@ -3,11 +3,9 @@ import { motion } from "framer-motion";
 import { Animate1 } from "../../Framer/Framer";
 import { Animate2 } from "../../Framer/Framer";
 import { Animate3 } from "../../Framer/Framer";
-import {Mycontext} from '../Context'
+import { Mycontext } from "../Context";
 
 const Card = () => {
-  
-  
   const context = useContext(Mycontext);
   const { Dark, setDark } = context;
 
@@ -44,20 +42,20 @@ const Card = () => {
     >
       {data.map((item, index) => {
         return (
-          <>
-            <motion.div
-              initial={"Offscreen"}
-              whileInView={"onScreen"}
-              viewport={{ once: true, amount: 0.5 }}
-              transition={{ staggerChildren: 0.1 }}
-              variants={Animate2}
-              className={`h-fit  bg-blue-300  rounded-3xl
+          <motion.div
+            initial={"Offscreen"}
+            whileInView={"onScreen"}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ staggerChildren: 0.1 }}
+            variants={Animate2}
+            className={`h-fit  bg-blue-300  rounded-3xl
               lg:m-4
               lg:w-[26rem]
               w-11/12
               m-3
               lg:text-center
               text-jutify
+              p-4
               ${
                 !Dark
                   ? "shadow-[10px_10px_20px_-2px]"
@@ -66,23 +64,22 @@ const Card = () => {
               ${Dark && " shadow-teal-800"}
              text-black
         `}
-              key={index}
+         key={index}
+          >
+            <motion.h1
+              variants={Animate3}
+              className=" text-center pb-2  font-Mont2 text-lg"
             >
-              <motion.h1
-                variants={Animate3}
-                className=" text-center pt-4 font-Mont2 text-lg"
-              >
-                {item.heading}
-              </motion.h1>
-              <motion.h1
-                variants={Animate3}
-                className=" font-Mont1 px-4 py-4 text-base"
-              >
-                <span className=" hidden lg:block">{item.info}</span>
-                <span className="block lg:hidden">{item.info2}</span>
-              </motion.h1>
-            </motion.div>
-          </>
+              {item.heading}
+            </motion.h1>
+            <motion.h1
+              variants={Animate3}
+              className=" font-Mont1   text-base"
+            >
+              <span className=" hidden lg:block">{item.info}</span>
+              <span className="block lg:hidden">{item.info2}</span>
+            </motion.h1>
+          </motion.div>
         );
       })}
     </div>

@@ -44,9 +44,10 @@ const Shop = () => {
   return (
     <div className={`py-32  ${Dark ? "Dark3" : "Light1"}`}>
       <h1 className={`  text-center pb-10 px-2 font-Poppins2 text-2xl`}>
-        {loader
-          ? `Finding shops in ${pincode} ...`
-          : `Found ${shopsList.length} shops in  Pincode ${pincode}`}
+        {loader && `Finding shops in ${pincode} ...`}
+        {!loader &&
+          shopsList.length > 0 &&
+          `Found ${shopsList.length} shops in  Pincode ${pincode}`}
       </h1>
       <motion.div
         initial={"Offscreen"}
@@ -64,10 +65,13 @@ const Shop = () => {
           shopsList.map((item, index) => {
             return (
               <div
-                className={` h-[27rem] bg-slate-800  rounded-lg
+                className={` h-[27rem]  rounded-lg
           md:w-[20rem]
           w-[17rem]
           mx-3 
+          p-4
+
+           ${Dark ? "Dark2" : "Light"}
           `}
                 key={index}
               >
@@ -75,13 +79,13 @@ const Shop = () => {
                   <img src="../../img.jpg" className=" h-full" />
                 </div>
                 <div
-                  className=" text-xl text-center mt-3 text-white"
+                  className=" text-xl text-center mt-3 "
                   key={item}
                 >
                   <h1>{item.shopName}</h1>
                   <h1>{item.shopAddress}</h1>
                   <button
-                    className=" px-4 py-2 mt-2 "
+                    className=" px-4 py-2 mt-2 text-white "
                     onClick={() => viewServies(item._id)}
                   >
                     View Services

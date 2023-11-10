@@ -17,6 +17,7 @@ const Form = ({ msg }) => {
   const context = useContext(Mycontext);
   const { Dark, setDark } = context;
 
+  window.scrollTo(0, 0);
 
   const dispatch = useDispatch();
   const IsForm = useSelector((state) => state.showForm);
@@ -25,7 +26,10 @@ const Form = ({ msg }) => {
     const data = [msg, input];
     try {
       setloader(true);
-      const res = await axios.post("https://findmymechanic.onrender.com/shopMsg", data);
+      const res = await axios.post(
+        "https://findmymechanic.onrender.com/shopMsg",
+        data
+      );
       setloader(false);
       dispatch(FormShow());
       if (res.data.message == "Message Sent") {
@@ -46,12 +50,13 @@ const Form = ({ msg }) => {
 
   return (
     <div className=" flex justify-center">
-      <div className={` z-30 absolute h-fit py-10 mt-28  rounded-xl font-Poppins1
+      <div
+        className={` z-30 absolute h-fit py-10 mt-28  rounded-xl font-Poppins1
       xl:w-1/3
       md:w-1/2
       sm:w-4/6
       w-11/12
-${Dark?'Dark3':'Light5'}
+${Dark ? "Dark3" : "Light5"}
       `}
       >
         <span
@@ -66,9 +71,13 @@ ${Dark?'Dark3':'Light5'}
         <div className=" flex flex-col items-center justify-center  text-xl gap-4 mt-7">
           <div>
             <span className=" mr-4">To - </span>{" "}
-            <span className={` 
-            ${Dark?'text-green-300':'text-blue-950'}
-            `}>{msg.shopName}</span>
+            <span
+              className={` 
+            ${Dark ? "text-green-300" : "text-blue-950"}
+            `}
+            >
+              {msg.shopName}
+            </span>
           </div>
           <div>
             <input

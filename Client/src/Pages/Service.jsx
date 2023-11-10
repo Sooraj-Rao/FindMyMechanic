@@ -18,6 +18,7 @@ const Service = ({ booked, setbooked, Message }) => {
     two: false,
   });
   const [shopsList, setshopsList] = useState([]);
+  const [serviceid, setserviceid] = useState("");
 
   const ServiceData = JSON.parse(localStorage.getItem("Service"));
 
@@ -44,6 +45,7 @@ const Service = ({ booked, setbooked, Message }) => {
   };
 
   const BookService = async (serviceId) => {
+    setserviceid(serviceId);
     let shopId = id;
     let data = { serviceId, userId, shopId };
     try {
@@ -71,10 +73,9 @@ const Service = ({ booked, setbooked, Message }) => {
 
   return (
     <div className={`py-32   ${Dark ? "Dark3" : "Light3"}`}>
-     <h1 className={`  text-center pb-10 px-2 font-Poppins2 text-2xl`}>
-        {load.one
-          ? `Fetching Services for your ${vehicle}...`
-          : `Choose a Service`}
+      <h1 className={`  text-center pb-10 px-2 font-Poppins2 text-2xl`}>
+        {load.one && `Fetching Services for your ${vehicle}...`}
+        {!load.one && shopsList.length > 0 && `Choose a Service for your ${vehicle}`}
       </h1>
       <motion.div
         initial={"Offscreen"}
@@ -91,12 +92,14 @@ const Service = ({ booked, setbooked, Message }) => {
           shopsList.map((item, index) => {
             return (
               <div
-                className=" h-[27rem] bg-slate-700   rounded-lg 
+                className={`h-[27rem]  rounded-lg 
             sm:w-[20rem]
             w-[18rem]
             mx-2
+            p-4
             text-white
-          "
+            ${Dark ? "Dark2" : "Light"}
+          `}
                 key={index}
               >
                 <div className=" h-4/6 ">
@@ -106,10 +109,16 @@ const Service = ({ booked, setbooked, Message }) => {
                   <h1>Service: {item.serviceName}</h1>
                   <h1>Rs. {item.serviceCost}</h1>
                   <button
-                    className=" px-4 py-2 mt-2"
+                    className=" px-4 py-2 mt-2 text-white"
                     onClick={() => BookService(item._id)}
                   >
-                    <h1>{load.two ? <PulseLoader color="white" size={8} /> : "Book Service"}</h1>
+                    <h1>
+                      {load.two && item._id == serviceid ? (
+                        <PulseLoader color="white" size={8} />
+                      ) : (
+                        "Book Service"
+                      )}
+                    </h1>
                   </button>
                 </div>
               </div>
@@ -131,18 +140,6 @@ const Service = ({ booked, setbooked, Message }) => {
           </div>
         )}
       </motion.div>
-      <ToastContainer
-        position="top-right"
-        autoClose={4000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable={false}
-        pauseOnHover
-        theme="light"
-      />
     </div>
   );
 };

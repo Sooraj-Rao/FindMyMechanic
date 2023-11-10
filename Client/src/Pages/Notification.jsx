@@ -1,10 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Animate1 } from "../Framer/Framer";
-import { Animate2 } from "../Framer/Framer";
-import { Animate3 } from "../Framer/Framer";
 import { Animate4 } from "../Framer/Framer";
-import PulseLoader from "react-spinners/PulseLoader";
+import { useSelector } from "react-redux/es/hooks/useSelector";
 import axios from "axios";
 import { Mycontext } from "../Components/Context";
 import AniNotification from "../LoadingAnimate/AniNotifification";
@@ -18,6 +15,8 @@ const Notification = () => {
   const context = useContext(Mycontext);
   const { Dark, setDark } = context;
 
+  const user = useSelector((state) => state.userData);
+  const userId = user.data._id;
   useEffect(() => {
     const fetch = async () => {
       try {
@@ -49,11 +48,13 @@ const Notification = () => {
         Dark ? " bg-slate-900 text-white" : "Light4"
       } mt-10 pb-20 `}
     >
-      <div className=" flex justify-end gap-2  pr-5 items-center  
+      <div
+        className=" flex justify-end gap-2  pr-5 items-center  
       xl:pt-14
       sm:pt-20
       pt-10
-      ">
+      "
+      >
         <span className=" text-lg font-Poppins1 ">
           {toggle ? "View Sent Messages" : "View Notifications"}
         </span>
@@ -64,7 +65,10 @@ const Notification = () => {
           ${Dark ? " border-white" : "border-black"}
           `}
           style={{ justifyContent: toggle ? "start" : "end" }}
-          onClick={() => settoggle(!toggle)}
+          onClick={() => {
+            settoggle(!toggle);
+            setloader(true);
+          }}
         >
           <div
             className={` absolute  rounded-full  m-[.15rem] 
@@ -103,7 +107,7 @@ export const Sent = ({ loader, message, toggle }) => {
     <Body
       loader={loader}
       message={message}
-      title="Sent Message"
+      title="Sent Messages"
       toggle={toggle}
     />
   );
@@ -113,7 +117,6 @@ export const Body = ({ loader, message, code, title, toggle }) => {
   const context = useContext(Mycontext);
   const { Dark, setDark } = context;
   return (
-
     <motion.div
       className="h-fit 
       lg:-mt-10
@@ -125,7 +128,7 @@ export const Body = ({ loader, message, code, title, toggle }) => {
       transition={{ staggerChildren: 0.1 }}
       variants={Animate4}
     >
-      <h1 className=" text-center text-3xl py-10 font-Poppins1">{title}</h1>
+      <h1 className=" text-center text-2xl py-10 font-Poppins1">{title}</h1>
       <div
         className={` rounded-3xl  h-fit  mx-auto
         md:p-10
@@ -133,29 +136,35 @@ export const Body = ({ loader, message, code, title, toggle }) => {
         xl:w-1/2
         lg:w-2/3
         w-11/12
-        ${Dark ? "Dark2" : "Light4"}
+        ${Dark ? "Dark3" : "Light4"}
         ${
           !Dark
             ? "        shadow-[0rem_0rem_2rem_-4px] "
             : "        shadow-[0rem_0rem_2rem_-4px] "
         }
-        ${!Dark ? "shadow-blue-900" : " shadow-gray-500"}
+        ${!Dark ? "shadow-blue-900" : " shadow-gray-700"}
         `}
       >
-        {message.length == 0 ? (
+        {!loader && message.length == 0 && 
+        <div className=" ">
+        <h1 className={` text-center sm:text-xl py-10 font-Poppins1 rounded-xl
+        ${Dark?'Dark4':'Light'}
+        `}>No messages found!</h1>
+        </div>
+        }
+        {loader ? (
           <AniNotification />
         ) : (
           message.map((item, i) => {
             return (
-              <>
+              <div key={i}>
                 <div
                   className={` w-full   p-4 mx-auto 
                   sm:my-4 
                   my-4
                   rounded-lg
-                  ${Dark ? "Dark3" : "Light"}
+                  ${Dark ? "Dark4" : "Light"}
                   `}
-                  key={i}
                 >
                   <div className="">
                     <div
@@ -166,19 +175,19 @@ export const Body = ({ loader, message, code, title, toggle }) => {
                       <span>
                         {toggle ? item.MessageTitle : item.messageTitle}
                       </span>
-                      <span
+                      {/* <span
                         className={`  ml-4 text-lg font-Poppins1  
                     ${Dark ? "text-teal-300" : " text-slate-800"}
                     `}
                       >
                         {" "}
                         3/2/2020{" "}
-                      </span>
+                      </span> */}
                     </div>
                   </div>
                   <h2>{toggle ? item.Message : item.message}</h2>
                 </div>
-              </>
+              </div>
             );
           })
         )}

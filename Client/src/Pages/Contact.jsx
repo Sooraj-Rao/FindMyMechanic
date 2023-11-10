@@ -12,7 +12,6 @@ import { getData } from "../Redux/FetchUserDetailSlice";
 import { Mycontext } from "../Components/Context";
 
 const Contact = ({ logged }) => {
-  const [data, setdata] = useState([]);
   const navigate = useNavigate();
   const [loader, setloader] = useState(false);
   const [input, setinput] = useState({
@@ -46,8 +45,14 @@ const Contact = ({ logged }) => {
     e.preventDefault();
 
     try {
+      if (input.message.length < 10) {
+        return toast.info("Message is too short");
+      }
       setloader(true);
-      const res = await axios.post("https://findmymechanic.onrender.com/contact", input);
+      const res = await axios.post(
+        "https://findmymechanic.onrender.com/contact",
+        input
+      );
       if (res.data.message !== "Message sent") {
         setloader(false);
         return toast.info(res.data.message);
@@ -55,9 +60,8 @@ const Contact = ({ logged }) => {
         toast.success(res.data.message);
         setloader(false);
         setinput({ email: "", message: "" });
-
         setTimeout(() => {
-          navigate("/");
+          navigate("/login");
         }, 8000);
       }
     } catch (error) {
@@ -78,6 +82,8 @@ const Contact = ({ logged }) => {
       sm:w-8/12
       w-11/12
       font-Poppins
+
+     backdrop-blur-md
     ${Dark ? "Dark1" : "Light1"}
   `}
         initial={"Offscreen"}
@@ -97,7 +103,22 @@ const Contact = ({ logged }) => {
       "
         >
           <label>Your Email</label>
-          <input name="email" type="email" readOnly value={input.email} />
+          {logged ? (
+            <input
+              name="email"
+              type="email"
+              readOnly
+              value={input.email ? input.email : "loading..."}
+            />
+          ) : (
+            <input
+              name="email"
+              type="email"
+              readOnly={logged}
+              value={input.email}
+              onChange={handleChange}
+            />
+          )}
           <br />
           <label>Message</label>
           <textarea
@@ -110,22 +131,18 @@ const Contact = ({ logged }) => {
             style={{ minHeight: "5rem" }}
           ></textarea>
           <br />
-          <button className=" h-10 mt-4 font-Poppins text-lg text-white">
+          <button
+            className={` h-10 mt-4 font-Poppins text-lg text-white
+           ${
+             input.message.length < 10 &&
+             input.message.length > 0 &&
+             " brightness-75"
+           }
+          `}
+          >
             {loader ? <PulseLoader color="white" size={10} /> : "Submit"}
           </button>
         </div>
-        <ToastContainer
-          position="top-right"
-          autoClose={2000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable={false}
-          pauseOnHover
-          theme="light"
-        />
       </motion.form>
     </div>
   );

@@ -52,14 +52,14 @@ const Navbar = ({
           <h4
             className="  w-6 cursor-pointer
             sm:mr-6
-            mr-1 
+            mr-5
             "
             onClick={() => setDark(!Dark)}
           >
             {Dark ? (
-              <i class="fa-solid fa-moon"></i>
+              <i className="fa-solid fa-moon"></i>
             ) : (
-              <i class="fa-solid fa-sun"></i>
+              <i className="fa-solid fa-sun"></i>
             )}
           </h4>
           {!SideBar ? (
@@ -67,14 +67,14 @@ const Navbar = ({
               className=" text-2xl text-gray-600 cursor-pointer w-5"
               onClick={() => setSideBar(!SideBar)}
             >
-              <i class="fa-solid fa-bars"></i>
+              <i className="fa-solid fa-bars"></i>
             </span>
           ) : (
             <span
               className=" text-2xl text-gray-600 cursor-pointer w-5 "
               onClick={() => setSideBar(!SideBar)}
             >
-              <i class="fa-solid fa-x"></i>
+              <i className="fa-solid fa-x"></i>
             </span>
           )}
         </div>
@@ -99,7 +99,7 @@ const Navbar = ({
             <div className="Dropdown-h1 relative ">
               <h1 className=" ManageNavbar">
                 <span className=" mr-1">Manage</span>{" "}
-                <i class="fa-solid fa-caret-down"></i>
+                <i className="fa-solid fa-caret-down"></i>
               </h1>
               <ul
                 className={`Dropdown absolute p-4 opacity-0 rounded-lg my-6 -mx-12 w-48 h-fit border 
@@ -136,9 +136,9 @@ const Navbar = ({
           )}
           <h4 className="  w-6 cursor-pointer" onClick={() => setDark(!Dark)}>
             {Dark ? (
-              <i class="fa-solid fa-moon"></i>
+              <i className="fa-solid fa-moon"></i>
             ) : (
-              <i class="fa-solid fa-sun"></i>
+              <i className="fa-solid fa-sun"></i>
             )}
           </h4>
         </div>
@@ -187,7 +187,7 @@ export const SideNavbar = ({
           <div className="relative ManageSidebar -mb-3">
             <h1 className=" h1">
               <span className=" mr-2">Manage </span>
-              <i class="fa-solid fa-caret-down"></i>
+              <i className="fa-solid fa-caret-down"></i>
             </h1>
             <ul className="SidebarShow  flex flex-col gap-3 mt-3 h-0  duration-300  overflow-hidden">
               <Link to={"/manageProfile"}>

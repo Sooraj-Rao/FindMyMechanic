@@ -8,6 +8,8 @@ import { Mycontext } from "../Context";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PulseLoader from "react-spinners/PulseLoader";
+import { Link } from "react-router-dom";
+import { data } from "../../Texts/Texts";
 
 const Footer = () => {
   const [load, setload] = useState(false);
@@ -18,7 +20,7 @@ const Footer = () => {
   const handle = (e) => {
     e.preventDefault();
     if (email.length < 5) {
-      return toast.error('Enter valid Email')
+      return toast.error("Enter valid Email");
     }
     setload(true);
     setTimeout(() => {
@@ -27,6 +29,8 @@ const Footer = () => {
       toast.success("Email sucbcription succesfull");
     }, 1000);
   };
+
+  const { Terms, Bug, Feedback, FAQ } = data;
 
   return (
     <div className=" h-80">
@@ -58,21 +62,30 @@ const Footer = () => {
           <h1 className=" text-2xl pt-5 text-center">We Are Social</h1>
           <div className=" text-lg flex flex-col  mx-auto w-full justify-between h-3/4 pt-4">
             <h1 className=" ">
-              <i class="fa-brands fa-instagram"></i>
-              <span className=" ml-3">Instagram</span>
+              <a href="https://www.instagram.com/" target="_blank">
+                <i className="fa-brands fa-instagram"></i>
+                <span className=" ml-3">Instagram</span>
+              </a>
             </h1>
-            <h1 className=" ">
-              <i class="fa-brands fa-twitter"></i>
-              <span className=" ml-3">Twitter</span>
-            </h1>
-            <h1 className=" ">
-              <i class="fa-regular fa-envelope"></i>
-              <span className=" ml-3">Email</span>
-            </h1>
-            <h1 className="  mr-2">
-              <i class="fa-brands fa-github"></i>
-              <span className=" ml-3">Github</span>
-            </h1>
+
+            <a href="https://twitter.com/" target="_blank">
+              <h1 className=" ">
+                <i className="fa-brands fa-twitter"></i>
+                <span className=" ml-3">Twitter</span>
+              </h1>
+            </a>
+            <a href="https://mail.google.com/" target="_blank">
+              <h1 className=" ">
+                <i className="fa-regular fa-envelope"></i>
+                <span className=" ml-3">Email</span>
+              </h1>
+            </a>
+            <a href="https://github.com/" target="_blank">
+              <h1 className="  mr-2">
+                <i className="fa-brands fa-github"></i>
+                <span className=" ml-3">Github</span>
+              </h1>
+            </a>
           </div>
         </motion.div>
 
@@ -85,10 +98,18 @@ const Footer = () => {
         >
           <h1 className=" text-2xl pt-5 text-center">Quick Links</h1>
           <div className=" text-lg flex flex-col w-4/6   mx-auto justify-between h-3/4 pt-4">
-            <h1>Terms And Conditions</h1>
-            <h1>FAQ</h1>
-            <h1>Feedback</h1>
-            <h1 className=" mr-2">Report a Bug</h1>
+            <Link to={"/building/" + Terms}>
+              <h1>{Terms}</h1>
+            </Link>
+            <Link to={"/building/" + FAQ}>
+              <h1>{FAQ}</h1>
+            </Link>
+            <Link to={"/building/" + Bug}>
+              <h1>{Bug}</h1>
+            </Link>
+            <Link to={"/building/" + Feedback}>
+              <h1>{Feedback}</h1>
+            </Link>
           </div>
         </motion.div>
 
@@ -115,7 +136,7 @@ const Footer = () => {
               <button onClick={handle} className=" w-full  h-10 text-white">
                 {load ? (
                   <span className=" flex justify-center items-center">
-                    <PulseLoader  color="white" size={6} />
+                    <PulseLoader color="white" size={6} />
                   </span>
                 ) : (
                   "Submit"

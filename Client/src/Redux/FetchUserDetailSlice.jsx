@@ -24,3 +24,4 @@ export const getData = () => {
     dispatch(FetchedUserData(res.data));
   };
 };
+
