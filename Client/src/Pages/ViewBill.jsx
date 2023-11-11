@@ -4,18 +4,20 @@ import { Animate4 } from "../Framer/Framer";
 import axios from "axios";
 import { Mycontext } from "../Components/Context";
 import AniBill from "../LoadingAnimate/AniBill";
+import ScrollTo from "../Components/ScrollTo";
 
 const ViewBill = ({ Message, setbillOpen }) => {
   const [load, setload] = useState(false);
   const [data, setdata] = useState([]);
   const userId = localStorage.getItem("user");
 
+  const context = useContext(Mycontext);
+  const { Dark, setDark, Server } = context;
+
   const fetch = async () => {
     try {
       setload(true);
-      const res = await axios.get(
-        `https://findmymechanic.onrender.com/bill/${userId}`
-      );
+      const res = await axios.get(`${Server}/bill/${userId}`);
       setload(false);
       setdata(res.data);
     } catch (error) {
@@ -23,9 +25,6 @@ const ViewBill = ({ Message, setbillOpen }) => {
       console.log(error);
     }
   };
-
-  const context = useContext(Mycontext);
-  const { Dark, setDark } = context;
 
   const Bill = (item) => {
     Message(item);
@@ -38,6 +37,7 @@ const ViewBill = ({ Message, setbillOpen }) => {
 
   return (
     <div className={`  ${Dark ? " bg-slate-900 text-white" : "Light4"}`}>
+      <ScrollTo />
       <motion.div
         className={` h-fit py-20
       sm:mt-20
@@ -78,14 +78,14 @@ const ViewBill = ({ Message, setbillOpen }) => {
             data.map((item, i) => {
               return (
                 <div
-                  className={`w-full flex justify-around h-fit my-3 px-6 py-8
+                  className={`w-full flex justify-around h-fit my-3 px-6 pt-8 pb-6
           lg:flex-row
             flex-col
            gap-4
            text-white
            rounded-xl
            font-Poppins1
-           ${Dark ? "Dark3" : "Light4"}
+           ${Dark ? "Dark2" : "Light2"}
           `}
                   key={i}
                 >
@@ -119,9 +119,13 @@ const ViewBill = ({ Message, setbillOpen }) => {
               );
             })
           ) : (
-            <h1 className={`rounded-xl font-Mont1 sm:text-2xl text-lg text-center sm:py-16 py-5 
-            ${Dark?'Dark4':'Light2'}
-            `}>No bills found..</h1>
+            <h1
+              className={`rounded-xl font-Mont1 sm:text-2xl text-lg text-center sm:py-16 py-5 
+            ${Dark ? "Dark4" : "Light2"}
+            `}
+            >
+              No bills found..
+            </h1>
           )}
         </div>
       </motion.div>

@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Mycontext } from "../Context";
 import { useNavigate } from "react-router-dom";
+import ScrollTo from "../ScrollTo";
 
 const AreYouSure = ({
   setlogged,
@@ -32,7 +33,6 @@ const AreYouSure = ({
     }
   };
 
-  window.scrollTo(0, 0);
   return (
     <div
       className=" top-1/3  fixed h-40 border bg-slate-900 text-white AreYou rounded-xl z-50
@@ -44,6 +44,7 @@ const AreYouSure = ({
         w-10/12
     "
     >
+      <ScrollTo />
       <h1
         className=" text-center font-Poppins2 pt-7
       sm:text-3xl

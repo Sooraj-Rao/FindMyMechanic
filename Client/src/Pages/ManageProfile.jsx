@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { getData } from "../Redux/FetchUserDetailSlice";
 import { Mycontext } from "../Components/Context";
+import ScrollTo from '../Components/ScrollTo'
 import AniProfile from "../LoadingAnimate/AniProfile";
 
 const ManageProfile = () => {
@@ -25,6 +26,7 @@ const ManageProfile = () => {
 
   return (
     <div className={`${Dark ? "bg-slate-900 text-white" : "Light1"} py-10 `}>
+      <ScrollTo/>
       {load ? (
         <AniProfile />
       ) : (

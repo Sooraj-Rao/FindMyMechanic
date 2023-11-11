@@ -8,6 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import PulseLoader from "react-spinners/PulseLoader";
 import { Mycontext } from "../Components/Context";
 import { data } from "../Texts/Texts.jsx";
+import ScrollTo from "../Components/ScrollTo";
 
 const SignIn = () => {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ const SignIn = () => {
 
   const { Terms } = data;
   const context = useContext(Mycontext);
-  const { Dark, setDark } = context;
+  const { Dark, setDark, Server } = context;
 
   const handleChange = (e) => {
     setinput({ ...input, [e.target.name]: e.target.value });
@@ -32,13 +33,10 @@ const SignIn = () => {
     const phone = Number(input.phone);
     try {
       setloader(true);
-      const res = await axios.post(
-        "https://findmymechanic.onrender.com/signin",
-        {
-          ...input,
-          phone,
-        }
-      );
+      const res = await axios.post(`${Server}/signin`, {
+        ...input,
+        phone,
+      });
 
       if (res.data.message !== "Successfully Registered") {
         setloader(false);
@@ -61,6 +59,7 @@ const SignIn = () => {
 
   return (
     <div className="Login-Bg py-20 sm:mt-20 mt-10 ">
+      <ScrollTo />
       <motion.form
         onSubmit={handleSubmit}
         className={`SingIn-shadow h-fit text-lg rounded-3xl  mx-auto font-Mont

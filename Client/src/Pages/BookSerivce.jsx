@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Mycontext } from "../Components/Context";
+import ScrollTo from "../Components/ScrollTo";
 
 const BookSerivce = ({ logged }) => {
   const [pincode, setpincode] = useState("");
@@ -13,7 +14,6 @@ const BookSerivce = ({ logged }) => {
   const { Dark, setDark } = context;
 
   const navigate = useNavigate();
-  window.scrollTo(0, 0);
 
   const isLogged = () => {
     if (!logged) {
@@ -54,6 +54,7 @@ const BookSerivce = ({ logged }) => {
       viewport={{ once: false, amount: 0.5 }}
       transition={{ staggerChildren: 0.1 }}
     >
+      <ScrollTo/>
       <motion.h1
         className="  font-Poppins2
       lg:text-6xl

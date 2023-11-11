@@ -90,7 +90,8 @@ const App = () => {
         )}
         <div
           className={`${
-            (logShow || booked || billOpen || IsForm) && "Bg-Filter"
+            (logShow || booked || billOpen || IsForm || Okcancel.one) &&
+            "Bg-Filter"
           }  `}
         >
           <Routes>

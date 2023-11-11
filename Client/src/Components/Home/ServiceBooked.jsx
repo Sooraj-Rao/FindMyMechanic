@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Mycontext } from "../Context";
+import ScrollTo from "../ScrollTo";
 
 const ServiceBooked = ({ booked, setbooked, msg }) => {
   const context = useContext(Mycontext);
@@ -16,10 +17,10 @@ const ServiceBooked = ({ booked, setbooked, msg }) => {
     setbooked(false);
   };
 
-  window.scrollTo(0, 0);
 
   return (
     <div className=" flex justify-center overflow-hidden">
+      <ScrollTo/>
       <div
         className={` absolute w-fit top-1/3  z-10 h-fit p-10  rounded-xl font-Poppins2
       ${Dark ? "Dark" : "Light"}

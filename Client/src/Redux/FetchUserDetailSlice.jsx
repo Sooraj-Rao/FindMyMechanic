@@ -20,8 +20,8 @@ export default FetchUserDetail.reducer;
 
 export const getData = () => {
   return async function getDataThunk(dispatch, getState) {
-    const res = await axios.get(`https://findmymechanic.onrender.com/manageProfile/${user}`);
+    const Server = import.meta.env.VITE_SERVER;
+    const res = await axios.get(`${Server}/manageProfile/${user}`);
     dispatch(FetchedUserData(res.data));
   };
 };
-

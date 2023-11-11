@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Mycontext } from "../Components/Context";
+import ScrollTo from "./ScrollTo";
 
 const Bill = ({ msg, billOpen, setbillOpen }) => {
   const context = useContext(Mycontext);
@@ -19,6 +20,7 @@ mt-5
 ${Dark ? "Dark" : "Light5"}
     `}
     >
+      <ScrollTo />
       <h1
         className=" text-white absolute right-0 top-0 text-2xl bg-red-700 px-4 cursor-pointer"
         onClick={() => setbillOpen(false)}

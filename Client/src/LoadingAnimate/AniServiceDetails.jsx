@@ -6,7 +6,7 @@ const AniServiceDetails = () => {
   const { Dark } = context;
 
   return (
-    <div className={`${Dark ? "Dark2" : "Light4"}`}>
+    <div className={`${Dark ? "bg-slate-900 text-white" : "Light4"}`}>
       <div className=" h-fit pb-32 mt-10">
         {Array(3)
           .fill("")

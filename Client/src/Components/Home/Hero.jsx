@@ -38,11 +38,7 @@ const Hero = () => {
               <img src="../../../service1.jpg" alt="Image 1" />
             </div>
             <div>
-              <img
-                src="../../../Bike.jpg"
-                style={{ backgroundSize: "cover" }}
-                alt="Image 2"
-              />
+              <img src="../../../Bike.jpg" alt="Image 2" />
             </div>
             <div>
               <img src="../../../Car-service.jpg" alt="Image 3" />

@@ -10,6 +10,8 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { getData } from "../Redux/FetchUserDetailSlice";
 import { Mycontext } from "../Components/Context";
+import ScrollTo from "../Components/ScrollTo";
+
 
 const Contact = ({ logged }) => {
   const navigate = useNavigate();
@@ -21,7 +23,7 @@ const Contact = ({ logged }) => {
   });
 
   const context = useContext(Mycontext);
-  const { Dark, setDark } = context;
+  const { Dark, setDark ,Server} = context;
 
   const dispatch = useDispatch();
 
@@ -50,7 +52,7 @@ const Contact = ({ logged }) => {
       }
       setloader(true);
       const res = await axios.post(
-        "https://findmymechanic.onrender.com/contact",
+        `${Server}/contact`,
         input
       );
       if (res.data.message !== "Message sent") {
@@ -73,6 +75,7 @@ const Contact = ({ logged }) => {
 
   return (
     <div className="Contact pb-20 pt-32">
+      <ScrollTo/>
       <motion.form
         onSubmit={handleSubmit}
         className={`   h-fit    text-lg rounded-3xl   mx-auto font-Mont

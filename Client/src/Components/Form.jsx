@@ -6,6 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PulseLoader from "react-spinners/PulseLoader";
 import { Mycontext } from "./Context";
+import ScrollTo from "./ScrollTo";
 
 const Form = ({ msg }) => {
   const [input, setinput] = useState({
@@ -15,9 +16,7 @@ const Form = ({ msg }) => {
   const [loader, setloader] = useState(false);
 
   const context = useContext(Mycontext);
-  const { Dark, setDark } = context;
-
-  window.scrollTo(0, 0);
+  const { Dark, setDark, Server } = context;
 
   const dispatch = useDispatch();
   const IsForm = useSelector((state) => state.showForm);
@@ -26,10 +25,7 @@ const Form = ({ msg }) => {
     const data = [msg, input];
     try {
       setloader(true);
-      const res = await axios.post(
-        "https://findmymechanic.onrender.com/shopMsg",
-        data
-      );
+      const res = await axios.post(`${Server}/shopMsg`, data);
       setloader(false);
       dispatch(FormShow());
       if (res.data.message == "Message Sent") {

@@ -8,6 +8,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Mycontext } from "../Components/Context";
 import AniShop from "../LoadingAnimate/AniShop";
+import ScrollTo from "../Components/ScrollTo";
 
 const ChooseVehicle = () => {
   const [load, setload] = useState(true);
@@ -46,6 +47,7 @@ const ChooseVehicle = () => {
 
   return (
     <div className={` py-32  ${Dark ? "Dark3" : "Light3"}`}>
+      <ScrollTo/>
       <h1 className={`  text-center pb-10 px-2 font-Poppins2 text-2xl`}>
         {load
           ? `Fetching Vehicles ...`

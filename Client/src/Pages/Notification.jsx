@@ -5,6 +5,7 @@ import { useSelector } from "react-redux/es/hooks/useSelector";
 import axios from "axios";
 import { Mycontext } from "../Components/Context";
 import AniNotification from "../LoadingAnimate/AniNotifification";
+import ScrollTo from "../Components/ScrollTo";
 
 const Notification = () => {
   const [message, setmessage] = useState([]);
@@ -13,7 +14,7 @@ const Notification = () => {
   const [toggle, settoggle] = useState(true);
 
   const context = useContext(Mycontext);
-  const { Dark, setDark } = context;
+  const { Dark, setDark, Server } = context;
 
   const user = useSelector((state) => state.userData);
   const userId = user.data._id;
@@ -21,9 +22,7 @@ const Notification = () => {
     const fetch = async () => {
       try {
         if (toggle) {
-          const res = await axios.get(
-            "https://findmymechanic.onrender.com/notification/view"
-          );
+          const res = await axios.get(`${Server}/notification/view`);
           setloader(false);
           setmessage(res.data.message);
           setcode(res.data.code);
@@ -128,6 +127,7 @@ export const Body = ({ loader, message, code, title, toggle }) => {
       transition={{ staggerChildren: 0.1 }}
       variants={Animate4}
     >
+      <ScrollTo />
       <h1 className=" text-center text-2xl py-10 font-Poppins1">{title}</h1>
       <div
         className={` rounded-3xl  h-fit  mx-auto
@@ -145,13 +145,17 @@ export const Body = ({ loader, message, code, title, toggle }) => {
         ${!Dark ? "shadow-blue-900" : " shadow-gray-700"}
         `}
       >
-        {!loader && message.length == 0 && 
-        <div className=" ">
-        <h1 className={` text-center sm:text-xl py-10 font-Poppins1 rounded-xl
-        ${Dark?'Dark4':'Light'}
-        `}>No messages found!</h1>
-        </div>
-        }
+        {!loader && message.length == 0 && (
+          <div className=" ">
+            <h1
+              className={` text-center sm:text-xl py-10 font-Poppins1 rounded-xl
+        ${Dark ? "Dark4" : "Light"}
+        `}
+            >
+              No messages found!
+            </h1>
+          </div>
+        )}
         {loader ? (
           <AniNotification />
         ) : (
@@ -163,7 +167,7 @@ export const Body = ({ loader, message, code, title, toggle }) => {
                   sm:my-4 
                   my-4
                   rounded-lg
-                  ${Dark ? "Dark4" : "Light"}
+                  ${Dark ? "Dark4" : "Light2"}
                   `}
                 >
                   <div className="">

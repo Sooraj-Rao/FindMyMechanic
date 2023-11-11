@@ -11,6 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 import PulseLoader from "react-spinners/PulseLoader";
 import { Mycontext } from "../Components/Context";
 import AniShop from "../LoadingAnimate/AniShop";
+import ScrollTo from "../Components/ScrollTo";
 
 const Service = ({ booked, setbooked, Message }) => {
   const [load, setload] = useState({
@@ -25,7 +26,7 @@ const Service = ({ booked, setbooked, Message }) => {
   const navigate = useNavigate();
 
   const context = useContext(Mycontext);
-  const { Dark, setDark } = context;
+  const { Dark, setDark ,Server} = context;
 
   let id = ServiceData.shopId;
   let vehicle = ServiceData.vehicle;
@@ -34,7 +35,7 @@ const Service = ({ booked, setbooked, Message }) => {
   const fetchData = async () => {
     try {
       const shops = await axios.get(
-        `https://findmymechanic.onrender.com/BookService/services/${id}/${vehicle}`
+        `${Server}/BookService/services/${id}/${vehicle}`
       );
       setload({ ...load, one: false });
       setshopsList(shops.data);
@@ -51,7 +52,7 @@ const Service = ({ booked, setbooked, Message }) => {
     try {
       setload({ ...load, two: true });
       const book = await axios.post(
-        `https://findmymechanic.onrender.com/BookService/book`,
+        `${Server}/BookService/book`,
         data
       );
       setload({ ...load, two: false });
@@ -73,6 +74,7 @@ const Service = ({ booked, setbooked, Message }) => {
 
   return (
     <div className={`py-32   ${Dark ? "Dark3" : "Light3"}`}>
+      <ScrollTo/>
       <h1 className={`  text-center pb-10 px-2 font-Poppins2 text-2xl`}>
         {load.one && `Fetching Services for your ${vehicle}...`}
         {!load.one && shopsList.length > 0 && `Choose a Service for your ${vehicle}`}
