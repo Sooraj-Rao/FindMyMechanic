@@ -44,7 +44,6 @@ const AreYouSure = ({
         w-10/12
     "
     >
-      <ScrollTo />
       <h1
         className=" text-center font-Poppins2 pt-7
       sm:text-3xl

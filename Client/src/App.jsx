@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useContext, useEffect, useMemo, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar, { SideNavbar } from "./Components/Home/Navbar";
 import Home from "./Pages/Home";
@@ -20,13 +20,16 @@ import ServiceBooked from "./Components/Home/ServiceBooked";
 import { useDispatch, useSelector } from "react-redux";
 import Form from "./Components/Form";
 import Bill from "./Components/Bill";
-import Context from "./Components/Context";
+import Context, { Mycontext } from "./Components/Context";
 import { getData } from "./Redux/FetchUserDetailSlice";
 import Dummy from "./Pages/Dummy";
 import { ToastContainer, toast } from "react-toastify";
+import { Toaster } from "react-hot-toast";
+
 
 const App = () => {
   const [logged, setlogged] = useState(false);
+  const [istheme, setistheme] = useState(1)
   const [Okcancel, setOkcancel] = useState({
     one: false,
     two: false,
@@ -41,15 +44,27 @@ const App = () => {
   const Message = (msgg) => {
     setmsg(msgg);
   };
-
   const IsForm = useSelector((state) => state.showForm);
 
   useMemo(() => {
     logged && dispatch(getData());
   }, [logged]);
 
+
   return (
     <Context>
+      <Toaster
+        position="top-center"
+        reverseOrder={true}
+        toastOptions={{
+          className: '',
+          duration: 6000,
+          style: {
+            background: istheme == 1 ? 'black' : 'white',
+            color: istheme == 2 ? 'black' : 'white',
+          },
+        }}
+      />
       <Router>
         <Navbar
           SideBarLog={SideBarLog}
@@ -59,6 +74,8 @@ const App = () => {
           setlogShow={setlogShow}
           SideBar={SideBar}
           setSideBar={setSideBar}
+          istheme={istheme}
+          setistheme={setistheme}
         />
         {(logShow || Okcancel.one) && (
           <AreYouSure
@@ -89,10 +106,9 @@ const App = () => {
           <Bill billOpen={billOpen} setbillOpen={setbillOpen} msg={msg} />
         )}
         <div
-          className={`${
-            (logShow || booked || billOpen || IsForm || Okcancel.one) &&
+          className={`${(logShow || booked || billOpen || IsForm || Okcancel.one) &&
             "Bg-Filter"
-          }  `}
+            }  `}
         >
           <Routes>
             <Route path="/" element={<Home />} />
@@ -108,10 +124,10 @@ const App = () => {
               element={<Login logged={logged} setlogged={setlogged} />}
             />
 
-            {logged ? <Route path="/shop" element={<Shop />} /> : ""}
+            {logged ? <Route path="bookService/shop/" element={<Shop />} /> : ""}
             {logged ? (
               <Route
-                path="/service"
+                path="bookService/service"
                 element={
                   <Service
                     booked={booked}
@@ -159,7 +175,7 @@ const App = () => {
               ""
             )}
             {logged ? (
-              <Route path="/vehicle" element={<ChooseVehicle />} />
+              <Route path="bookService/vehicle/" element={<ChooseVehicle />} />
             ) : (
               ""
             )}
@@ -167,7 +183,13 @@ const App = () => {
             <Route path="/building/:name" element={<Dummy />} />
           </Routes>
         </div>
-        <Footer />
+        <div
+          className={`${(logShow || booked || billOpen || IsForm || Okcancel.one) &&
+            "Bg-Filter"
+            }  `}
+        >
+          <Footer />
+        </div>
       </Router>
     </Context>
   );

@@ -4,14 +4,17 @@ import { Animate1 } from "../Framer/Framer";
 import { Animate2 } from "../Framer/Framer";
 import { Animate3 } from "../Framer/Framer";
 import { Animate4 } from "../Framer/Framer";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import axios from "axios";
 import { Mycontext } from "../Components/Context";
 import AniShop from "../LoadingAnimate/AniShop";
 import ScrollTo from "../Components/ScrollTo";
 
 const ChooseVehicle = () => {
+  const [Search, SetSearch] = useSearchParams();
+  const location = useLocation();
   const [load, setload] = useState(true);
+  const queryParams = new URLSearchParams(location.search);
   const [shopsList, setshopsList] = useState([
     {
       vehicle: "Car",
@@ -34,20 +37,17 @@ const ChooseVehicle = () => {
   const context = useContext(Mycontext);
   const { Dark, setDark } = context;
 
-  const serviceId = localStorage.getItem("serviceId");
 
   const navigate = useNavigate();
+  let Prev_param = location.pathname.slice(0, -8);
 
-  const vehicle = (vehicle) => {
-    let shop = JSON.parse(localStorage.getItem("Service"));
-    let shopvehicle = { shopId: shop.shopId, vehicle: vehicle };
-    localStorage.setItem("Service", JSON.stringify(shopvehicle));
-    navigate("/service");
+  const Addvehicle = (vehicle) => {
+    navigate(Prev_param + "/service" + "?" + Search + '&v=' + vehicle);
   };
 
   return (
     <div className={` py-32  ${Dark ? "Dark3" : "Light3"}`}>
-      <ScrollTo/>
+      <ScrollTo />
       <h1 className={`  text-center pb-10 px-2 font-Poppins2 text-2xl`}>
         {load
           ? `Fetching Vehicles ...`
@@ -75,7 +75,7 @@ const ChooseVehicle = () => {
           text-white
           "
                 key={index}
-                onClick={() => vehicle(item.vehicle)}
+                onClick={() => Addvehicle(item.vehicle)}
               >
                 <div className=" h-5/6 overflow-hidden group">
                   <img

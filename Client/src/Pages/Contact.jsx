@@ -3,14 +3,13 @@ import { motion } from "framer-motion";
 import { Animate4 } from "../Framer/Framer";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import PulseLoader from "react-spinners/PulseLoader";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { getData } from "../Redux/FetchUserDetailSlice";
 import { Mycontext } from "../Components/Context";
 import ScrollTo from "../Components/ScrollTo";
+import toast from "react-hot-toast";
 
 
 const Contact = ({ logged }) => {
@@ -23,7 +22,7 @@ const Contact = ({ logged }) => {
   });
 
   const context = useContext(Mycontext);
-  const { Dark, setDark ,Server} = context;
+  const { Dark, setDark, Server } = context;
 
   const dispatch = useDispatch();
 
@@ -62,20 +61,16 @@ const Contact = ({ logged }) => {
         toast.success(res.data.message);
         setloader(false);
         setinput({ email: "", message: "" });
-        setTimeout(() => {
-          navigate("/login");
-        }, 8000);
       }
     } catch (error) {
       setloader(false);
       toast.error("Something went wrong");
-      console.log(error);
     }
   };
 
   return (
     <div className="Contact pb-20 pt-32">
-      <ScrollTo/>
+      <ScrollTo />
       <motion.form
         onSubmit={handleSubmit}
         className={`   h-fit    text-lg rounded-3xl   mx-auto font-Mont
@@ -136,11 +131,10 @@ const Contact = ({ logged }) => {
           <br />
           <button
             className={` h-10 mt-4 font-Poppins text-lg text-white
-           ${
-             input.message.length < 10 &&
-             input.message.length > 0 &&
-             " brightness-75"
-           }
+           ${input.message.length < 10 &&
+              input.message.length > 0 &&
+              " brightness-75"
+              }
           `}
           >
             {loader ? <PulseLoader color="white" size={10} /> : "Submit"}

@@ -5,6 +5,7 @@ import axios from "axios";
 import { Mycontext } from "../Components/Context";
 import AniBill from "../LoadingAnimate/AniBill";
 import ScrollTo from "../Components/ScrollTo";
+import toast from "react-hot-toast";
 
 const ViewBill = ({ Message, setbillOpen }) => {
   const [load, setload] = useState(false);
@@ -22,7 +23,7 @@ const ViewBill = ({ Message, setbillOpen }) => {
       setdata(res.data);
     } catch (error) {
       setload(false);
-      console.log(error);
+      toast.error('Failed to Fetch Bill')
     }
   };
 
@@ -64,11 +65,10 @@ const ViewBill = ({ Message, setbillOpen }) => {
     sm:p-10
     p-4
     ${Dark ? "Dark3" : "Light4"}
-    ${
-      !Dark
-        ? "        shadow-[0rem_0rem_2rem_-4px] "
-        : "        shadow-[0rem_0rem_2rem_-4px] "
-    }
+    ${!Dark
+              ? "        shadow-[0rem_0rem_2rem_-4px] "
+              : "        shadow-[0rem_0rem_2rem_-4px] "
+            }
     ${!Dark ? "shadow-blue-900" : " shadow-gray-700"}
     `}
         >

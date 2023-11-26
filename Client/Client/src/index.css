@@ -1,0 +1,455 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.Dark1 {
+    background-color: rgba(1, 1, 40, 0.698);
+    color: white;
+}
+
+.Dark {
+    background-color: rgb(1, 1, 40);
+    color: white;
+}
+.Dark4 {
+    background-color: rgba(0, 0, 5, 0.482);
+    color: white;
+}
+
+
+.Dark2 {
+    background-color: rgb(0, 0, 16);
+    color: white;
+}
+
+.Dark3 {
+    background-color: rgb(5, 18, 33);
+    color: white;
+}
+
+.Light {
+    background-color: rgba(255, 255, 255, 0.926);
+    color: rgb(0, 0, 0);
+}
+
+.Light1 {
+    background-color: rgb(191, 191, 244);
+    color: rgb(0, 0, 0);
+}
+
+.Light2 {
+    background-color: rgb(252, 231, 195);
+    color: rgb(0, 0, 0);
+}
+
+.Light3 {
+    background-color: rgb(180, 180, 254);
+    color: rgb(0, 0, 0);
+}
+
+
+
+.Light4 {
+    background-color: rgb(187, 187, 255);
+    color: rgb(0, 0, 0);
+}
+
+.Light5 {
+    background-color: rgb(144, 198, 255);
+    color: rgb(0, 0, 0);
+}
+
+.Light6 {
+    background: linear-gradient(to left, rgb(255, 214, 214), rgb(227, 227, 255));
+    color: rgb(0, 0, 0);
+}
+
+body {
+    background-color: rgb(24, 22, 22);
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+input,
+textarea {
+    color: black;
+    padding: 0 .5rem 0;
+    outline: blue;
+    border-radius: 4px;
+}
+
+.font-Mont {
+    font-family: 'Montserrat';
+    font-weight: 400;
+}
+
+.font-Mont1 {
+    font-family: 'Montserrat';
+    font-weight: 500;
+}
+
+.font-Mont2 {
+    font-family: 'Montserrat';
+    font-weight: 600;
+}
+
+.font-Mont3 {
+    font-family: 'Montserrat';
+    font-weight: 700;
+}
+
+.font-Mont4 {
+    font-family: 'Montserrat';
+    font-weight: 800;
+}
+
+
+.font-Poppins {
+    font-family: 'Poppins';
+    font-weight: 400;
+}
+
+.font-Poppins1 {
+    font-family: 'Poppins';
+    font-weight: 500;
+}
+
+.font-Poppins2 {
+    font-family: 'Poppins';
+    font-weight: 600;
+}
+
+.font-Poppins3 {
+    font-family: 'Poppins';
+    font-weight: 700;
+}
+
+.font-Poppins4 {
+    font-family: 'Poppins';
+    font-weight: 800;
+}
+
+.Logo,
+.Logo2 {
+    background: -webkit-linear-gradient(0deg, rgb(121, 121, 255), rgb(255, 174, 174));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    cursor: pointer;
+}
+
+.Logo2 {
+    background: -webkit-linear-gradient(0deg, rgb(62, 62, 203), rgb(203, 93, 93));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.Logo:hover,
+.Logo2:hover {
+    animation: ani .5s linear 1;
+}
+
+@keyframes ani {
+    33% {
+        transform: skew(20deg);
+    }
+
+    66% {
+        transform: skew(0deg);
+    }
+}
+
+.Navbar button {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    border: 2px solid rgb(0, 136, 255);
+}
+
+.Navbar button::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 100%;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    background: black;
+    transition: .4s;
+
+}
+
+.Navbar button:hover {
+    color: white;
+    border: 2px solid rgb(0, 136, 255);
+}
+
+.Navbar button:hover::after {
+    transition: .4s;
+    width: 100%;
+}
+
+button {
+    transition: .3s;
+    background: rgb(2, 122, 192);
+    border-radius: 6px;
+}
+
+button:hover {
+    transition: .3s;
+    filter: contrast(5);
+}
+
+button:active {
+    transform: scale(0.99);
+}
+
+
+.Navbar h1,
+.Navbar li {
+    position: relative;
+    cursor: pointer;
+}
+
+.Navbar h1::after,
+.Navbar li::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1;
+    left: 0;
+    bottom: 0;
+    border: 1px solid rgb(0, 149, 255);
+    background: black;
+    transition: .4s;
+    visibility: hidden;
+
+}
+
+.Navbar h1:hover::after,
+.Navbar li:hover::after {
+    visibility: visible;
+    transition: .4s;
+    width: 100%;
+}
+
+img {
+    height: 30rem;
+    width: 30rem;
+}
+
+
+/* Carousel */
+.carousel .thumb,
+.carousel .carousel-status,
+.carousel.carousel-slider .control-arrow {
+    display: none;
+}
+
+.carousel .control-dots .dot.selected {
+    background: rgb(255, 0, 0);
+}
+
+*::selection {
+    background: rgb(58, 144, 172)
+}
+
+.LandingPage {
+    background: url('/img.jpg') no-repeat;
+    background-size: cover;
+
+    /* background-position-y: -50px; */
+}
+.Carosel{
+    background-size: cover;
+}
+.Landing-In {
+    background: rgba(0, 0, 0, 0.758);
+}
+
+.Landing-In h2 {
+    line-height: 2.4rem;
+}
+
+.Landing-Info {
+    backdrop-filter: contrast(1.2);
+}
+
+.SignIn input:not(.SignIn-checkBox) {
+    height: 2.4rem;
+    font-size: 18px;
+    width: 100%;
+    font-weight: 600;
+}
+
+.Login-Bg{
+    background: url('../login-bg2.jpg') no-repeat ;
+    background-size: cover;
+    /* background-position-x: 100px; */
+}
+
+.Dropdown {
+    visibility: hidden;
+    transition: visibility 0.5s, opacity 0.5s;
+    line-height: 2rem;
+}
+
+.Dropdown-h1:hover .Dropdown,
+.Dropdown:hover {
+    visibility: visible;
+    opacity: 1;
+}
+
+.Dropdown-h1:hover .ManageNavbar i {
+    transform: rotate(180deg);
+    transition: .6s;
+}
+
+.ManageNavbar i {
+    transition: .6s;
+
+}
+
+button:disabled {
+    background-color: rgb(86, 80, 80);
+}
+
+button:disabled:active {
+    transform: scale(1);
+}
+
+button:disabled:hover {
+    filter: contrast(1);
+}
+
+.ManageSidebar:hover .h1 i {
+    transform: rotate(180deg);
+    transition: .6s;
+}
+
+.h1 i {
+    transition: .6s;
+
+}
+
+.ManageSidebar:hover .SidebarShow {
+    height: 150px;
+    /* transition:  1s; */
+}
+
+.Contact {
+    background: url('../Contact-Image.jpg');
+    background-size: contain;
+    background-position: -20rem;
+}
+
+.SideNavbar {
+    background: linear-gradient(80deg, rgb(1, 63, 74), rgb(82, 35, 2));
+}
+
+@media screen and (max-width:1300px) {
+    .LandingPage {
+        background-size: contain;
+        background-size: 100rem;
+        background-position-x: -10rem;
+    }
+}
+
+@media screen and (max-width:1000px) {
+    .LandingPage {
+        background-size: contain;
+        background-size: 100rem;
+        background-position-x: -20rem;
+    }
+
+    .Landing-In h1 {
+        line-height: 5rem;
+    }
+}
+
+@media screen and (max-width:800px) {
+    .LandingPage {
+        background-size: contain;
+        background-size: 100rem;
+        background-position-x: -25rem;
+    }
+
+    .Landing-In h1 {
+        line-height: 3.4rem;
+    }
+
+    .Contact {
+        background-size: cover;
+        background-position: -20rem;
+    }
+}
+
+
+
+
+.Loader {
+    animation: Loader 2s infinite linear;
+    background: linear-gradient(to left, #dadcde 4%, #b7b6b6 25%, #d7d9dc 36%);
+    background-size: 1000px 100%;
+}
+
+@keyframes Loader {
+    0% {
+        background-position: -1000px 0;
+    }
+
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+.DarkLoader {
+    animation: DarkLoader 2s infinite linear;
+    background: linear-gradient(to left, rgb(20, 28, 34) 4%, #3d4149 25%, #151b23 36%);
+    background-size: 1000px 100%;
+}
+
+@keyframes DarkLoader {
+    0% {
+        background-position: -1000px 0;
+    }
+
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+.bookServiceTextbox {
+    border: 2px solid red;
+    animation: shake .1s linear 10;
+}
+
+@keyframes shake {
+    25% {
+        transform: translateX(-2px);
+    }
+
+    50% {
+        transform: translateX(0px);
+    }
+
+    75% {
+        transform: translateX(2px);
+    }
+
+    100% {
+        transform: translateX(0px);
+    }
+}
+
+.Bg-Filter{
+    filter: blur(1rem);
+}

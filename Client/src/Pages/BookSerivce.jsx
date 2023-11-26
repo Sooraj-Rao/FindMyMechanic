@@ -1,32 +1,32 @@
 import React, { useContext, useState } from "react";
 import { motion } from "framer-motion";
 import { Animate4 } from "../Framer/Framer";
-import { useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { Mycontext } from "../Components/Context";
 import ScrollTo from "../Components/ScrollTo";
 
+
 const BookSerivce = ({ logged }) => {
+  const [Search, SetSearch] = useSearchParams();
+  const location = useLocation();
+  const context = useContext(Mycontext);
   const [pincode, setpincode] = useState("");
   const [shake, setshake] = useState(false);
-  const context = useContext(Mycontext);
   const { Dark, setDark } = context;
 
   const navigate = useNavigate();
 
-  const isLogged = () => {
+  const isLogged = (e) => {
+    e.preventDefault();
     if (!logged) {
       !logged && toast.info("Please login to Continue");
       setTimeout(() => {
         !logged && navigate("/login");
       }, 3000);
     } else {
-      if (pincode.length < 6) {
-        return toast.info("Enter valid pincode");
-      }
-      localStorage.setItem("pincode", pincode);
-      logged && navigate("/shop");
+      if (pincode.length == 0 || pincode.length<6) return setshake(!shake)
+
+      logged && navigate(location.pathname + '/shop' + '?' + Search)
     }
   };
 
@@ -36,16 +36,17 @@ const BookSerivce = ({ logged }) => {
       return setshake(true);
     }
     setpincode(e.target.value);
+    SetSearch({ p: e.target.value })
   };
 
   if (shake) {
     setTimeout(() => {
       setshake(false);
-    }, 1000);
+    }, 3000);
   }
 
   return (
-    <motion.div
+    <motion.form
       className={` h-fit py-32 sm:mt-20 mt-10 px-2   flex flex-col justify-center gap-10 items-center
       ${Dark ? "Dark2" : "Light1"}
       `}
@@ -54,7 +55,7 @@ const BookSerivce = ({ logged }) => {
       viewport={{ once: false, amount: 0.5 }}
       transition={{ staggerChildren: 0.1 }}
     >
-      <ScrollTo/>
+      <ScrollTo />
       <motion.h1
         className="  font-Poppins2
       lg:text-6xl
@@ -70,6 +71,7 @@ const BookSerivce = ({ logged }) => {
         variants={Animate4}
       >
         We will find Mechanic Shop in your Pincode
+
       </motion.h2>
       <motion.input
         type="text"
@@ -86,6 +88,10 @@ const BookSerivce = ({ logged }) => {
         onChange={handle}
         variants={Animate4}
       />
+      {
+        shake &&
+        <label className=" -mb-5 -mt-8 text-red-500" >Enter Valid Pincode</label>
+      }
       <motion.button
         className={`
         h-12 w-60 text-xl font-Mont1 text-white
@@ -96,7 +102,7 @@ const BookSerivce = ({ logged }) => {
       >
         Find
       </motion.button>
-    </motion.div>
+    </motion.form>
   );
 };
 

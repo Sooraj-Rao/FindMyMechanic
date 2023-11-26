@@ -4,16 +4,18 @@ import { Animate1 } from "../Framer/Framer";
 import { Animate2 } from "../Framer/Framer";
 import { Animate3 } from "../Framer/Framer";
 import { Animate4 } from "../Framer/Framer";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import PulseLoader from "react-spinners/PulseLoader";
 import { Mycontext } from "../Components/Context";
 import AniShop from "../LoadingAnimate/AniShop";
 import ScrollTo from "../Components/ScrollTo";
+import toast from "react-hot-toast";
 
 const Service = ({ booked, setbooked, Message }) => {
+  const [Search, SetSearch] = useSearchParams();
+  let id = (Search.get('s'));
+  let vehicle = (Search.get('v'));
   const [load, setload] = useState({
     one: true,
     two: false,
@@ -21,15 +23,12 @@ const Service = ({ booked, setbooked, Message }) => {
   const [shopsList, setshopsList] = useState([]);
   const [serviceid, setserviceid] = useState("");
 
-  const ServiceData = JSON.parse(localStorage.getItem("Service"));
 
   const navigate = useNavigate();
 
   const context = useContext(Mycontext);
-  const { Dark, setDark ,Server} = context;
+  const { Dark, setDark, Server } = context;
 
-  let id = ServiceData.shopId;
-  let vehicle = ServiceData.vehicle;
   let userId = localStorage.getItem("user");
 
   const fetchData = async () => {
@@ -41,7 +40,7 @@ const Service = ({ booked, setbooked, Message }) => {
       setshopsList(shops.data);
     } catch (error) {
       setload({ ...load, one: false });
-      console.log(error);
+      toast.error('Failed To Book')
     }
   };
 
@@ -64,17 +63,16 @@ const Service = ({ booked, setbooked, Message }) => {
       }
     } catch (error) {
       setload({ ...load, two: false });
-      console.log(error);
+      toast.error('Error Booking Service!');
     }
   };
 
   useEffect(() => {
     fetchData();
   }, []);
-
   return (
     <div className={`py-32   ${Dark ? "Dark3" : "Light3"}`}>
-      <ScrollTo/>
+      <ScrollTo />
       <h1 className={`  text-center pb-10 px-2 font-Poppins2 text-2xl`}>
         {load.one && `Fetching Services for your ${vehicle}...`}
         {!load.one && shopsList.length > 0 && `Choose a Service for your ${vehicle}`}
@@ -135,7 +133,7 @@ const Service = ({ booked, setbooked, Message }) => {
             </h1>
             <button
               className=" p-3 mt-14 text-white"
-              onClick={() => navigate("/shop")}
+              onClick={() => navigate("/bookService/shop?p=" + Search.get('p'))}
             >
               Check other shops
             </button>

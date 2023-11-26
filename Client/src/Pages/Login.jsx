@@ -3,12 +3,11 @@ import { motion } from "framer-motion";
 import { Animate4 } from "../Framer/Framer";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import PulseLoader from "react-spinners/PulseLoader";
 import { Mycontext } from "../Components/Context";
 import { data } from "../Texts/Texts";
 import ScrollTo from "../Components/ScrollTo";
+import toast from "react-hot-toast";
 
 const Login = ({ logged, setlogged }) => {
   const navigate = useNavigate();
@@ -34,7 +33,7 @@ const Login = ({ logged, setlogged }) => {
       const res = await axios.post(`${Server}/login`, input);
       if (res.data.message !== "Login Succesfully") {
         setloader(false);
-        return toast.info(res.data.message);
+        return toast.error(res.data.message);
       } else {
         toast.success(res.data.message);
         localStorage.setItem("user", res.data.id);
@@ -47,8 +46,7 @@ const Login = ({ logged, setlogged }) => {
       }
     } catch (error) {
       setloader(false);
-      toast.error("Something went wrong");
-      console.log(error);
+      toast.error("Login Failed");
     }
   };
 
@@ -65,7 +63,7 @@ const Login = ({ logged, setlogged }) => {
       sm:w-4/6
       w-5/6
       font-Poppins1
-      ${Dark ? "Dark" : "Light1"}
+      ${Dark ? "Dark1" : "Light1"}
       `}
         initial={"Offscreen"}
         whileInView={"onScreen"}

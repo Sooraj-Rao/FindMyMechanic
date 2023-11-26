@@ -55,16 +55,18 @@ const Card = () => {
               m-3
               lg:text-center
               text-jutify
-              p-4
-              ${
-                !Dark
-                  ? "shadow-[10px_10px_20px_-2px]"
-                  : "shadow-[0px_0px_2rem_-2px] "
+              p-8
+              lg:p-8
+              xl:p-8
+              lg:h-[18rem] xl:h-fit  
+              ${!Dark
+                ? "shadow-[10px_10px_20px_-2px]"
+                : "shadow-[0px_0px_2rem_-2px] "
               }
               ${Dark && " shadow-teal-800"}
              text-black
         `}
-         key={index}
+            key={index}
           >
             <motion.h1
               variants={Animate3}

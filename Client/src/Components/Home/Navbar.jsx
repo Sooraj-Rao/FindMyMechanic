@@ -10,18 +10,35 @@ const Navbar = ({
   setSideBar,
   SideBarLog,
   setSideBarLog,
+  istheme,
+  setistheme
 }) => {
   const context = useContext(Mycontext);
-  const { Dark, setDark } = context;
+  const { Dark, setDark, theme } = context;
 
   const showLog = () => {
     setlogShow(true);
   };
   SideBarLog && showLog();
 
+  const Theme = () => {
+    if (theme == 2) {
+      localStorage.setItem('theme', 1)
+    } else {
+      localStorage.setItem('theme', 2)
+    }
+    if (istheme == 1) {
+      setistheme(2)
+    } else {
+      setistheme(1)
+    }
+    setDark(!Dark)
+  }
+
   useEffect(() => {
     const user = localStorage.getItem("user");
     user && setlogged(true);
+    theme == 2 ? setDark(true) : setDark(false);
   }, [logged]);
 
   return (
@@ -54,7 +71,7 @@ const Navbar = ({
             sm:mr-6
             mr-5
             "
-            onClick={() => setDark(!Dark)}
+            onClick={Theme}
           >
             {Dark ? (
               <i className="fa-solid fa-moon"></i>
@@ -134,7 +151,7 @@ const Navbar = ({
               </button>
             </Link>
           )}
-          <h4 className="  w-6 cursor-pointer" onClick={() => setDark(!Dark)}>
+          <h4 className="  w-6 cursor-pointer" onClick={Theme}>
             {Dark ? (
               <i className="fa-solid fa-moon"></i>
             ) : (
@@ -172,10 +189,7 @@ export const SideNavbar = ({
     `}
     >
       <div
-        className=" flex flex-col gap-5  py-5 h-full items-center text-lg font-Poppins2
-
-      "
-      >
+        className=" flex flex-col gap-5  py-5 h-full items-center text-lg font-Poppins2">
         <Link to={"/"}>
           <h1 onClick={() => setSideBar(!SideBar)}>Home</h1>
         </Link>

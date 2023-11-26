@@ -23,8 +23,10 @@ const BookNow = () => {
     >
       <motion.div
         className="  font-Poppins2 pt-16
-      lg:text-[3vw]
-      text-[7.6vw]"
+        lg:text-[3vw]
+        sm:text-[4.2vw]
+        text-[6vw]
+      "
         variants={Animate2}
       >
         <span className=" hidden lg:block">

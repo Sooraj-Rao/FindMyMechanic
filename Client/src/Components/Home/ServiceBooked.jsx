@@ -22,8 +22,8 @@ const ServiceBooked = ({ booked, setbooked, msg }) => {
     <div className=" flex justify-center overflow-hidden">
       <ScrollTo/>
       <div
-        className={` absolute w-fit top-1/3  z-10 h-fit p-10  rounded-xl font-Poppins2
-      ${Dark ? "Dark" : "Light"}
+        className={` fixed w-fit top-1/3  z-10 h-fit p-10  rounded-xl font-Poppins2
+      ${Dark ? "Dark3" : "Light"}
       ${!Dark ? "text-black" : "text-white"}
       `}
       >

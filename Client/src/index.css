@@ -451,5 +451,5 @@ button:disabled:hover {
 }
 
 .Bg-Filter{
-    filter: blur(1rem);
+    filter:  brightness(0.5) blur(.2rem);
 }

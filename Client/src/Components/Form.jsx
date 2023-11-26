@@ -2,11 +2,10 @@ import React, { useContext, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { FormShow } from "../Redux/FormSlice";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import PulseLoader from "react-spinners/PulseLoader";
 import { Mycontext } from "./Context";
 import ScrollTo from "./ScrollTo";
+import toast from "react-hot-toast";
 
 const Form = ({ msg }) => {
   const [input, setinput] = useState({
@@ -35,7 +34,6 @@ const Form = ({ msg }) => {
       }
     } catch (error) {
       setloader(false);
-      console.log(error);
       toast.error("Error Sending Message");
     }
   };
@@ -47,7 +45,7 @@ const Form = ({ msg }) => {
   return (
     <div className=" flex justify-center">
       <div
-        className={` z-30 absolute h-fit py-10 mt-28  rounded-xl font-Poppins1
+        className={` z-30 fixed h-fit py-10 mt-28  rounded-xl font-Poppins1
       xl:w-1/3
       md:w-1/2
       sm:w-4/6

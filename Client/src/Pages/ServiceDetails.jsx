@@ -2,8 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Animate4 } from "../Framer/Framer";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import PulseLoader from "react-spinners/PulseLoader";
 import { useDispatch, useSelector } from "react-redux";
 import { FormShow } from "../Redux/FormSlice";
@@ -11,6 +9,7 @@ import { Mycontext } from "../Components/Context";
 import AniServiceDetails from "../LoadingAnimate/AniServiceDetails";
 import { useNavigate } from "react-router-dom";
 import ScrollTo from "../Components/ScrollTo";
+import toast from "react-hot-toast";
 
 const ServiceDetails = ({
   Message,
@@ -40,7 +39,7 @@ const ServiceDetails = ({
       setloader({ ...loader, load1: false });
       setdata(res.data);
     } catch (error) {
-      console.log(error);
+      toast.error('Failed to Fetch data');
     }
   };
 
@@ -60,7 +59,6 @@ const ServiceDetails = ({
       } catch (error) {
         setloader({ ...loader, load2: false });
         setid(null);
-        console.log(error);
         toast.error(res.data.message);
       }
     }
@@ -73,12 +71,12 @@ const ServiceDetails = ({
 
   useEffect(() => {
     !loader.load2 && fetchService();
-    console.log("Redner");
   }, [loader.load2]);
 
   useEffect(() => {
     id !== null && cancel(id);
   }, [Okcancel.two]);
+  
   return (
     <>
       <ScrollTo />

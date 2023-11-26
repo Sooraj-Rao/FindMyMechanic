@@ -5,8 +5,9 @@ export const Mycontext = createContext();
 const Context = (props) => {
   const Server = import.meta.env.VITE_SERVER;
   const [Dark, setDark] = useState(false);
+  let theme = localStorage.getItem('theme');
   return (
-    <Mycontext.Provider value={{ Dark, setDark, Server }}>
+    <Mycontext.Provider value={{ Dark, setDark, Server,theme }}>
       {props.children}
     </Mycontext.Provider>
   );

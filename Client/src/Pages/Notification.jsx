@@ -6,6 +6,7 @@ import axios from "axios";
 import { Mycontext } from "../Components/Context";
 import AniNotification from "../LoadingAnimate/AniNotifification";
 import ScrollTo from "../Components/ScrollTo";
+import toast from "react-hot-toast";
 
 const Notification = () => {
   const [message, setmessage] = useState([]);
@@ -34,7 +35,7 @@ const Notification = () => {
           setmessage(res.data.message);
         }
       } catch (error) {
-        console.log(error);
+        toast.error('Failed to Fetch Message')
         setloader(false);
       }
     };
@@ -43,9 +44,8 @@ const Notification = () => {
 
   return (
     <div
-      className={`  ${
-        Dark ? " bg-slate-900 text-white" : "Light4"
-      } mt-10 pb-20 `}
+      className={`  ${Dark ? " bg-slate-900 text-white" : "Light4"
+        } mt-10 pb-20 `}
     >
       <div
         className=" flex justify-end gap-2  pr-5 items-center  
@@ -137,11 +137,10 @@ export const Body = ({ loader, message, code, title, toggle }) => {
         lg:w-2/3
         w-11/12
         ${Dark ? "Dark3" : "Light4"}
-        ${
-          !Dark
+        ${!Dark
             ? "        shadow-[0rem_0rem_2rem_-4px] "
             : "        shadow-[0rem_0rem_2rem_-4px] "
-        }
+          }
         ${!Dark ? "shadow-blue-900" : " shadow-gray-700"}
         `}
       >

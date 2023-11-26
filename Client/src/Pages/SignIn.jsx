@@ -3,12 +3,11 @@ import { motion } from "framer-motion";
 import { Animate4 } from "../Framer/Framer";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import PulseLoader from "react-spinners/PulseLoader";
 import { Mycontext } from "../Components/Context";
 import { data } from "../Texts/Texts.jsx";
 import ScrollTo from "../Components/ScrollTo";
+import toast from "react-hot-toast";
 
 const SignIn = () => {
   const navigate = useNavigate();
@@ -53,7 +52,6 @@ const SignIn = () => {
     } catch (error) {
       setloader(false);
       toast.error("Something went wrong");
-      console.log(error);
     }
   };
 

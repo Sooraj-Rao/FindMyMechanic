@@ -4,20 +4,25 @@ import { Animate1 } from "../Framer/Framer";
 import { Animate2 } from "../Framer/Framer";
 import { Animate3 } from "../Framer/Framer";
 import { Animate4 } from "../Framer/Framer";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import axios from "axios";
 import { Mycontext } from "../Components/Context";
 import AniShop from "../LoadingAnimate/AniShop";
 import ScrollTo from "../Components/ScrollTo";
+import toast from "react-hot-toast";
 
 const Shop = () => {
+  const [Search, SetSearch] = useSearchParams();
+  const location = useLocation();
   const [shopsList, setshopsList] = useState([]);
-  const pincode = localStorage.getItem("pincode");
   const [loader, setloader] = useState(true);
   const navigate = useNavigate();
 
   const context = useContext(Mycontext);
-  const { Dark, setDark,Server } = context;
+  const { Dark, setDark, Server } = context;
+
+  let pincode = Search.get('p');
+
 
   const fetchData = async () => {
     try {
@@ -28,14 +33,14 @@ const Shop = () => {
       setshopsList(shops.data);
     } catch (error) {
       setloader(false);
-      console.log(error);
+      toast.error('Failed to fetch Shop')
     }
   };
 
+  const params = location.pathname
+  const Prev_param = params.slice(0, -4)
   const viewServies = (id) => {
-    let shopvehicle = { shopId: id, vehicle: "" };
-    localStorage.setItem("Service", JSON.stringify(shopvehicle));
-    navigate("/vehicle");
+    navigate(Prev_param + "vehicle" + "?" + "s=" + id + '&' + location.search.slice(1));
   };
 
   useEffect(() => {
@@ -44,7 +49,7 @@ const Shop = () => {
 
   return (
     <div className={`py-32  ${Dark ? "Dark3" : "Light1"}`}>
-      <ScrollTo/>
+      <ScrollTo />
       <h1 className={`  text-center pb-10 px-2 font-Poppins2 text-2xl`}>
         {loader && `Finding shops in ${pincode} ...`}
         {!loader &&
