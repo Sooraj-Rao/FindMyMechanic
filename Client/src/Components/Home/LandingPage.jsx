@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { motion } from "framer-motion";
 import { Animate3 } from "../../Framer/Framer";
-import LazyLoad from "react-lazyload";
 
 const LandingPage = () => {
   return (
