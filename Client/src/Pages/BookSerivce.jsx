@@ -1,30 +1,34 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Animate4 } from "../Framer/Framer";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { Mycontext } from "../Components/Context";
 import ScrollTo from "../Components/ScrollTo";
+import toast from "react-hot-toast";
+import { pinData } from '../Texts/TestData'
+import Suggest from '../Components/Suggest.jsx'
 
 
 const BookSerivce = ({ logged }) => {
+  const [Pinshow, setPinshow] = useState(false)
   const [Search, SetSearch] = useSearchParams();
   const location = useLocation();
   const context = useContext(Mycontext);
   const [pincode, setpincode] = useState("");
   const [shake, setshake] = useState(false);
-  const { Dark, setDark } = context;
+  const { Dark, setDark, Dummyshow, setDummyshow } = context;
 
   const navigate = useNavigate();
 
   const isLogged = (e) => {
     e.preventDefault();
     if (!logged) {
-      !logged && toast.info("Please login to Continue");
+      !logged && toast.error("Please login to Continue");
       setTimeout(() => {
         !logged && navigate("/login");
       }, 3000);
     } else {
-      if (pincode.length == 0 || pincode.length<6) return setshake(!shake)
+      if (pincode.length == 0 || pincode.length < 6) return setshake(!shake)
 
       logged && navigate(location.pathname + '/shop' + '?' + Search)
     }
@@ -44,10 +48,21 @@ const BookSerivce = ({ logged }) => {
       setshake(false);
     }, 3000);
   }
+  useEffect(() => {
+    !Dummyshow && setTimeout(() => {
+      setDummyshow(!Dummyshow)
+    }, 1000);
+    if (Pinshow) {
+      setpincode(pinData)
+      SetSearch({ p: pinData })
+      setPinshow(!Pinshow)
+    }
+  }, [Pinshow])
+
 
   return (
-    <motion.form
-      className={` h-fit py-32 sm:mt-20 mt-10 px-2   flex flex-col justify-center gap-10 items-center
+    <motion.div
+      className={` h-fit py-32 sm:mt-20 mt-10 px-2  flex flex-col justify-center gap-10 items-center
       ${Dark ? "Dark2" : "Light1"}
       `}
       initial={"Offscreen"}
@@ -55,7 +70,11 @@ const BookSerivce = ({ logged }) => {
       viewport={{ once: false, amount: 0.5 }}
       transition={{ staggerChildren: 0.1 }}
     >
-      <ScrollTo />
+      {
+        Dummyshow &&
+        <Suggest from='pincode' Pinshow={Pinshow} setPinshow={setPinshow} />
+      }
+      {/* <ScrollTo /> */}
       <motion.h1
         className="  font-Poppins2
       lg:text-6xl
@@ -102,7 +121,7 @@ const BookSerivce = ({ logged }) => {
       >
         Find
       </motion.button>
-    </motion.form>
+    </motion.div>
   );
 };
 

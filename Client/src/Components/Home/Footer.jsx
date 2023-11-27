@@ -33,7 +33,7 @@ const Footer = () => {
     setTimeout(() => {
       setemail("");
       setload(false);
-      toast.success("Email sucbcription succesfull");
+      toast.success("Email subscription successfull");
     }, 1000);
   };
 

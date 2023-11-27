@@ -145,9 +145,9 @@ const Navbar = ({
           {logged ? (
             <h1 onClick={showLog}>Logout</h1>
           ) : (
-            <Link to={"/login"}>
+            <Link to={"/signUp"}>
               <button className=" bg-blue-500 text-white px-8 py-2 rounded-md font-Poppins1 ">
-                Sign In
+                Sign Up
               </button>
             </Link>
           )}
@@ -234,12 +234,12 @@ export const SideNavbar = ({
             Logout
           </h1>
         ) : (
-          <Link to={"/login"}>
+          <Link to={"/signUp"}>
             <button
               className=" bg-blue-500 px-8 py-2 rounded-md font-Poppins1 "
               onClick={() => setSideBar(!SideBar)}
             >
-              Sign In
+              Sign Up
             </button>
           </Link>
         )}

@@ -47,7 +47,11 @@ const App = () => {
   const IsForm = useSelector((state) => state.showForm);
 
   useMemo(() => {
-    logged && dispatch(getData());
+    try {
+      logged && dispatch(getData());
+    } catch (error) {
+      toast.error('Failed to load user data')
+    }
   }, [logged]);
 
 
@@ -58,7 +62,7 @@ const App = () => {
         reverseOrder={true}
         toastOptions={{
           className: '',
-          duration: 6000,
+          duration: 4000,
           style: {
             background: istheme == 1 ? 'black' : 'white',
             color: istheme == 2 ? 'black' : 'white',

@@ -3,6 +3,7 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Mycontext } from "../Context";
 import { motion } from "framer-motion";
+import LazyLoad from 'react-lazyload';
 import { Animate1, Animate4 } from "../../Framer/Framer";
 
 const Hero = () => {
@@ -33,15 +34,21 @@ const Hero = () => {
       h-[20rem]
       "
         >
-          <Carousel autoPlay={true} infiniteLoop={true}>
+          <Carousel autoPlay={true} infiniteLoop={true } showThumbs={false}>
             <div>
-              <img src="../../../service1.jpg" alt="Image 1" />
+              <LazyLoad height={200}>
+                <img src="../../../service1.jpg" alt="Image 1" />
+              </LazyLoad>
             </div>
             <div>
-              <img src="../../../Bike.jpg" alt="Image 2" />
+              <LazyLoad height={200}>
+                <img src="../../../Bike.jpg" alt="Image 2" />
+              </LazyLoad>
             </div>
             <div>
-              <img src="../../../Car-service.jpg" alt="Image 3" />
+              <LazyLoad height={200}>
+                <img src="../../../Car-service.jpg" alt="Image 3" />
+              </LazyLoad>
             </div>
           </Carousel>
         </div>

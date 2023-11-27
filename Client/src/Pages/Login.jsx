@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Animate4 } from "../Framer/Framer";
 import { Link, useNavigate } from "react-router-dom";
@@ -8,14 +8,18 @@ import { Mycontext } from "../Components/Context";
 import { data } from "../Texts/Texts";
 import ScrollTo from "../Components/ScrollTo";
 import toast from "react-hot-toast";
+import Suggest from "../Components/Suggest";
+import { LoginData } from "../Texts/TestData";
 
 const Login = ({ logged, setlogged }) => {
+  const [FillDummy, setFillDummy] = useState(false)
   const navigate = useNavigate();
   const [loader, setloader] = useState(false);
   const [input, setinput] = useState({
     password: "",
     email: "",
   });
+
 
   const { Forgot } = data;
 
@@ -24,7 +28,7 @@ const Login = ({ logged, setlogged }) => {
   };
 
   const context = useContext(Mycontext);
-  const { Dark, setDark, Server } = context;
+  const { Dark, setDark, Server, Dummyshow, setDummyshow } = context;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -35,14 +39,14 @@ const Login = ({ logged, setlogged }) => {
         setloader(false);
         return toast.error(res.data.message);
       } else {
-        toast.success(res.data.message);
+        toast.success('Login Successfull');
         localStorage.setItem("user", res.data.id);
         setloader(false);
         setlogged(true);
         setinput({ password: "", email: "" });
         setTimeout(() => {
           window.location.href = "/";
-        }, 4000);
+        }, 2000);
       }
     } catch (error) {
       setloader(false);
@@ -50,9 +54,25 @@ const Login = ({ logged, setlogged }) => {
     }
   };
 
+
+  useEffect(() => {
+    !Dummyshow && setTimeout(() => {
+      setDummyshow(!Dummyshow)
+    }, 1000);
+    if (FillDummy) {
+      setinput({ email: LoginData.email, password: LoginData.password })
+      setFillDummy(!FillDummy)
+    }
+  }, [FillDummy])
+
+
   return (
     <div className=" py-32 sm:mt-20 mt-10 Login-Bg">
       <ScrollTo />
+      {
+        Dummyshow &&
+        <Suggest from='login' FillDummy={FillDummy} setFillDummy={setFillDummy} />
+      }
       <motion.form
         onSubmit={handleSubmit}
         className={`SingIn-shadow  h-fit   text-lg rounded-3xl mx-auto font-Mont
@@ -67,7 +87,7 @@ const Login = ({ logged, setlogged }) => {
       `}
         initial={"Offscreen"}
         whileInView={"onScreen"}
-        viewport={{ once: false, amount: 0.5 }}
+        viewport={{ once: true, amount: 0.5 }}
         transition={{ staggerChildren: 0.1 }}
         variants={Animate4}
       >

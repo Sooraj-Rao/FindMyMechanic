@@ -6,7 +6,7 @@ import axios from "axios";
 import { Mycontext } from "../Components/Context";
 import AniNotification from "../LoadingAnimate/AniNotifification";
 import ScrollTo from "../Components/ScrollTo";
-import toast from "react-hot-toast";
+import toast, { ToastBar } from "react-hot-toast";
 
 const Notification = () => {
   const [message, setmessage] = useState([]);
@@ -29,7 +29,7 @@ const Notification = () => {
           setcode(res.data.code);
         } else {
           const res = await axios.get(
-            `https://findmymechanic.onrender.com/notification/sent/${userId}`
+            `${Server}/nsotification/sent/${userId}`
           );
           setloader(false);
           setmessage(res.data.message);
@@ -59,7 +59,7 @@ const Notification = () => {
         </span>
         <div
           className={` relative border-2 rounded-full flex cursor-pointer
-          lg:w-20 lg:h-10
+          
           w-16 h-8 
           ${Dark ? " border-white" : "border-black"}
           `}
@@ -71,7 +71,7 @@ const Notification = () => {
         >
           <div
             className={` absolute  rounded-full  m-[.15rem] 
-            lg:w-8 lg:h-8
+           
             w-6 h-6
           ${Dark ? " bg-white" : " bg-slate-600"}
           `}

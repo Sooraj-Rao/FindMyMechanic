@@ -21,6 +21,7 @@ const Form = ({ msg }) => {
   const IsForm = useSelector((state) => state.showForm);
 
   const Send = async () => {
+    if (input.messageTitle == '' || input.message == '') return toast.error('All fields mandatory')
     const data = [msg, input];
     try {
       setloader(true);
