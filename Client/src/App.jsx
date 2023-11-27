@@ -23,7 +23,6 @@ import Bill from "./Components/Bill";
 import Context, { Mycontext } from "./Components/Context";
 import { getData } from "./Redux/FetchUserDetailSlice";
 import Dummy from "./Pages/Dummy";
-import { ToastContainer, toast } from "react-toastify";
 import { Toaster } from "react-hot-toast";
 
 
