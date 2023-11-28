@@ -34,7 +34,7 @@ const Footer = () => {
       setemail("");
       setload(false);
       toast.success("Email subscription successfull");
-    }, 1000);
+    }, 2000);
   };
 
   const { Terms, Bug, Feedback, FAQ } = data;

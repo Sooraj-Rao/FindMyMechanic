@@ -29,7 +29,7 @@ const Notification = () => {
           setcode(res.data.code);
         } else {
           const res = await axios.get(
-            `${Server}/nsotification/sent/${userId}`
+            `${Server}/notification/sent/${userId}`
           );
           setloader(false);
           setmessage(res.data.message);

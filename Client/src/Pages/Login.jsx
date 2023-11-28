@@ -71,7 +71,9 @@ const Login = ({ logged, setlogged }) => {
       <ScrollTo />
       {
         Dummyshow &&
+        <div className=" flex justify-center">
         <Suggest from='login' FillDummy={FillDummy} setFillDummy={setFillDummy} />
+        </div>
       }
       <motion.form
         onSubmit={handleSubmit}

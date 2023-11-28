@@ -21,12 +21,14 @@ const ManageProfile = () => {
   const UserDetails = useSelector((state) => state.userData);
 
   useEffect(() => {
-    UserDetails.data !== null && setload(false);
+    setTimeout(() => {
+      UserDetails.data && setload(false);
+    }, 2000);
   }, [UserDetails]);
-
+  ;
   return (
     <div className={`${Dark ? "bg-slate-900 text-white" : "Light1"} py-10 `}>
-      <ScrollTo/>
+      <ScrollTo />
       {load ? (
         <AniProfile />
       ) : (
@@ -41,11 +43,10 @@ const ManageProfile = () => {
         p-10
         font-Poppins1
      ${Dark ? "Dark3" : "Light2"}
-     ${
-       !Dark
-         ? "        shadow-[0rem_0rem_2rem_-4px] "
-         : "        shadow-[0rem_0rem_2rem_-4px] "
-     }
+     ${!Dark
+                ? "        shadow-[0rem_0rem_2rem_-4px] "
+                : "        shadow-[0rem_0rem_2rem_-4px] "
+              }
     ${!Dark ? "shadow-blue-900" : " shadow-gray-700"}
         `}
             initial={"Offscreen"}

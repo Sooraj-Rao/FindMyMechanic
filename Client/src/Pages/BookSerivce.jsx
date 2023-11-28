@@ -71,7 +71,7 @@ const BookSerivce = ({ logged }) => {
       transition={{ staggerChildren: 0.1 }}
     >
       {
-        Dummyshow &&
+        Dummyshow && logged &&
         <Suggest from='pincode' Pinshow={Pinshow} setPinshow={setPinshow} />
       }
       {/* <ScrollTo /> */}

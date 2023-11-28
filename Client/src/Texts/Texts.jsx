@@ -5,3 +5,5 @@ export const data = {
   FAQ: "FAQ",
   Forgot: "Forgot Password",
 };
+
+
