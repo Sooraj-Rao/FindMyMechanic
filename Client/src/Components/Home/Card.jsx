@@ -55,7 +55,7 @@ const Card = () => {
               m-3
               lg:text-center
               text-jutify
-              p-8
+              sm:p-8 p-5
               lg:p-8
               xl:p-8
               lg:h-[18rem] xl:h-fit  
@@ -70,13 +70,13 @@ const Card = () => {
           >
             <motion.h1
               variants={Animate3}
-              className=" text-center pb-2  font-Mont2 text-lg"
+              className=" text-center pb-2  font-Mont2 sm:text-lg text-base"
             >
               {item.heading}
             </motion.h1>
             <motion.h1
               variants={Animate3}
-              className=" font-Mont1   text-base"
+              className=" font-Mont1   sm:text-base text-sm"
             >
               <span className=" hidden lg:block">{item.info}</span>
               <span className="block lg:hidden">{item.info2}</span>

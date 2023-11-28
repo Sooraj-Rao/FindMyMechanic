@@ -41,7 +41,7 @@ const Suggest = ({ setFillDummy, FillDummy, from, Pinshow, setPinshow }) => {
                     }
                 }
                 } className=' px-2 py-1 text-white'>Get data</button>
-                <Tooltip id="my-tooltip" style={{ width: '24rem',marginTop:'.4rem', backgroundColor: 'white', color: 'black' }} openOnClick place='bottom'  />
+                <Tooltip id="my-tooltip" style={{ width: '24rem', marginTop: '.4rem', backgroundColor: 'white', color: 'black' }} openOnClick place='bottom' />
                 <span className='tooltip border-2 cursor-default border-slate-600 h-6 w-6 font-semibold  italic rounded-full absolute bottom-2 right-2'>
                     <a data-tooltip-id="my-tooltip" className='px-2  ' data-tooltip-content={Info}>
                         i

@@ -37,7 +37,6 @@ const Contact = ({ logged }) => {
     UserDetails.data?.email?.length > 0 &&
       setinput({ ...input, email: UserDetails.data?.email });
   };
-
   useEffect(() => {
     logged && fetchData();
   }, [UserDetails.data?.email?.length > 0]);
@@ -47,7 +46,7 @@ const Contact = ({ logged }) => {
 
     try {
       if (input.message.length < 10) {
-        return toast.info("Message is too short");
+        return toast.error("Message is too short");
       }
       setloader(true);
       const res = await axios.post(
@@ -60,7 +59,7 @@ const Contact = ({ logged }) => {
       } else {
         toast.success(res.data.message);
         setloader(false);
-        setinput({ email: "", message: "" });
+        setinput({ ...input, message: "" });
       }
     } catch (error) {
       setloader(false);
@@ -129,8 +128,9 @@ const Contact = ({ logged }) => {
             style={{ minHeight: "5rem" }}
           ></textarea>
           <br />
-          <button
+          <button disabled={loader}
             className={` h-10 mt-4 font-Poppins text-lg text-white
+            ${loader && 'cursor-not-allowed'}
            ${input.message.length < 10 &&
               input.message.length > 0 &&
               " brightness-75"

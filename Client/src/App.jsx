@@ -23,7 +23,7 @@ import Bill from "./Components/Bill";
 import Context, { Mycontext } from "./Components/Context";
 import { getData } from "./Redux/FetchUserDetailSlice";
 import Dummy from "./Pages/Dummy";
-import { Toaster } from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 
 
 const App = () => {
@@ -120,12 +120,17 @@ const App = () => {
               element={<BookSerivce logged={logged} />}
             />
             <Route path="/contact" element={<Contact logged={logged} />} />
-            <Route path="/signUp" element={<SignIn />} />
-
-            <Route
-              path="/login"
-              element={<Login logged={logged} setlogged={setlogged} />}
-            />
+            {
+              !logged &&
+              <Route path="/signUp" element={<SignIn />} />
+            }
+            {
+              !logged &&
+              <Route
+                path="/login"
+                element={<Login logged={logged} setlogged={setlogged} />}
+              />
+            }
 
             {logged ? <Route path="bookService/shop/" element={<Shop />} /> : ""}
             {logged ? (

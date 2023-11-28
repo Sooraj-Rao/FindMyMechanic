@@ -32,6 +32,7 @@ const Login = ({ logged, setlogged }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
       setloader(true);
       const res = await axios.post(`${Server}/login`, input);
@@ -56,9 +57,12 @@ const Login = ({ logged, setlogged }) => {
 
 
   useEffect(() => {
-    !Dummyshow && setTimeout(() => {
-      setDummyshow(!Dummyshow)
-    }, 1000);
+    if (input.email != LoginData.email || input.password != LoginData.password) {
+      setTimeout(() => {
+        setDummyshow(!Dummyshow)
+      }, 1000);
+    }
+
     if (FillDummy) {
       setinput({ email: LoginData.email, password: LoginData.password })
       setFillDummy(!FillDummy)
@@ -72,14 +76,14 @@ const Login = ({ logged, setlogged }) => {
       {
         Dummyshow &&
         <div className=" flex justify-center">
-        <Suggest from='login' FillDummy={FillDummy} setFillDummy={setFillDummy} />
+          <Suggest from='login' FillDummy={FillDummy} setFillDummy={setFillDummy} />
         </div>
       }
       <motion.form
         onSubmit={handleSubmit}
         className={`SingIn-shadow  h-fit   text-lg rounded-3xl mx-auto font-Mont
       2xl:w-1/3
-      xl:w-5/12
+      xl:w-4/12
       lg:w-1/2
       md:w-1/2
       sm:w-4/6
@@ -126,7 +130,9 @@ const Login = ({ logged, setlogged }) => {
           >
             {Forgot} ?
           </h1>
-          <button className=" h-10 mt-4 font-Poppins text-lg text-white">
+          <button disabled={loader} className={` h-10 mt-4 font-Poppins text-lg text-white
+          ${loader && 'cursor-not-allowed'}
+          `}>
             {loader ? <PulseLoader color="white" size={10} /> : "Submit"}
           </button>
           <h2 className=" pt-7 text-center">

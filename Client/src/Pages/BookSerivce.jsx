@@ -74,7 +74,7 @@ const BookSerivce = ({ logged }) => {
         Dummyshow && logged &&
         <Suggest from='pincode' Pinshow={Pinshow} setPinshow={setPinshow} />
       }
-      {/* <ScrollTo /> */}
+      <ScrollTo />
       <motion.h1
         className="  font-Poppins2
       lg:text-6xl

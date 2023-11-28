@@ -21,8 +21,7 @@
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.16.0",
     "react-spinners": "^0.13.8",
-    "react-tooltip": "^5.24.0",
-    "swiper": "^11.0.4"
+    "react-tooltip": "^5.24.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",

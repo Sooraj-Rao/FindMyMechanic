@@ -8,7 +8,7 @@ const Bill = ({ msg, billOpen, setbillOpen }) => {
 
   return (
     <div
-      className={`absolute  rounded
+      className={`fixed  rounded
     h-fit py-3
     z-20
     sm:translate-x-1/2 
@@ -90,7 +90,7 @@ ${Dark ? "Dark" : "Light5"}
       </div>
       <hr className="mt-10" />
       <div
-        className="  mt-10 text-center
+        className="  mt-5 text-center
       sm:px-20
       px-10
       "
@@ -98,7 +98,6 @@ ${Dark ? "Dark" : "Light5"}
         <span className=" text-xl mr-4">Total Service Cost : </span>
         <h1 className=" block sm:hidden text-xl">Rs. {msg.serviceCost}</h1>
         <span className=" hidden sm:block text-xl">Rs. {msg.serviceCost}</span>
-        <br />
         <br />
         <span className=" text-xl mr-4">Disocunt : </span>
         <span className=" text-xl">
@@ -110,7 +109,7 @@ ${Dark ? "Dark" : "Light5"}
         <span className=" text-2xl">
           {" "}
           Rs.{" "}
-          <span className=" text-gray-400 line-through text-xl">
+          <span className={` text-slate-600 line-through text-xl`}>
             {msg.serviceCost}
           </span>
           <br />

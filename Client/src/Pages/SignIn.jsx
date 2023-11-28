@@ -23,12 +23,15 @@ const SignIn = () => {
   const context = useContext(Mycontext);
   const { Dark, setDark, Server } = context;
 
+
+
   const handleChange = (e) => {
     setinput({ ...input, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (input.phone.length != 10) return toast.error('Enter valid Phone number')
     const phone = Number(input.phone);
     try {
       setloader(true);
@@ -62,7 +65,7 @@ const SignIn = () => {
         onSubmit={handleSubmit}
         className={`SingIn-shadow h-fit text-lg rounded-3xl  mx-auto font-Mont
       2xl:w-1/3
-      xl:w-5/12
+      xl:w-4/12
       lg:w-1/2
       md:w-1/2
       sm:w-4/6
@@ -105,7 +108,8 @@ const SignIn = () => {
                 name="phone"
                 value={input.phone}
                 onChange={handleChange}
-                type="number"
+                type="text"
+                maxLength={10}
               />
             </div>
           </div>
@@ -142,7 +146,9 @@ const SignIn = () => {
               </span>
             </h1>
           </div>
-          <button className=" h-10 mt-4 font-Poppins text-lg text-white">
+          <button disabled={loader} className={` h-10 mt-4 font-Poppins text-lg text-white
+             ${loader && 'cursor-not-allowed'}
+          `}>
             {loader ? <PulseLoader color="white" size={10} /> : "Submit"}
           </button>
           <h2 className=" pt-6 text-center">

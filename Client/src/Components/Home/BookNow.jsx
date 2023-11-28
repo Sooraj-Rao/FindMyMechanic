@@ -39,7 +39,7 @@ const BookNow = () => {
       <Link to={"/bookService"}>
         <motion.button
           variants={Animate2}
-          className=" mt-16 text-lg font-Poppins1 px-4 py-3 text-white "
+          className=" mt-16 text-sm sm:text-lg font-Poppins1 px-4 py-3 text-white "
         >
           Book Service
         </motion.button>

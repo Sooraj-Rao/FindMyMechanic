@@ -11,6 +11,7 @@
     background-color: rgb(1, 1, 40);
     color: white;
 }
+
 .Dark4 {
     background-color: rgba(0, 0, 5, 0.482);
     color: white;
@@ -268,9 +269,11 @@ img {
 
     /* background-position-y: -50px; */
 }
-.Carosel{
+
+.Carosel {
     background-size: cover;
 }
+
 .Landing-In {
     background: rgba(0, 0, 0, 0.758);
 }
@@ -290,8 +293,8 @@ img {
     font-weight: 600;
 }
 
-.Login-Bg{
-    background: url('../login-bg2.jpg') no-repeat ;
+.Login-Bg {
+    background: url('../login-bg2.jpg') no-repeat;
     background-size: cover;
     /* background-position-x: 100px; */
 }
@@ -450,6 +453,6 @@ button:disabled:hover {
     }
 }
 
-.Bg-Filter{
-    filter:  brightness(0.5) blur(.2rem);
+.Bg-Filter {
+    filter: brightness(0.5) blur(.2rem);
 }
