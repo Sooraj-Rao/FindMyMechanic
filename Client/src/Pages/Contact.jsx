@@ -33,7 +33,7 @@ const Contact = ({ logged }) => {
   };
 
   const fetchData = () => {
-    UserDetails.data == 0 && dispatch(getData());
+    // UserDetails.data == 0 && dispatch(getData());
     UserDetails.data?.email?.length > 0 &&
       setinput({ ...input, email: UserDetails.data?.email });
   };

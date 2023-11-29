@@ -23,9 +23,10 @@ const BookNow = () => {
     >
       <motion.div
         className="  font-Poppins2 pt-16
-        lg:text-[3vw]
-        sm:text-[4.2vw]
-        text-[6vw]
+        xl:text-5xl
+        lg:text-4xl
+        sm:text-3xl
+       text-xl
       "
         variants={Animate2}
       >
@@ -39,7 +40,7 @@ const BookNow = () => {
       <Link to={"/bookService"}>
         <motion.button
           variants={Animate2}
-          className=" mt-16 text-sm sm:text-lg font-Poppins1 px-4 py-3 text-white "
+          className=" sm:mt-16 mt-10 text-sm sm:text-lg font-Poppins1 px-5 py-2 text-white "
         >
           Book Service
         </motion.button>

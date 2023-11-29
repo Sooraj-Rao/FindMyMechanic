@@ -81,7 +81,7 @@ const SignIn = () => {
       >
         <h1 className=" text-center text-2xl pt-6">Sign Up</h1>
         <div
-          className="SignIn  flex flex-col mx-auto  py-7 px-10
+          className="SignIn  flex flex-col mx-auto  py-7 px-5
       sm:w-11/12
       w-full
       "

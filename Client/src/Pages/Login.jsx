@@ -40,14 +40,11 @@ const Login = ({ logged, setlogged }) => {
         setloader(false);
         return toast.error(res.data.message);
       } else {
-        toast.success('Login Successfull');
         localStorage.setItem("user", res.data.id);
         setloader(false);
         setlogged(true);
         setinput({ password: "", email: "" });
-        setTimeout(() => {
-          window.location.href = "/";
-        }, 2000);
+        window.location.href = "/";
       }
     } catch (error) {
       setloader(false);
@@ -59,7 +56,7 @@ const Login = ({ logged, setlogged }) => {
   useEffect(() => {
     if (input.email != LoginData.email || input.password != LoginData.password) {
       setTimeout(() => {
-        setDummyshow(!Dummyshow)
+        !Dummyshow && setDummyshow(!Dummyshow)
       }, 1000);
     }
 
@@ -68,7 +65,6 @@ const Login = ({ logged, setlogged }) => {
       setFillDummy(!FillDummy)
     }
   }, [FillDummy])
-
 
   return (
     <div className=" py-32 sm:mt-20 mt-10 Login-Bg">
@@ -99,7 +95,7 @@ const Login = ({ logged, setlogged }) => {
       >
         <h1 className=" text-center text-2xl pt-6">Login</h1>
         <div
-          className="SignIn  flex flex-col mx-auto  px-10 py-7
+          className="SignIn  flex flex-col mx-auto  px-5 py-7
        sm:w-11/12
        w-full
       "
@@ -122,14 +118,14 @@ const Login = ({ logged, setlogged }) => {
             type="text"
           />
           <br />
-          <h1
+          {/* <h1
             onClick={() => navigate("/building/" + Forgot)}
             className={` text-base  cursor-pointer
               ${Dark ? " text-blue-400 " : "text-blue-900 "}
           `}
           >
             {Forgot} ?
-          </h1>
+          </h1> */}
           <button disabled={loader} className={` h-10 mt-4 font-Poppins text-lg text-white
           ${loader && 'cursor-not-allowed'}
           `}>

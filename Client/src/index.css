@@ -275,7 +275,7 @@ img {
 }
 
 .Landing-In {
-    background: rgba(0, 0, 0, 0.758);
+background: rgba(0, 0, 0, 0.634);
 }
 
 .Landing-In h2 {
@@ -283,7 +283,7 @@ img {
 }
 
 .Landing-Info {
-    backdrop-filter: contrast(1.2);
+    backdrop-filter: contrast(1.6);
 }
 
 .SignIn input:not(.SignIn-checkBox) {

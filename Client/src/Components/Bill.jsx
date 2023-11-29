@@ -9,15 +9,15 @@ const Bill = ({ msg, billOpen, setbillOpen }) => {
   return (
     <div
       className={`fixed  rounded
-    h-fit py-3
+    h-fit py-3 
     z-20
     sm:translate-x-1/2 
     sm:w-1/2
     w-full
     sm:mt-3
-mt-5
+    mt-5
     font-Mont1
-${Dark ? "Dark" : "Light5"}
+${Dark ? "Dark3" : "Light5"}
     `}
     >
       <ScrollTo />
@@ -28,11 +28,11 @@ ${Dark ? "Dark" : "Light5"}
         X
       </h1>
       <div className=" Navbar mt-10 ">
-        <h2 className="text-4xl italic font-Poppins3  text-center">
+        <h2 className="sm:text-4xl text-3xl italic font-Poppins3  text-center">
           FIND MY MECHANIC
         </h2>
       </div>
-      <h4 className=" text-center text-2xl font-Poppins1 mt-2  underline ">
+      <h4 className=" text-center sm:text-2xl text-xl font-Poppins1 mt-2  underline ">
         Invoice
       </h4>
       <div
@@ -41,9 +41,9 @@ ${Dark ? "Dark" : "Light5"}
         flex-col
       xl:justify-between
      items-center
-      mt-10 px-20"
+      mt-10 lg:px-10 "
       >
-        <div className="text-xl">
+        <div className="sm:text-xl text-lg">
           <h2
             className={`
           ${!Dark ? " text-teal-950" : " text-teal-500"} 
@@ -66,7 +66,7 @@ ${Dark ? "Dark" : "Light5"}
           </h1>
         </div>
 
-        <div className=" xl:mt-0 mt-5 text-xl">
+        <div className=" xl:mt-0 mt-3 sm:text-xl text-lg">
           <h2
             className={`  
             ${!Dark ? " text-teal-950" : " text-teal-500"} 
@@ -88,7 +88,7 @@ ${Dark ? "Dark" : "Light5"}
           </h1>
         </div>
       </div>
-      <hr className="mt-10" />
+      <hr className="mt-5" />
       <div
         className="  mt-5 text-center
       sm:px-20

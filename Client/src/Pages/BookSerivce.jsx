@@ -49,8 +49,9 @@ const BookSerivce = ({ logged }) => {
     }, 3000);
   }
   useEffect(() => {
-    !Dummyshow && setTimeout(() => {
-      setDummyshow(!Dummyshow)
+
+    pincode != pinData && setTimeout(() => {
+      !Dummyshow && setDummyshow(!Dummyshow)
     }, 1000);
     if (Pinshow) {
       setpincode(pinData)
