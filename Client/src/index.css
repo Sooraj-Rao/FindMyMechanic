@@ -256,7 +256,7 @@ img {
 }
 
 .carousel .control-dots .dot.selected {
-    background: rgb(255, 0, 0);
+    background: rgb(104, 103, 103);
 }
 
 *::selection {
