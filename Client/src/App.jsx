@@ -24,6 +24,7 @@ import Context, { Mycontext } from "./Components/Context";
 import { getData } from "./Redux/FetchUserDetailSlice";
 import Dummy from "./Pages/Dummy";
 import toast, { Toaster } from "react-hot-toast";
+import Terms from "./Components/Terms";
 
 
 const App = () => {
@@ -122,7 +123,10 @@ const App = () => {
             <Route path="/contact" element={<Contact logged={logged} />} />
             {
               !logged &&
-              <Route path="/signUp" element={<SignIn />} />
+              <>
+                <Route path="/signUp" element={<SignIn />} />
+
+              </>
             }
             {
               !logged &&
@@ -188,7 +192,8 @@ const App = () => {
               ""
             )}
             <Route path="/*" element={<NotFound />} />
-            <Route path="/building/:name" element={<Dummy />} />
+            <Route path="/b/:name" element={<Dummy />} />
+            <Route path="/terms" element={<Terms />} />
           </Routes>
         </div>
         <div

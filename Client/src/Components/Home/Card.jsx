@@ -60,8 +60,8 @@ const Card = () => {
               xl:p-8
               lg:h-[18rem] xl:h-fit  
               ${!Dark
-                ? "shadow-[10px_10px_20px_-2px] bg-teal-200"
-                : " bg-teal-400 "
+                ? "shadow-[10px_10px_15px_-6px] bg-blue-200"
+                : " bg-slate-900 text-white "
               }
              
              text-black

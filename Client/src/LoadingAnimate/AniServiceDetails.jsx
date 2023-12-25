@@ -6,46 +6,66 @@ const AniServiceDetails = () => {
   const { Dark } = context;
 
   return (
-    <div className={`${Dark ? "bg-slate-900 text-white" : "Light4"}`}>
+    <div className={`${Dark ? "Dark2" : "Light4"}`}>
       <div className=" h-fit pb-32 mt-10">
-        {Array(3)
-          .fill("")
-          .map((item, i) => {
-            return (
-              <div
-                className={`  bg-slate-900  rounded-xl  mx-auto mt-10
+        {Array(3).fill('').map((item, i) => {
+          return (
+            <div
+              className={`   rounded-xl h-fit  mx-auto mt-10
             xl:w-4/5
             sm:w-2/3
             w-11/12
-            xl:py-10
+            xl:py-9
             py-3
-            xl:h-32
-            h-72
-            ${Dark ? "DarkLoader" : "Loader"}
+            ${Dark ? " bg-gray-900" : "Light2"}
             `}
-                key={i}
-              >
-                <div>
-                  <div
-                    className={`  mt-5 flex justify-around
-                 xl:flex-row
+              key={i}
+            >
+              <div>
+                <div
+                  className={` flex justify-around
+                xl:flex-row
                 flex-col
-                xl:text-lg
-                sm:text-xl
-                text-lg
-               font-Poppins1
+                font-Poppins1
                 xl:gap-0
                 gap-5
                 sm:items-center
                 sm:ml-0
-                pl-5
-                ${!Dark ? " text-black" : " text-white"}
+                ml-4
+                pt-1 
                 `}
-                  ></div>
+                >
+                  {
+                    Array(4).fill('').map((itm, a) => {
+                      return (
+                        <div key={a} className={` h-7 w-28 rounded-md ${Dark ? 'DarkLoader' : 'Loader'}`}>
+                        </div>
+                      )
+                    })
+                  }
+
+                  <div className=" flex gap-2">
+                    <div className={`
+                     h-9 w-20 rounded-md px-3 py-1 
+                     ${Dark ? 'DarkLoader' : 'Loader'}
+                     `}
+                    >
+                    </div>
+                    <div className={` h-9 w-20 rounded-md px-3 py-1  
+                                        ${Dark ? 'DarkLoader' : 'Loader'}
+                    `}>
+                    </div>
+                  </div>
+                  <div className={` h-7 w-36 rounded-md 
+                    ${Dark ? 'DarkLoader' : 'Loader'}
+                    
+                    `}>
+                  </div>
                 </div>
               </div>
-            );
-          })}
+            </div>
+          );
+        })}
       </div>
     </div>
   );

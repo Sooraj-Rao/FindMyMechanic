@@ -33,10 +33,9 @@ const Shop = () => {
       setshopsList(shops.data);
     } catch (error) {
       setloader(false);
-      toast.error('Failed to fetch Shop')
+      toast.error('Failed to fetch Shops!')
     }
   };
-
   const params = location.pathname
   const Prev_param = params.slice(0, -4)
   const viewServies = (id) => {
@@ -48,7 +47,7 @@ const Shop = () => {
   }, [pincode]);
 
   return (
-    <div className={`py-32  ${Dark ? "Dark3" : "Light1"}`}>
+    <div className={`py-32  ${Dark ? "Dark2" : "Light1"}`}>
       <ScrollTo />
       <h1 className={`  text-center pb-10 px-2 font-Poppins2 text-2xl`}>
         {loader && `Finding shops in ${pincode} ...`}
@@ -78,7 +77,7 @@ const Shop = () => {
           mx-3 
           p-4
 
-           ${Dark ? "Dark2" : "Light"}
+           ${Dark ? " bg-gray-900" : "Light"}
           `}
                 key={index}
               >

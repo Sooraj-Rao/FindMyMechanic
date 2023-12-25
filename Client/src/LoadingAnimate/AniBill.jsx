@@ -12,17 +12,26 @@ const AniBill = () => {
         .map((item, i) => {
           return (
             <div
-              className={`w-full flex justify-around h-28 my-3 px-6 py-8
-          lg:flex-row
-            flex-col
-           gap-4
-           text-white
-           rounded-xl
-           font-Poppins1
-           ${Dark ? "DarkLoader" : "Loader"}
-          `}
+              className={`w-full flex justify-around h-fit my-8 px-6 pt-10 pb-8
+      lg:flex-row
+        flex-col
+       gap-4
+       text-white
+       rounded-xl
+       font-Poppins1
+       ${Dark ? " bg-gray-900" : "Light2"}
+      `}
               key={i}
-            ></div>
+            >
+              {
+                Array(5).fill('').map((item, i) => {
+                  return (
+                    <div key={i} className={` h-8 w-32 rounded-md ${Dark ? 'DarkLoader' : 'Loader'}`}>
+                    </div>
+                  )
+                })
+              }
+            </div>
           );
         })}
     </>

@@ -39,14 +39,14 @@ const AreYouSure = ({
 
   return (
     <div
-      className={` top-1/3  fixed h-40 border   AreYou rounded-xl z-50
+      className={` top-1/3  fixed h-40 border    AreYou rounded-xl z-50
         xl:left-1/3
         sm:left-1/4
         left-7
         xl:w-1/3
         sm:w-1/2
         w-10/12
-        ${!Dark?'bg-slate-200 text-black':'bg-slate-950 text-white'}
+        ${!Dark?'bg-slate-200 text-black border-slate-200':'bg-slate-950 text-white border-slate-800'}
     `}
     >
       <h1

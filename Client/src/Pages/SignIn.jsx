@@ -71,16 +71,17 @@ const SignIn = () => {
       sm:w-4/6
       w-5/6
       font-Poppins1
-      ${Dark ? "Dark1" : "Light1"}
+      ${Dark ? "Dark2 border border-slate-900" : "Light1"}
       `}
         initial={"Offscreen"}
         whileInView={"onScreen"}
         viewport={{ once: false, amount: 0.5 }}
         transition={{ staggerChildren: 0.1 }}
-        variants={Animate4}
+
       >
-        <h1 className=" text-center text-2xl pt-6">Sign Up</h1>
-        <div
+        <motion.h1 variants={Animate4} className=" text-center text-2xl pt-6">Sign Up</motion.h1>
+        <motion.div
+          variants={Animate4}
           className="SignIn  flex flex-col mx-auto  py-7 px-5
       sm:w-11/12
       w-full
@@ -135,7 +136,7 @@ const SignIn = () => {
             <input className="SignIn-checkBox" type="checkbox" required />
             <h1 className=" ml-2">
               I Agree{" "}
-              <span onClick={() => navigate("/building/" + Terms)}>
+              <Link to={'/terms'}>
                 <span
                   className={` underline  cursor-pointer
               ${Dark ? " text-blue-400 " : "text-blue-900 "}
@@ -143,7 +144,7 @@ const SignIn = () => {
                 >
                   {Terms}
                 </span>
-              </span>
+              </Link>
             </h1>
           </div>
           <button disabled={loader} className={` h-10 mt-4 font-Poppins text-lg text-white
@@ -163,7 +164,7 @@ const SignIn = () => {
               <Link to={"/login"}>Login</Link>
             </span>{" "}
           </h2>
-        </div>
+        </motion.div>
       </motion.form>
     </div>
   );

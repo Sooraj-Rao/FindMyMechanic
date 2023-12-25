@@ -25,6 +25,7 @@ const Footer = () => {
 
   const handle = (e) => {
     e.preventDefault();
+    if (shake) return
     if (!email.includes('@') || !email.includes('.')) return setshake(!shake)
     if (email.length < 15) {
       return setshake(!shake);
@@ -43,7 +44,7 @@ const Footer = () => {
     <div className=" h-80">
       <motion.div
         className={`
-        border-t-2 pb-10 
+        border-t pb-10 
         md:justify-evenly
         flex
         justify-evenly
@@ -51,8 +52,8 @@ const Footer = () => {
         flex-col
         items-center
         text-center
-        ${Dark ? "Dark2" : "Light1"}
-        ${!Dark && " border-slate-200"}
+        
+        ${Dark ? "Dark2 border-slate-900" : "Light1 "}
         `}
         initial={"Offscreen"}
         whileInView={"onScreen"}
@@ -67,30 +68,27 @@ const Footer = () => {
           variants={Animate4}
         >
           <h1 className=" text-2xl pt-5 text-center">We Are Social</h1>
-          <div className=" text-lg flex flex-col  mx-auto w-full justify-between h-3/4 pt-4">
-            <h1 className=" ">
-              <a href="https://www.instagram.com/" target="_blank">
+          <div className=" text-lg flex justify-center gap-8   mx-auto w-full   h-3/4 pt-4">
+            <h1 className="  ">
+              <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">
                 <i className="fa-brands fa-instagram"></i>
-                <span className=" ml-3">Instagram</span>
+
               </a>
             </h1>
 
-            <a href="https://twitter.com/" target="_blank">
+            <a href="https://twitter.com/" target="_blank" rel="noreferrer">
               <h1 className=" ">
                 <i className="fa-brands fa-twitter"></i>
-                <span className=" ml-3">Twitter</span>
               </h1>
             </a>
-            <a href="https://mail.google.com/" target="_blank">
+            <a href="https://mail.google.com/" target="_blank" rel="noreferrer">
               <h1 className=" ">
                 <i className="fa-regular fa-envelope"></i>
-                <span className=" ml-3">Email</span>
               </h1>
             </a>
-            <a href="https://github.com/" target="_blank">
+            <a href="https://github.com/" target="_blank" rel="noreferrer">
               <h1 className="  mr-2">
                 <i className="fa-brands fa-github"></i>
-                <span className=" ml-3">Github</span>
               </h1>
             </a>
           </div>
@@ -105,16 +103,16 @@ const Footer = () => {
         >
           <h1 className=" text-2xl pt-5 text-center">Quick Links</h1>
           <div className=" text-lg flex flex-col w-4/6   mx-auto justify-between h-3/4 pt-4">
-            <Link to={"/building/" + Terms}>
+            <Link to={"/terms"}>
               <h1>{Terms}</h1>
             </Link>
-            <Link to={"/building/" + FAQ}>
+            <Link to={"/b/" + FAQ}>
               <h1>{FAQ}</h1>
             </Link>
-            <Link to={"/building/" + Bug}>
+            <Link to={"/b/" + Bug}>
               <h1>{Bug}</h1>
             </Link>
-            <Link to={"/building/" + Feedback}>
+            <Link to={"/b/" + Feedback}>
               <h1>{Feedback}</h1>
             </Link>
           </div>
@@ -155,7 +153,7 @@ const Footer = () => {
         </motion.div>
       </motion.div>
       <div
-        className={` h-1/6  text-center pt-5 font-Poppins 
+        className={` h-1/6  text-center cursor-default pt-5 font-Poppins 
       ${Dark ? "Dark2" : "Light1"}
       `}
       >

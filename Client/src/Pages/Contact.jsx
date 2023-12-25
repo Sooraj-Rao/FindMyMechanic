@@ -81,19 +81,20 @@ const Contact = ({ logged }) => {
       font-Poppins
 
      backdrop-blur-md
-    ${Dark ? "Dark1" : "Light1"}
+    ${Dark ? "Dark2" : "Light1"}
   `}
         initial={"Offscreen"}
         whileInView={"onScreen"}
         viewport={{ once: false, amount: 0.5 }}
         transition={{ staggerChildren: 0.1 }}
-        variants={Animate4}
+        
       >
-        <h1 className=" text-center text-2xl pt-6">Contact Us</h1>
-        <h2 className=" text-center text-base mt-2">
+        <motion.h1 variants={Animate4} className=" text-center text-2xl pt-6">Contact Us</motion.h1>
+        <motion.h2 variants={Animate4} className=" text-center text-base mt-2">
           ( We try to reply within 30 minutes )
-        </h2>
-        <div
+        </motion.h2>
+        <motion.div
+        variants={Animate4}
           className="SignIn  flex flex-col mx-auto    py-7
       md:px-10
       px-6
@@ -123,7 +124,7 @@ const Contact = ({ logged }) => {
             value={input.message}
             onChange={handleChange}
             name="message"
-            className=" font-semibold capitalize max-h-20"
+            className=" font-semibold  max-h-20"
             rows="3"
             style={{ minHeight: "5rem" }}
           ></textarea>
@@ -139,7 +140,7 @@ const Contact = ({ logged }) => {
           >
             {loader ? <PulseLoader color="white" size={10} /> : "Submit"}
           </button>
-        </div>
+        </motion.div>
       </motion.form>
     </div>
   );

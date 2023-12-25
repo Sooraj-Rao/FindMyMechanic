@@ -71,7 +71,7 @@ const Service = ({ booked, setbooked, Message }) => {
     fetchData();
   }, []);
   return (
-    <div className={`py-32   ${Dark ? "Dark3" : "Light3"}`}>
+    <div className={`py-32    ${Dark ? "Dark2" : "Light3"}`}>
       <ScrollTo />
       <h1 className={`  text-center pb-10 px-2 font-Poppins2 text-2xl`}>
         {load.one && `Fetching Services for your ${vehicle}...`}
@@ -98,7 +98,7 @@ const Service = ({ booked, setbooked, Message }) => {
             mx-2
             p-4
             text-white
-            ${Dark ? "Dark2" : "Light"}
+            ${Dark ? " bg-gray-900" : "Light"}
           `}
                 key={index}
               >

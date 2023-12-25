@@ -21,8 +21,6 @@ const Login = ({ logged, setlogged }) => {
   });
 
 
-  const { Forgot } = data;
-
   const handleChange = (e) => {
     setinput({ ...input, [e.target.name]: e.target.value });
   };
@@ -42,7 +40,6 @@ const Login = ({ logged, setlogged }) => {
       } else {
         localStorage.setItem("user", res.data.id);
         setloader(false);
-        setlogged(true);
         setinput({ password: "", email: "" });
         window.location.href = "/";
       }
@@ -67,7 +64,7 @@ const Login = ({ logged, setlogged }) => {
   }, [FillDummy])
 
   return (
-    <div className=" py-32 sm:mt-20 mt-10 Login-Bg">
+    <div className=" py-32 sm:mt-20 mt-10 Login-Bg ">
       <ScrollTo />
       {
         Dummyshow &&
@@ -85,20 +82,21 @@ const Login = ({ logged, setlogged }) => {
       sm:w-4/6
       w-5/6
       font-Poppins1
-      ${Dark ? "Dark1" : "Light1"}
+      ${Dark ? "Dark2 border border-slate-900" : "Light1"}
       `}
         initial={"Offscreen"}
         whileInView={"onScreen"}
         viewport={{ once: true, amount: 0.5 }}
         transition={{ staggerChildren: 0.1 }}
-        variants={Animate4}
+
       >
-        <h1 className=" text-center text-2xl pt-6">Login</h1>
-        <div
+        <motion.h1 variants={Animate4} className=" text-center text-2xl pt-6">Login</motion.h1>
+        <motion.div
           className="SignIn  flex flex-col mx-auto  px-5 py-7
        sm:w-11/12
        w-full
-      "
+       "
+          variants={Animate4}
         >
           <label>Email</label>
           <input
@@ -118,14 +116,6 @@ const Login = ({ logged, setlogged }) => {
             type="text"
           />
           <br />
-          {/* <h1
-            onClick={() => navigate("/building/" + Forgot)}
-            className={` text-base  cursor-pointer
-              ${Dark ? " text-blue-400 " : "text-blue-900 "}
-          `}
-          >
-            {Forgot} ?
-          </h1> */}
           <button disabled={loader} className={` h-10 mt-4 font-Poppins text-lg text-white
           ${loader && 'cursor-not-allowed'}
           `}>
@@ -141,7 +131,7 @@ const Login = ({ logged, setlogged }) => {
               <Link to={"/signUp"}> Sign Up</Link>
             </span>
           </h2>
-        </div>
+        </motion.div>
       </motion.form>
     </div>
   );

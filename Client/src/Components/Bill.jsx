@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { Mycontext } from "../Components/Context";
-import ScrollTo from "./ScrollTo";
 
 const Bill = ({ msg, billOpen, setbillOpen }) => {
   const context = useContext(Mycontext);
@@ -8,27 +7,26 @@ const Bill = ({ msg, billOpen, setbillOpen }) => {
 
   return (
     <div
-      className={`fixed  rounded
+      className={`fixed  rounded-3xl
     h-fit py-3 
     z-20
-    sm:translate-x-1/2 
-    sm:w-1/2
+    md:translate-x-1/2 
+    md:w-1/2
     w-full
-    sm:mt-3
-    mt-5
+    sm:mt-24
+    mt-20
     font-Mont1
-${Dark ? "Dark3" : "Light5"}
+${Dark ? "Dark2 border border-slate-700" : "Light"}
     `}
     >
-      <ScrollTo />
       <h1
-        className=" text-white absolute right-0 top-0 text-2xl bg-red-700 px-4 cursor-pointer"
+        className=" text-white absolute right-2 top-2 rounded-full text-2xl bg-red-700 px-3 py-1 cursor-pointer"
         onClick={() => setbillOpen(false)}
       >
         X
       </h1>
       <div className=" Navbar mt-10 ">
-        <h2 className="sm:text-4xl text-3xl italic font-Poppins3  text-center">
+        <h2 className="sm:text-4xl text-2xl italic font-Poppins3  text-center">
           FIND MY MECHANIC
         </h2>
       </div>
@@ -43,9 +41,9 @@ ${Dark ? "Dark3" : "Light5"}
      items-center
       mt-10 lg:px-10 "
       >
-        <div className="sm:text-xl text-lg">
+        <div className="sm:text-xl text-base">
           <h2
-            className={`
+            className={` font-semibold
           ${!Dark ? " text-teal-950" : " text-teal-500"} 
           
           `}
@@ -66,9 +64,9 @@ ${Dark ? "Dark3" : "Light5"}
           </h1>
         </div>
 
-        <div className=" xl:mt-0 mt-3 sm:text-xl text-lg">
+        <div className=" xl:mt-0 mt-3 sm:text-xl text-base">
           <h2
-            className={`  
+            className={`    font-semibold
             ${!Dark ? " text-teal-950" : " text-teal-500"} 
           `}
           >
@@ -88,25 +86,26 @@ ${Dark ? "Dark3" : "Light5"}
           </h1>
         </div>
       </div>
-      <hr className="mt-5" />
+      <hr className="mt-5 border border-slate-800 " />
       <div
         className="  mt-5 text-center
       sm:px-20
       px-10
+      text-base
       "
       >
-        <span className=" text-xl mr-4">Total Service Cost : </span>
-        <h1 className=" block sm:hidden text-xl">Rs. {msg.serviceCost}</h1>
+        <span className=" sm:text-xl mr-4">Total Service Cost : </span>
+        <h1 className=" block sm:hidden ">Rs. {msg.serviceCost}</h1>
         <span className=" hidden sm:block text-xl">Rs. {msg.serviceCost}</span>
         <br />
-        <span className=" text-xl mr-4">Disocunt : </span>
-        <span className=" text-xl">
+        <span className=" sm:text-xl mr-4">Disocunt : </span>
+        <span className=" sm:text-xl">
           {msg.discount} {" %"}
         </span>
         <br />
         <br />
-        <span className=" text-xl mr-4">Final Payable Cost : </span>
-        <span className=" text-2xl">
+        <span className=" sm:text-xl mr-4">Final Payable Cost : </span>
+        <span className=" sm:text-2xl">
           {" "}
           Rs.{" "}
           <span className={` text-slate-600 line-through text-xl`}>

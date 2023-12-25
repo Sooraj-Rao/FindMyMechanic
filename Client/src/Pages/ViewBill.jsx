@@ -37,11 +37,10 @@ const ViewBill = ({ Message, setbillOpen }) => {
   }, []);
 
   return (
-    <div className={`  ${Dark ? " bg-slate-900 text-white" : "Light4"}`}>
+    <div className={`  ${Dark ? "Dark2" : "Light4"} py-2`}>
       <ScrollTo />
       <motion.div
         className={` h-fit py-20
-      sm:mt-20
       mt-10 
       mx-auto
   w-full
@@ -54,22 +53,13 @@ const ViewBill = ({ Message, setbillOpen }) => {
         transition={{ staggerChildren: 0.1 }}
         variants={Animate4}
       >
-        <h1 className=" text-center text-3xl  font-Poppins1 ">Bills</h1>
+        <h1 className=" text-center text-2xl  font-Poppins1 ">Bills</h1>
 
         <div
-          className={` shadow-[0rem_0rem_2rem_-5px] rounded-xl shadow-blue-950  h-fit mx-auto mt-10
-    
+          className={`  h-fit mx-auto 
     w-11/12 
     sm:w-5/6
-    text-lg
-    sm:p-10
-    p-4
-    ${Dark ? "Dark3" : "Light4"}
-    ${!Dark
-              ? "        shadow-[0rem_0rem_2rem_-4px] "
-              : "        shadow-[0rem_0rem_2rem_-4px] "
-            }
-    ${!Dark ? "shadow-blue-900" : " shadow-gray-700"}
+    p-6
     `}
         >
           {load ? (
@@ -78,17 +68,21 @@ const ViewBill = ({ Message, setbillOpen }) => {
             data.map((item, i) => {
               return (
                 <div
-                  className={`w-full flex justify-around h-fit my-3 px-6 pt-8 pb-6
+                  className={`w-full flex justify-around h-fit my-8 px-6 pt-10 pb-8
           lg:flex-row
             flex-col
            gap-4
            text-white
            rounded-xl
            font-Poppins1
-           ${Dark ? "Dark2" : "Light2"}
+           ${Dark ? " bg-gray-900" : "Light2"}
           `}
                   key={i}
                 >
+                  <div>
+                    <span>S.No : </span>
+                    <span>{i + 1}</span>
+                  </div>
                   <div>
                     <span>Shop : </span>
                     <span>{item.shopName}</span>
@@ -109,10 +103,10 @@ const ViewBill = ({ Message, setbillOpen }) => {
                   </div>
                   <h1>
                     <button
-                      className="py-2 px-5 text-white"
+                      className="py-1 px-4 text-white"
                       onClick={() => Bill(item)}
                     >
-                      View bill
+                      View Bill
                     </button>
                   </h1>
                 </div>
@@ -120,7 +114,7 @@ const ViewBill = ({ Message, setbillOpen }) => {
             })
           ) : (
             <h1
-              className={`rounded-xl font-Mont1 sm:text-2xl text-lg text-center sm:py-16 py-5 
+              className={`rounded-xl font-Mont1 sm:text-2xl text-lg text-center sm:py-8 py-5 
             ${Dark ? "Dark4" : "Light2"}
             `}
             >

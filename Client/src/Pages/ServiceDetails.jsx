@@ -76,11 +76,11 @@ const ServiceDetails = ({
   useEffect(() => {
     id !== null && cancel(id);
   }, [Okcancel.two]);
-  
+
   return (
     <>
       <ScrollTo />
-      <div className={`${Dark ? " bg-slate-900 text-white" : "Light4"}`}>
+      <div className={`${Dark ? " Dark2" : "Light4"}`}>
         <motion.div
           className=" h-fit pb-32 sm:mt-20 mt-10"
           initial={"Offscreen"}
@@ -88,7 +88,7 @@ const ServiceDetails = ({
           viewport={{ once: true, amount: 0.5 }}
           transition={{ staggerChildren: 0.1 }}
         >
-          <h1 className=" text-center text-3xl pt-10 font-Poppins1">
+          <h1 className=" text-center text-2xl pt-10 font-Poppins1">
             Service Details
           </h1>
           {loader.load1 ? (
@@ -100,31 +100,22 @@ const ServiceDetails = ({
               i += 1;
               return (
                 <div
-                  className={`  bg-slate-900  rounded-xl h-fit  mx-auto mt-10
+                  className={`   rounded-xl h-fit  mx-auto mt-10
             xl:w-4/5
             sm:w-2/3
             w-11/12
             xl:py-10
             py-3
-            ${Dark ? "Dark3" : "Light2"}
-            ${
-              !Dark
-                ? "        shadow-[0rem_0rem_2rem_-4px] "
-                : "        shadow-[0rem_0rem_2rem_-4px] "
-            }
-            ${!Dark ? "shadow-blue-900" : " shadow-gray-700"}
+            ${Dark ? " bg-gray-900" : "Light2"}
             `}
                   key={i}
                 >
                   <div>
                     <div
                       className={` flex justify-around
-                 xl:flex-row
+                xl:flex-row
                 flex-col
-                xl:text-lg
-                sm:text-xl
-                text-lg
-               font-Poppins1
+                font-Poppins1
                 xl:gap-0
                 gap-5
                 sm:items-center
@@ -213,12 +204,6 @@ const ServiceDetails = ({
               className={`
           ${Dark ? "Dark3" : "Light4"}
           m-20 p-6
-          ${
-            !Dark
-              ? "        shadow-[0rem_0rem_2rem_-4px] "
-              : "        shadow-[0rem_0rem_2rem_-4px] "
-          }
-          ${!Dark ? "shadow-blue-900" : " shadow-gray-700"}
           text-center 
        rounded-xl
           `}

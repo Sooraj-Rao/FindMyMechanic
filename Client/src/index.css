@@ -275,7 +275,7 @@ img {
 }
 
 .Landing-In {
-background: rgba(0, 0, 0, 0.634);
+    background: rgba(0, 0, 0, 0.634);
 }
 
 .Landing-In h2 {
@@ -296,7 +296,6 @@ background: rgba(0, 0, 0, 0.634);
 .Login-Bg {
     background: url('../login-bg2.jpg') no-repeat;
     background-size: cover;
-    /* background-position-x: 100px; */
 }
 
 .Dropdown {
@@ -345,7 +344,6 @@ button:disabled:hover {
 
 .ManageSidebar:hover .SidebarShow {
     height: 150px;
-    /* transition:  1s; */
 }
 
 .Contact {
@@ -400,7 +398,7 @@ button:disabled:hover {
 
 .Loader {
     animation: Loader 2s infinite linear;
-    background: linear-gradient(to left, #dadcde 4%, #b7b6b6 25%, #d7d9dc 36%);
+    background: linear-gradient(to left, #bcbfc1 4%, #919090 25%, #bcbfc1 36%);
     background-size: 1000px 100%;
 }
 
@@ -416,7 +414,7 @@ button:disabled:hover {
 
 .DarkLoader {
     animation: DarkLoader 2s infinite linear;
-    background: linear-gradient(to left, rgb(20, 28, 34) 4%, #3d4149 25%, #151b23 36%);
+    background: linear-gradient(to left, rgb(36, 46, 54) 4%, #3d4149 25%, rgb(36, 46, 54) 36%);
     background-size: 1000px 100%;
 }
 

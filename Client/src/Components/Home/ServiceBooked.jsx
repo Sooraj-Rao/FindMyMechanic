@@ -22,14 +22,14 @@ const ServiceBooked = ({ booked, setbooked, msg }) => {
     <div className=" flex justify-center overflow-hidden">
       <ScrollTo/>
       <div
-        className={` fixed w-fit top-1/3  z-10 h-fit p-10  rounded-xl font-Poppins2
+        className={` fixed w-fit top-1/3 border border-slate-700  z-10 h-fit p-10  rounded-3xl font-Poppins2
       ${Dark ? "Dark3" : "Light"}
       ${!Dark ? "text-black" : "text-white"}
       `}
       >
         <h1
           onClick={close}
-          className=" bg-red-400 text-2xl px-4 absolute top-0 right-0 font-bold  rounded cursor-pointer"
+          className=" bg-red-500 hover:bg-red-600 text-2xl px-3 py-1 absolute top-1 right-1 text-white   rounded-full cursor-pointer"
         >
           X
         </h1>
@@ -37,7 +37,7 @@ const ServiceBooked = ({ booked, setbooked, msg }) => {
         sm:text-3xl
         ">{msg}</h1>
         <div className=" flex justify-center  text-xl mt-7">
-          <button className=" px-4 py-3 text-white" onClick={book}>
+          <button className=" px-4 py-2 text-white text-lg" onClick={book}>
             View Service Details
           </button>
         </div>

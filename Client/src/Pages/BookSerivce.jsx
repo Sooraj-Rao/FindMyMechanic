@@ -29,7 +29,6 @@ const BookSerivce = ({ logged }) => {
       }, 3000);
     } else {
       if (pincode.length == 0 || pincode.length < 6) return setshake(!shake)
-
       logged && navigate(location.pathname + '/shop' + '?' + Search)
     }
   };
@@ -49,7 +48,6 @@ const BookSerivce = ({ logged }) => {
     }, 3000);
   }
   useEffect(() => {
-
     pincode != pinData && setTimeout(() => {
       !Dummyshow && setDummyshow(!Dummyshow)
     }, 1000);
@@ -90,7 +88,7 @@ const BookSerivce = ({ logged }) => {
         className=" font-Poppins1 text-xl   text-center"
         variants={Animate4}
       >
-        We will find Mechanic Shop in your Pincode
+        We will find Mechanic Shops in your Pincode
 
       </motion.h2>
       <motion.input

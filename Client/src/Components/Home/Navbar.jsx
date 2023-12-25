@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { Mycontext } from "../Context";
 
 const Navbar = ({
@@ -15,6 +15,7 @@ const Navbar = ({
 }) => {
   const context = useContext(Mycontext);
   const { Dark, setDark, theme } = context;
+  const navigate = useNavigate();
 
   const showLog = () => {
     setlogShow(true);
@@ -51,10 +52,12 @@ const Navbar = ({
       px-3
       sm:h-20
       h-14
-    ${Dark ? "Dark1" : "Light6"}
+    ${Dark ? "Dark2 border-b border-gray-900" : "Light6"}
       `}
       >
-        <Link to={"/"}>
+        <Link to="/" onClick={() => {
+          window.scrollTo(0, 0);
+        }}>
           <h2
             className={` italic font-Poppins3 
           sm:text-4xl
@@ -119,8 +122,8 @@ const Navbar = ({
                 <i className="fa-solid fa-caret-down"></i>
               </h1>
               <ul
-                className={`Dropdown absolute p-4 opacity-0 rounded-lg my-6 -mx-12 w-48 h-fit border 
-              ${Dark ? "Dark1" : "Light6"}
+                className={`Dropdown absolute p-4 opacity-0 rounded-lg my-6 -mx-12 w-48 h-fit border  
+              ${Dark ? "Dark2 border-slate-700" : "Light6 border-slate-400"}
               `}
               >
                 <Link to={"/manageProfile"}>
@@ -147,7 +150,7 @@ const Navbar = ({
           ) : (
             <Link to={"/signUp"}>
               <button className=" bg-blue-500 text-white px-8 py-2 rounded-md font-Poppins1 ">
-                Sign Up
+                Sign In
               </button>
             </Link>
           )}

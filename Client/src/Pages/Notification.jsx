@@ -44,24 +44,24 @@ const Notification = () => {
 
   return (
     <div
-      className={`  ${Dark ? " bg-slate-900 text-white" : "Light4"
+      className={`  ${Dark ? " Dark2" : "Light4"
         } mt-10 pb-20 `}
     >
       <div
         className=" flex justify-end gap-2  pr-5 items-center  
       xl:pt-14
       sm:pt-20
-      pt-10
+      pt-10 
+      z-50
+       fixed right-0
       "
       >
         <span className=" text-lg font-Poppins1 ">
           {toggle ? "View Sent Messages" : "View Notifications"}
         </span>
         <div
-          className={` relative border-2 rounded-full flex cursor-pointer
-          
-          w-16 h-8 
-          ${Dark ? " border-white" : "border-black"}
+          className={` relative  rounded-full flex cursor-pointer
+          w-16 h-8 bg-white
           `}
           style={{ justifyContent: toggle ? "start" : "end" }}
           onClick={() => {
@@ -70,10 +70,9 @@ const Notification = () => {
           }}
         >
           <div
-            className={` absolute  rounded-full  m-[.15rem] 
-           
+            className={` absolute  rounded-full  m-[.25rem] 
             w-6 h-6
-          ${Dark ? " bg-white" : " bg-slate-600"}
+          ${Dark ? " bg-black" : " bg-slate-600"}
           `}
           ></div>
         </div>
@@ -117,10 +116,9 @@ export const Body = ({ loader, message, code, title, toggle }) => {
   const { Dark, setDark } = context;
   return (
     <motion.div
-      className="h-fit 
-      lg:-mt-10
-      -mt-5
-      "
+      className={`h-fit 
+      ${Dark ? 'Dark2' : 'Light4'}
+      `}
       initial={"Offscreen"}
       whileInView={"onScreen"}
       viewport={{ once: true, amount: 0.5 }}
@@ -128,27 +126,19 @@ export const Body = ({ loader, message, code, title, toggle }) => {
       variants={Animate4}
     >
       <ScrollTo />
-      <h1 className=" text-center text-2xl py-10 font-Poppins1">{title}</h1>
+      <h1 className=" text-center text-2xl pb-10 pt-16 font-Poppins1">{title}</h1>
       <div
         className={` rounded-3xl  h-fit  mx-auto
-        md:p-10
-        p-3
         xl:w-1/2
         lg:w-2/3
         w-11/12
-        ${Dark ? "Dark3" : "Light4"}
-        ${!Dark
-            ? "        shadow-[0rem_0rem_2rem_-4px] "
-            : "        shadow-[0rem_0rem_2rem_-4px] "
-          }
-        ${!Dark ? "shadow-blue-900" : " shadow-gray-700"}
         `}
       >
         {!loader && message.length == 0 && (
           <div className=" ">
             <h1
               className={` text-center sm:text-xl py-10 font-Poppins1 rounded-xl
-        ${Dark ? "Dark4" : "Light"}
+        ${Dark ? "Dark4" : "Light4"}
         `}
             >
               No messages found!
@@ -165,8 +155,8 @@ export const Body = ({ loader, message, code, title, toggle }) => {
                   className={` w-full   p-4 mx-auto 
                   sm:my-4 
                   my-4
-                  rounded-lg
-                  ${Dark ? "Dark4" : "Light2"}
+                  rounded-xl
+                  ${Dark ? " bg-gray-900" : "Light2"}
                   `}
                 >
                   <div className="">
@@ -178,14 +168,6 @@ export const Body = ({ loader, message, code, title, toggle }) => {
                       <span>
                         {toggle ? item.MessageTitle : item.messageTitle}
                       </span>
-                      {/* <span
-                        className={`  ml-4 text-lg font-Poppins1  
-                    ${Dark ? "text-teal-300" : " text-slate-800"}
-                    `}
-                      >
-                        {" "}
-                        3/2/2020{" "}
-                      </span> */}
                     </div>
                   </div>
                   <h2>{toggle ? item.Message : item.message}</h2>

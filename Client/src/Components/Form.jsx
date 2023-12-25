@@ -46,26 +46,26 @@ const Form = ({ msg }) => {
   return (
     <div className=" flex justify-center">
       <div
-        className={` z-30 fixed h-fit py-10 mt-28  rounded-xl font-Poppins1
+        className={` z-30 fixed h-fit py-10 mt-28  rounded-3xl font-Poppins1
       xl:w-1/3
       md:w-1/2
       sm:w-4/6
       w-11/12
-${Dark ? "Dark3" : "Light5"}
+${Dark ? "Dark2 border border-slate-800" : "Light4"}
       `}
       >
         <span
-          className=" absolute right-1 top-1 rounded-tr-lg cursor-pointer rounded-md  text-white text-xl font-bold bg-red-400 px-4 py-2 "
+          className=" absolute right-1 top-1  cursor-pointer rounded-full  text-white text-xl font-semibold bg-red-500 px-3 py-1  "
           onClick={() => dispatch(FormShow())}
         >
           X
         </span>
-        <h1 className=" text-3xl text-center font-Poppins2 pt-4">
+        <h1 className=" text-3xl text-center font-Poppins1 pt-4">
           Send Message
         </h1>
         <div className=" flex flex-col items-center justify-center  text-xl gap-4 mt-7">
           <div>
-            <span className=" mr-4">To - </span>{" "}
+            <span className=""> To -  </span>
             <span
               className={` 
             ${Dark ? "text-green-300" : "text-blue-950"}
@@ -74,28 +74,27 @@ ${Dark ? "Dark3" : "Light5"}
               {msg.shopName}
             </span>
           </div>
-          <div>
+          <div className=" w-full sm:px-10 px-4">
             <input
-              className="  h-10
-              sm:w-[17rem]
-              w-[16rem]
-              "
+              className={`  h-10
+              w-full
+              ${Dark ? "bg-gray-200" : ""}
+              `}
               placeholder="Add Title"
               type="text"
               name="messageTitle"
               onChange={handleChange}
               value={input.messageTitle}
             />
+            <textarea
+              placeholder="Add your Message"
+              onChange={handleChange}
+              rows="4"
+              className={`w-full mt-3 resize-none   ${Dark ? "bg-gray-200" : ""}`}
+              name="message"
+              value={input.message}
+            ></textarea>
           </div>
-          <textarea
-            placeholder="Add your Message"
-            onChange={handleChange}
-            className="sm:w-[17rem]
-            w-[16rem]"
-            rows="4"
-            name="message"
-            value={input.message}
-          ></textarea>
           <button className=" w-1/3 h-10 text-white " onClick={Send}>
             {loader ? <PulseLoader color="white" size={10} /> : "Submit"}
           </button>

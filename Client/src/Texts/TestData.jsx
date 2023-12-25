@@ -4,4 +4,4 @@ export const LoginData = {
 }
 export const pinData = 574265
 
-export const Info = "I provide these login details to encourage visitors to explore the website's features comfortably.These credentials allow safe interaction and testing of the platform without affecting genuine user accounts or information"
+export const Info = "I provide these details to encourage visitors to explore the website's features comfortably.These credentials allow safe interaction and testing of the platform without affecting genuine user accounts or information"
