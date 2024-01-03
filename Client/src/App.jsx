@@ -29,7 +29,7 @@ import Terms from "./Components/Terms";
 
 const App = () => {
   const [logged, setlogged] = useState(false);
-  const [istheme, setistheme] = useState(1)
+  const [istheme, setistheme] = useState(2)
   const [Okcancel, setOkcancel] = useState({
     one: false,
     two: false,
@@ -50,7 +50,7 @@ const App = () => {
     try {
       logged && dispatch(getData());
     } catch (error) {
-      toast.error('Failed to load user data')
+      // toast.error('Failed to load user data')
     }
   }, [logged]);
 

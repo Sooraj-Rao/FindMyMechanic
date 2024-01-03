@@ -13,7 +13,7 @@ const Terms = () => {
         ${Dark ? 'Dark2' : ' Light1  '}
         `}>
                 <h1 className=' text-center text-2xl pb-4'>Terms And Condition</h1>
-                <div className=' flex flex-col gap-4 text-slate-200'>
+                <div className=' flex flex-col gap-4 '>
                     <p>
                         {TermsList.Intro}
                     </p>

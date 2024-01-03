@@ -16,7 +16,7 @@ const Bill = ({ msg, billOpen, setbillOpen }) => {
     sm:mt-24
     mt-20
     font-Mont1
-${Dark ? "Dark2 border border-slate-700" : "Light"}
+${Dark ? "Dark3 border border-slate-700" : "Light"}
     `}
     >
       <h1

@@ -45,6 +45,9 @@ const Contact = ({ logged }) => {
     e.preventDefault();
 
     try {
+      if (input.email.length < 8 || !input.email.includes('@')) {
+        return toast.error("Invalid Email");
+      }
       if (input.message.length < 10) {
         return toast.error("Message is too short");
       }
@@ -87,14 +90,14 @@ const Contact = ({ logged }) => {
         whileInView={"onScreen"}
         viewport={{ once: false, amount: 0.5 }}
         transition={{ staggerChildren: 0.1 }}
-        
+
       >
         <motion.h1 variants={Animate4} className=" text-center text-2xl pt-6">Contact Us</motion.h1>
         <motion.h2 variants={Animate4} className=" text-center text-base mt-2">
           ( We try to reply within 30 minutes )
         </motion.h2>
         <motion.div
-        variants={Animate4}
+          variants={Animate4}
           className="SignIn  flex flex-col mx-auto    py-7
       md:px-10
       px-6
