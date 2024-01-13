@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Mycontext } from "../Context";
 
 const Navbar = ({
@@ -15,7 +15,6 @@ const Navbar = ({
 }) => {
   const context = useContext(Mycontext);
   const { Dark, setDark, theme } = context;
-  const navigate = useNavigate();
 
   const showLog = () => {
     setlogShow(true);
