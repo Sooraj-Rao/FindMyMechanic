@@ -1,6 +1,6 @@
 export const LoginData = {
     email: 'Rocky@gmail.com',
-    password: 'Rocky'
+    password: 'Rocky@gmail.com'
 }
 export const pinData = 574265
 

@@ -20,7 +20,8 @@ router.get("/shops/:pincode", async (req, res) => {
 
 // View Service
 router.get("/services/:id/:vehicle", async (req, res) => {
-  const { id, vehicle } = req.params;
+  let { id, vehicle } = req.params;
+  if(vehicle=='2_Wheeler') vehicle='2 Wheeler'
   try {
     const Shops = await ServiceModel.find({ shopId: id, vehicleType: vehicle });
     res.json(Shops);

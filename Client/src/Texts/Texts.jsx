@@ -14,4 +14,3 @@ export const TermsList = {
   Limit: 'FindMyMechanic endeavors to provide a seamless and reliable platform. However, we do not guarantee the accuracy, reliability, or availability of services provided by mechanics. Users agree that the use of this platform is at their own risk. We shall not be held liable for any direct, indirect, incidental, or consequential damages arising from the use or inability to use our services, including but not limited to damages for loss of profits, goodwill, or data.'
 }
 
-

@@ -11,6 +11,7 @@ import { Mycontext } from "../Components/Context";
 import AniShop from "../LoadingAnimate/AniShop";
 import ScrollTo from "../Components/ScrollTo";
 import toast from "react-hot-toast";
+import AniService from "../LoadingAnimate/AniService";
 
 const Service = ({ booked, setbooked, Message }) => {
   const [Search, SetSearch] = useSearchParams();
@@ -67,6 +68,19 @@ const Service = ({ booked, setbooked, Message }) => {
     }
   };
 
+  const Desc = {
+    Oil: `Routine oil service is vital for optimal ${vehicle} performance. Change the oil and filter every 3,000 to 5,000 miles, adhering to the manufacturer's recommendations. Proper maintenance ensures engine longevity and efficiency.!`,
+    Wheel: `Our wheel service focuses on optimizing your ${vehicle}'s wheels for peak performance. We offer truing to eliminate wobbles, spoke tension checks, and tire inspections for a smooth and safe riding experience`,
+    Engine: `Engine service typically involves a comprehensive inspection, maintenance, and repair of a motorized vehicle's engine. This includes checking and adjusting components such as spark plugs, filters, oil levels, and belts to ensure optimal performance and longevity`
+  }
+
+  const Img = {
+    Truck: ['../../public/Service/truck-1.jpg', '../../public/Service/truck-2.jpg', '../../public/Service/truck-3.jpg'],
+    '2_Wheeler': ['../../public/Service/bike-1.jpg', '../../public/Service/bike-2.jpg', '../../public/Service/bike-3.jpg'],
+    Car: ['../../public/Service/car-1.jpg', '../../public/Service/car-2.jpg', '../../public/Service/car-3.jpg'],
+
+  }
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -82,44 +96,52 @@ const Service = ({ booked, setbooked, Message }) => {
         whileInView={"onScreen"}
         viewport={{ once: false, amount: 0.5 }}
         transition={{ staggerChildren: 0.1 }}
-        className={` flex gap-10 font-Poppins1 flex-wrap flex-grow justify-center 
-      
+        className={`  font-Poppins1 justify-center 
+      mx-10
         `}
       >
         {load.one ? (
-          <AniShop num={2} />
+          <AniService />
         ) : (
           shopsList.map((item, index) => {
             return (
               <div
-                className={`h-[27rem]  rounded-lg 
-            sm:w-[20rem]
+                className={`h-[20rem]  rounded-lg 
+            sm:w-full 
             w-[18rem]
-            mx-2
-            p-4
+            p-4 flex
             text-white
+            my-3
             ${Dark ? " bg-gray-900" : "Light"}
           `}
                 key={index}
               >
-                <div className=" h-4/6 ">
-                  <img src="../../img2.jpg" className=" h-full" />
+                <div className=" mx-6 h-full min-w-[20rem] overflow-hidden   ">
+                  <img src={Img[vehicle][index]} className=" h-full w-full  " />
                 </div>
-                <div className=" text-xl pt-4 text-center">
-                  <h1>Service: {item.serviceName}</h1>
-                  <h1>Rs. {item.serviceCost}</h1>
-                  <button
-                    className=" px-4 py-2 mt-2 text-white"
-                    onClick={() => BookService(item._id)}
-                  >
-                    <h1>
-                      {load.two && item._id == serviceid ? (
-                        <PulseLoader color="white" size={8} />
-                      ) : (
-                        "Book Service"
-                      )}
-                    </h1>
-                  </button>
+                <div className=" relative">
+                  <div className=" text-xl pt-4  text-center flex justify-around" >
+                    <h1>Service: {item.serviceName}</h1>
+                    <h1>Rs. {item.serviceCost}</h1>
+                    <button
+                      className=" px-4 py-2 text-white text-base"
+                      onClick={() => BookService(item._id)}
+                    >
+                      <h1>
+                        {load.two && item._id == serviceid ? (
+                          <PulseLoader color="white" size={8} />
+                        ) : (
+                          "Book Service"
+                        )}
+                      </h1>
+                    </button>
+                  </div>
+                  <h1 className=" mt-10 text-justify">
+                    {
+                      Desc[item.serviceName]
+                    }
+                  </h1>
+                  <h2 className=" absolute bottom-0 text-gray-400">Order can be canceled within 5 hours</h2>
                 </div>
               </div>
             );

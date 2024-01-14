@@ -113,7 +113,7 @@ const Login = ({ logged, setlogged }) => {
             value={input.password}
             onChange={handleChange}
             name="password"
-            type="text"
+            type="password"
           />
           <br />
           <button disabled={loader} className={` h-10 mt-4 font-Poppins text-lg text-white

@@ -147,7 +147,7 @@ const ServiceDetails = ({
                             onClick={() => showCancel(item._id)}
                             disabled={
                               item.status == "Request Canceled" ||
-                              item.status == "Request Approved"
+                              item.status == "Service Approved"
                             }
                           >
                             {loader.load2 && item._id == id && (
@@ -172,7 +172,7 @@ const ServiceDetails = ({
                             <span className=" mr-2 text-red-400">
                               <i className="fa-sharp fa-solid fa-ban"></i>
                             </span>
-                          ) : item.status == "Request Approved" ? (
+                          ) : item.status == "Service Approved" ? (
                             <span className=" mr-2 text-green-400">
                               <i className="fa-solid fa-thumbs-up"></i>
                             </span>
@@ -188,7 +188,7 @@ const ServiceDetails = ({
                             color:
                               item.status == "Request Canceled"
                                 ? "red"
-                                : item.status == "Request Approved" && "green",
+                                : item.status == "Service Approved" && "green",
                           }}
                         >
                           {item.status}

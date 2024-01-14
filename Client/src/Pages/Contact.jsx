@@ -94,7 +94,7 @@ const Contact = ({ logged }) => {
       >
         <motion.h1 variants={Animate4} className=" text-center text-2xl pt-6">Contact Us</motion.h1>
         <motion.h2 variants={Animate4} className=" text-center text-base mt-2">
-          ( We try to reply within 30 minutes )
+          ( We try to reply within 3 hours )
         </motion.h2>
         <motion.div
           variants={Animate4}
@@ -110,6 +110,8 @@ const Contact = ({ logged }) => {
               type="email"
               readOnly
               value={input.email ? input.email : "loading..."}
+              disabled={logged}
+              className=" disabled:bg-zinc-400 "
             />
           ) : (
             <input

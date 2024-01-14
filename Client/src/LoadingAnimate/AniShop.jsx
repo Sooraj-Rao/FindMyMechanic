@@ -12,7 +12,7 @@ const AniShop = ({num}) => {
         .map((item, index) => {
           return (
             <div
-              className={` h-[27rem] bg-slate-800  rounded-lg
+              className={` h-[30rem] bg-slate-800  rounded-lg
           md:w-[20rem]
           w-[17rem]
           mx-3 

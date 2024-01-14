@@ -46,6 +46,8 @@ const Shop = () => {
     fetchData();
   }, [pincode]);
 
+  const GarageImage = ['../../Garage/2.jpg', '../../Garage/3.jpg', '../../Garage/4.jpg', '../../Garage/1.jpg']
+
   return (
     <div className={`py-32  ${Dark ? "Dark2" : "Light1"}`}>
       <ScrollTo />
@@ -66,12 +68,12 @@ const Shop = () => {
       `}
       >
         {loader ? (
-          <AniShop num={2} />
+          <AniShop num={4} />
         ) : (
           shopsList.map((item, index) => {
             return (
               <div
-                className={` h-[27rem]  rounded-lg
+                className={` h-[30rem]  rounded-lg
           md:w-[20rem]
           w-[17rem]
           mx-3 
@@ -82,16 +84,16 @@ const Shop = () => {
                 key={index}
               >
                 <div className=" h-4/6 ">
-                  <img src="../../img.jpg" className=" h-full" />
+                  <img src={GarageImage[index]} className=" h-full" />
                 </div>
                 <div
                   className=" text-xl text-center mt-3 "
                   key={item}
                 >
-                  <h1>{item.shopName}</h1>
-                  <h1>{item.shopAddress}</h1>
+                  <h1 >{item.shopName}</h1>
+                  <h1 className=" text-gray-400">{item.shopAddress}</h1>
                   <button
-                    className=" px-4 py-2 mt-2 text-white "
+                    className=" px-4 py-2 mt-2 text-white text-base "
                     onClick={() => viewServies(item._id)}
                   >
                     View Services

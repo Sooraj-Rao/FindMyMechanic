@@ -12,8 +12,7 @@ const Hero = () => {
   return (
     <div className={` ${Dark ? "Dark2" : "Light"}`}>
       <motion.div
-        className={`flex justify-between gap-10 w-screen 
-     
+        className={`flex justify-center gap-x-20 w-screen 
          p-10  h-fit  pt-20 
         lg:flex-row
         flex-col
@@ -23,30 +22,30 @@ const Hero = () => {
         viewport={{ once: false, amount: 0.1 }}
         transition={{ staggerChildren: 0.1 }}
       >
-        <div
+        <div 
           className="
-        rounded-lg
-       overflow-hidden
-      lg:w-1/2
-      lg:h-[30rem]
-      sm:h-[25rem]
-      h-[20rem]
+          rounded-3xl
+        overflow-hidden
+        lg:w-[30rem]
+        lg:h-[25rem]
+        sm:h-[25rem]
+        h-[20rem]
       "
         >
           <Carousel autoPlay={true} infiniteLoop={true} showThumbs={false}>
             <div>
 
-              <img src="../../../service1.jpg" alt="Image 1" />
+              <img src="../../../service1.jpg" alt="Image 1" className=" object-cover" />
 
             </div>
             <div>
 
-              <img src="../../../Bike.jpg" alt="Image 2" />
+              <img src="../../../Bike.jpg" alt="Image 2"  className=" object-cover"/>
 
             </div>
             <div>
 
-              <img src="../../../Car-service.jpg" alt="Image 3" />
+              <img src="../../../Car-service.jpg" alt="Image 3" className=" object-cover"/>
 
             </div>
           </Carousel>
@@ -67,7 +66,7 @@ const Hero = () => {
             <h1 className=" sm:pb-2">No More Worries..</h1>
             <h1>Vehicle Repairs at Your Fingertips!</h1>
           </div>
-          <div className=" pt-10 lg:text-2xl text-md font-Poppins1">
+          <div className=" pt-10 lg:text-lg text-md font-Poppins1">
             <span>
               Discover the future of automotive care with our online service
               booking platform. Our website simplifies the process of finding
