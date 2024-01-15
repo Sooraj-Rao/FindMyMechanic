@@ -50,7 +50,7 @@ const App = () => {
     try {
       logged && dispatch(getData());
     } catch (error) {
-      // toast.error('Failed to load user data')
+      window.location.href = '/';
     }
   }, [logged]);
 
