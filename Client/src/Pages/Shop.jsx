@@ -83,8 +83,8 @@ const Shop = () => {
           `}
                 key={index}
               >
-                <div className=" h-4/6 ">
-                  <img src={GarageImage[index]} className=" h-full" />
+                <div className=" h-4/6  ">
+                  <img loading="lazy" src={GarageImage[index]} className=" bg-slate-400  h-full" />
                 </div>
                 <div
                   className=" text-xl text-center mt-3 "

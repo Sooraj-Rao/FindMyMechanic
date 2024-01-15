@@ -116,8 +116,8 @@ const Service = ({ booked, setbooked, Message }) => {
           `}
                 key={index}
               >
-                <div className=" mx-6 h-full min-w-[20rem] overflow-hidden   ">
-                  <img src={Img[vehicle][index]} className=" h-full w-full  " />
+                <div className=" mx-6 h-full min-w-[20rem] overflow-hidden bg-slate-400 rounded-md  ">
+                  <img loading="lazy" src={Img[vehicle][index]} className=" h-full w-full  " />
                 </div>
                 <div className=" relative">
                   <div className=" text-xl pt-4  text-center flex justify-around" >

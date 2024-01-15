@@ -29,7 +29,7 @@ import Terms from "./Components/Terms";
 
 const App = () => {
   const [logged, setlogged] = useState(false);
-  const [istheme, setistheme] = useState(2)
+  const [istheme, setistheme] = useState(1)
   const [Okcancel, setOkcancel] = useState({
     one: false,
     two: false,

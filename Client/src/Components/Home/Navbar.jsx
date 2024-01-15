@@ -38,7 +38,7 @@ const Navbar = ({
   useEffect(() => {
     const user = localStorage.getItem("user");
     user && setlogged(true);
-    theme == 2 ? setDark(true) : setDark(false);
+    theme == 1 ? setDark(true) : setDark(false);
   }, [logged]);
 
   return (

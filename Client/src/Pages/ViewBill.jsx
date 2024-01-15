@@ -37,43 +37,6 @@ const ViewBill = ({ Message, setbillOpen }) => {
   }, []);
 
 
-  // var options = {
-  //   key: import.meta.env.VITE_RAZOR_KEY,
-  //   key_secret: import.meta.env.VITE_RAZOR_SECRET,
-  //   amount: parseInt((total + ship) * 100),
-  //   currency: "INR",
-  //   order_receipt: 'order_rcptid_' + 'Sooraj',
-  //   name: "QuickMart",
-  //   description: "for testing purpose",
-  //   handler: function (response) {
-  //     toast.success('Payment Successful')
-  //     const paymentId = response.razorpay_payment_id;
-  //     const orderInfo = {
-  //       cart: item,
-  //       addressInfo: addressInfo,
-  //       date: new Date().toLocaleString(
-  //         "en-US",
-  //         {
-  //           month: "short",
-  //           day: "2-digit",
-  //           year: "numeric",
-  //         }
-  //       ),
-  //       amountInfo: AmountDetails,
-  //       token: userDetails?.token,
-  //       paymentId: paymentId
-  //     }
-  //   },
-  //   theme: {
-  //     color: "#3399cc"
-  //   }
-  // };
-
-  // const show = () => {
-  //   var pay = new window.Razorpay(options);
-  //   pay.open();
-  // }
-
   return (
     <div className={`  ${Dark ? "Dark2" : "Light4"} py-2`}>
       <ScrollTo />

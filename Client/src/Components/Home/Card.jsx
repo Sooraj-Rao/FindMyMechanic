@@ -61,7 +61,7 @@ const Card = () => {
               lg:h-[18rem] xl:h-fit  
               ${!Dark
                 ? "shadow-[10px_10px_15px_-6px] bg-blue-200"
-                : " bg-slate-900 text-white "
+                : " bg-black text-white shadow-[1px_1px_15px_1px] shadow-slate-600 "
               }
              
              text-black

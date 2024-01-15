@@ -5,7 +5,7 @@ export const Mycontext = createContext();
 const Context = (props) => {
   const [Dummyshow, setDummyshow] = useState(false);
   const Server = import.meta.env.VITE_SERVER;
-  const [Dark, setDark] = useState(true);
+  const [Dark, setDark] = useState(false);
   let theme = localStorage.getItem('theme')||2;
   return (
     <Mycontext.Provider value={{ Dark, setDark, Server, theme, Dummyshow, setDummyshow }}>

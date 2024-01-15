@@ -62,23 +62,24 @@ const ChooseVehicle = () => {
     
       `}
       >
-        {load ? (
-          <AniShop num={3} />
-        ) : (
+        {load && <AniShop num={3} />}
+        {
           shopsList.map((item, index) => {
             return (
               <div
-                className=" h-[27rem]  rounded-lg overflow-hidden cursor-pointer 
+                className={`h-[27rem]  rounded-lg overflow-hidden cursor-pointer 
           sm:w-[20rem]
           w-[17.3rem]
           mx-3
           text-white
-          "
+          ${load?'opacity-5':'opacity-100'}
+          `}
                 key={index}
                 onClick={() => Addvehicle(item.vehicle)}
               >
-                <div className=" h-5/6 overflow-hidden group">
+                <div className=" h-5/6 overflow-hidden group bg-slate-300">
                   <img
+                    loading="lazy"
                     src={item.img}
                     className=" h-full  group-hover:scale-110 duration-200 hover:duration-200   "
                   />
@@ -91,7 +92,8 @@ const ChooseVehicle = () => {
               </div>
             );
           })
-        )}
+        }
+
       </motion.div>
     </div>
   );
