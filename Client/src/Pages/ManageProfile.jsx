@@ -73,7 +73,7 @@ ${!Dark ? "shadow-blue-900" : " shadow-gray-500"}
                   <h1>Email : {UserDetails.data?.email}</h1>
                 </div>
                 <div>
-                  <button disabled className=" px-4 py-2 cursor-not-allowed">Forgot Password</button>
+                  <button disabled className={` px-4 py-2 cursor-not-allowed ${Dark?'disabled:bg-gray-600':'disabled:bg-gray-500 text-white'}`}>Forgot Password</button>
                 </div>
               </div>
             </div>
