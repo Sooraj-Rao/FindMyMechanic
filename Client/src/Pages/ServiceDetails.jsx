@@ -106,7 +106,7 @@ const ServiceDetails = ({
             w-11/12
             xl:py-10
             py-3
-            ${Dark ? " bg-gray-900" : "Light2"}
+            ${Dark ? " bg-gray-900" : "Light6"}
             `}
                   key={i}
                 >
@@ -210,7 +210,7 @@ const ServiceDetails = ({
             >
               <h1
                 className={`p-10  
-            ${Dark ? "Dark4" : "Light"}
+            ${Dark ? "Dark4" : "Light6"}
             text-2xl
             font-Mont1
             rounded-xl

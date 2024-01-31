@@ -75,21 +75,23 @@ const Service = ({ booked, setbooked, Message }) => {
   }
 
   const Img = {
-    Truck: ['../../public/Service/truck-1.jpg', '../../public/Service/truck-2.jpg', '../../public/Service/truck-3.jpg'],
-    '2_Wheeler': ['../../public/Service/bike-1.jpg', '../../public/Service/bike-2.jpg', '../../public/Service/bike-3.jpg'],
-    Car: ['../../public/Service/car-1.jpg', '../../public/Service/car-2.jpg', '../../public/Service/car-3.jpg'],
+    Truck: ['../../Service/truck-1.jpg', '../../Service/truck-2.jpg', '../../Service/truck-3.jpg'],
+    '2_Wheeler': ['../../Service/bike-1.jpg', '../../Service/bike-2.jpg', '../../Service/bike-3.jpg'],
+    Car: ['../../Service/car-1.jpg', '../../Service/car-2.jpg', '../../Service/car-3.jpg'],
 
   }
 
   useEffect(() => {
     fetchData();
   }, []);
+
   return (
     <div className={`py-32    ${Dark ? "Dark2" : "Light3"}`}>
       <ScrollTo />
       <h1 className={`  text-center pb-10 px-2 font-Poppins2 text-2xl`}>
-        {load.one && `Fetching Services for your ${vehicle}...`}
-        {!load.one && shopsList.length > 0 && `Choose a Service for your ${vehicle}`}
+        {load.one && `Fetching Services for your ${vehicle.includes('_') ? vehicle.replace('_', ' ') : vehicle}...`}
+        {!load.one && shopsList.length > 0 && `Choose a Service for your
+         ${vehicle.includes('_') ? vehicle.replace('_', ' ') : vehicle}`}
       </h1>
       <motion.div
         initial={"Offscreen"}

@@ -138,7 +138,7 @@ export const Body = ({ loader, message, code, title, toggle }) => {
           <div className=" ">
             <h1
               className={` text-center sm:text-xl py-10 font-Poppins1 rounded-xl
-        ${Dark ? "Dark4" : "Light4"}
+        ${Dark ? "Dark4" : "Light6"}
         `}
             >
               No messages found!
@@ -156,7 +156,7 @@ export const Body = ({ loader, message, code, title, toggle }) => {
                   sm:my-4 
                   my-4
                   rounded-xl
-                  ${Dark ? " bg-gray-900" : "Light2"}
+                  ${Dark ? " bg-gray-900" : "Light6"}
                   `}
                 >
                   <div className="">

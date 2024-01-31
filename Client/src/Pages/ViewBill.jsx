@@ -76,7 +76,7 @@ const ViewBill = ({ Message, setbillOpen }) => {
            text-white
            rounded-xl
            font-Poppins1
-           ${Dark ? " bg-gray-900" : "Light2"}
+           ${Dark ? " bg-gray-900" : "Light6"}
           `}
                   key={i}
                 >
@@ -109,12 +109,12 @@ const ViewBill = ({ Message, setbillOpen }) => {
                     >
                       View Bill
                     </button>
-                    <button
+                    {/* <button
                       className="py-1 px-4 ml-2 text-white"
                       
                     >
                       Pay Bill
-                    </button>
+                    </button> */}
                   </h1>
                 </div>
               );
@@ -122,7 +122,7 @@ const ViewBill = ({ Message, setbillOpen }) => {
           ) : (
             <h1
               className={`rounded-xl font-Mont1 sm:text-2xl text-lg text-center sm:py-8 py-5 
-            ${Dark ? "Dark4" : "Light2"}
+            ${Dark ? "Dark4" : "Light6"}
             `}
             >
               No bills found..

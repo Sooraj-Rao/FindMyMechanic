@@ -72,16 +72,16 @@ const ChooseVehicle = () => {
           w-[17.3rem]
           mx-3
           text-white
-          ${load?'opacity-5':'opacity-100'}
+          ${load?' opacity-0':'opacity-100'}
           `}
                 key={index}
                 onClick={() => Addvehicle(item.vehicle)}
               >
-                <div className=" h-5/6 overflow-hidden group bg-slate-300">
+                <div className=" h-5/6 overflow-hidden group ">
                   <img
                     loading="lazy"
                     src={item.img}
-                    className=" h-full  group-hover:scale-110 duration-200 hover:duration-200   "
+                    className=" h-full  group-hover:scale-110 duration-200 hover:duration-200 object-cover    "
                   />
                 </div>
                 <div className=" text-2xl pt-4 text-center h-1/6 bg-blue-900">

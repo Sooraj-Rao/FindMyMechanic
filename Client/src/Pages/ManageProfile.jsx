@@ -27,7 +27,7 @@ const ManageProfile = () => {
           load ?
             <AniProfile /> :
             <div
-              className={` h-fit  rounded-[2rem]    mx-auto pt-10 px-10 pb-20 mt-20 flex justify-center gap-20  items-center
+              className={` h-fit  rounded-[2rem]    mx-auto pt-10 px-10 pb-10 mt-20 flex justify-center gap-10  items-center
     xl:w-1/2
     lg:w-4/6
     w-11/12
@@ -36,8 +36,8 @@ const ManageProfile = () => {
     p-10
     font-Poppins1
     shadow-[0rem_0rem_1rem_-4px]
- ${Dark ? "bg-slate-950 text-white" : "Light2"}
-${!Dark ? "shadow-blue-900" : " shadow-gray-700"}
+ ${Dark ? "bg-slate-900 text-white" : "Light6"}
+${!Dark ? "shadow-blue-900" : " shadow-gray-500"}
     `}
 
             >
@@ -58,19 +58,22 @@ ${!Dark ? "shadow-blue-900" : " shadow-gray-700"}
                 <img src="/img.jpg" className=" h-full w-full" />
               </div>
               <div
-                className=" h-60  text-xl flex flex-col justify-evenly
+                className=" h-80   text-lg flex flex-col justify-around
    md:w-1/2
    w-full
   "
               >
                 <div className=" flex">
-                  <h1>Name :{UserDetails.data?.name} </h1>
+                  <h1>Name : {UserDetails.data?.name} </h1>
                 </div>
                 <div className=" flex ">
                   <h1>Phone : {UserDetails.data?.phone}</h1>
                 </div>
                 <div className=" flex">
                   <h1>Email : {UserDetails.data?.email}</h1>
+                </div>
+                <div>
+                  <button disabled className=" px-4 py-2 cursor-not-allowed">Forgot Password</button>
                 </div>
               </div>
             </div>
