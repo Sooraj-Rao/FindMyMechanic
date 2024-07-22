@@ -15,7 +15,7 @@ const YetTo = () => {
       <ScrollTo />
       <div
         className={` w-full py-32 text-center  font-Poppins1 px-2
-    ${Dark ? "Dark2" : "Light1"}
+    ${Dark ? "Dark2" : " bg-white/90"}
     `}
       >
         <h1 className=" md:text-4xl text-xl  pt-32 pb-20">

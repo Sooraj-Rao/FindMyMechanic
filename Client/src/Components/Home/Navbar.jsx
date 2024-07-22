@@ -42,7 +42,7 @@ const Navbar = ({
   }, [logged]);
 
   return (
-    <div className=" fixed top-0 w-full z-50 backdrop-blur-md">
+    <div className=" fixed top-0 w-full z-50 backdrop-blur-md bg-white text-black">
       <div
         className={`Navbar  flex justify-between items-center
       xl:px-10
@@ -122,7 +122,7 @@ const Navbar = ({
               </h1>
               <ul
                 className={`Dropdown absolute p-4 opacity-0 rounded-lg my-6 -mx-12 w-48 h-fit border  
-              ${Dark ? "Dark2 border-slate-700" : "Light6 border-slate-400"}
+              ${Dark ? "Dark2 border-slate-700" : " bg-white border-slate-400"}
               `}
               >
                 <Link to={"/manageProfile"}>

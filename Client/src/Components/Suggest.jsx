@@ -21,7 +21,7 @@ const Suggest = ({ setFillDummy, FillDummy, from, Pinshow, setPinshow }) => {
 
             <motion.div
                 className={`  h-32 sm:w-80 w-72 text-center fixed sm:top-24 top-16 sm:right-10  p-2 rounded-lg
-            ${Dark ? 'bg-slate-700 text-white' : 'bg-slate-200'}
+            ${Dark ? 'bg-slate-700 text-white' : 'bg-slate-300'}
             `}
                 initial={"Offscreen"}
                 whileInView={"onScreen"}

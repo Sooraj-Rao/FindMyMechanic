@@ -62,7 +62,7 @@ const BookSerivce = ({ logged }) => {
   return (
     <motion.div
       className={` h-fit py-32 sm:mt-20 mt-10 px-2  flex flex-col justify-center gap-10 items-center
-      ${Dark ? "Dark2" : "Light1"}
+      ${Dark ? "Dark2" : "bg-white/90"}
       `}
       initial={"Offscreen"}
       whileInView={"onScreen"}

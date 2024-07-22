@@ -86,7 +86,7 @@ const Service = ({ booked, setbooked, Message }) => {
   }, []);
 
   return (
-    <div className={`py-32    ${Dark ? "Dark2" : "Light3"}`}>
+    <div className={`py-32    ${Dark ? "Dark3" : " bg-white/80"}`}>
       <ScrollTo />
       <h1 className={`  text-center pb-10 px-2 font-Poppins2 text-2xl`}>
         {load.one && `Fetching Services for your ${vehicle.includes('_') ? vehicle.replace('_', ' ') : vehicle}...`}

@@ -18,7 +18,7 @@ const AniNotification = () => {
                 py-2 
                 my-4
                 rounded-xl
-                ${Dark ? " bg-gray-900" : "Light2"}
+                ${Dark ? " bg-gray-900" : " bg-white"}
                 `}
               >
                 <h1 className={` h-6 w-1/2 my-2 rounded-md

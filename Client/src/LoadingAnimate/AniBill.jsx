@@ -19,7 +19,7 @@ const AniBill = () => {
        text-white
        rounded-xl
        font-Poppins1
-       ${Dark ? " bg-gray-900" : "Light2"}
+       ${Dark ? " bg-gray-900" : " bg-white/90"}
       `}
               key={i}
             >

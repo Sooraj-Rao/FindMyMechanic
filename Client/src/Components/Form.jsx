@@ -51,7 +51,7 @@ const Form = ({ msg }) => {
       md:w-1/2
       sm:w-4/6
       w-11/12
-${Dark ? "Dark2 border border-slate-800" : "Light4"}
+${Dark ? "Dark3 border border-slate-800" : " bg-gray-200"}
       `}
       >
         <span

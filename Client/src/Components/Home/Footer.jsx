@@ -53,7 +53,7 @@ const Footer = () => {
         items-center
         text-center
         
-        ${Dark ? "Dark2 border-slate-900" : "Light1 "}
+        ${Dark ? "Dark2 border-slate-900" : "bg-white "}
         `}
         initial={"Offscreen"}
         whileInView={"onScreen"}
@@ -103,16 +103,16 @@ const Footer = () => {
         >
           <h1 className=" text-2xl pt-5 text-center">Quick Links</h1>
           <div className=" text-lg flex flex-col w-4/6   mx-auto justify-between h-3/4 pt-4">
-            <Link to={"/terms"}>
+            <Link to={"/terms"} className=" hover:underline">
               <h1>{Terms}</h1>
             </Link>
-            <Link to={"/b/" + FAQ}>
+            <Link to={"/b/" + FAQ} className=" hover:underline">
               <h1>{FAQ}</h1>
             </Link>
-            <Link to={"/b/" + Bug}>
+            <Link to={"/b/" + Bug} className=" hover:underline">
               <h1>{Bug}</h1>
             </Link>
-            <Link to={"/b/" + Feedback}>
+            <Link to={"/b/" + Feedback} className=" hover:underline">
               <h1>{Feedback}</h1>
             </Link>
           </div>
@@ -154,7 +154,7 @@ const Footer = () => {
       </motion.div>
       <div
         className={` h-1/6  text-center cursor-default pt-5 font-Poppins 
-      ${Dark ? "Dark2" : "Light1"}
+      ${Dark ? "Dark2" : "bg-white"}
       `}
       >
         <h1>Copyright @ FindMyMechanic</h1>

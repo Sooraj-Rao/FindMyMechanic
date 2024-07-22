@@ -44,8 +44,8 @@ const Notification = () => {
 
   return (
     <div
-      className={`  ${Dark ? " Dark2" : "Light4"
-        } mt-10 pb-20 `}
+      className={`  ${Dark ? " Dark2" : " bg-white/80"
+        } mt-10   -mb-4 `}
     >
       <div
         className=" flex justify-end gap-2  pr-5 items-center  
@@ -61,7 +61,7 @@ const Notification = () => {
         </span>
         <div
           className={` relative  rounded-full flex cursor-pointer
-          w-16 h-8 bg-white
+          w-16 h-8 bg-gray-300
           `}
           style={{ justifyContent: toggle ? "start" : "end" }}
           onClick={() => {
@@ -116,8 +116,8 @@ export const Body = ({ loader, message, code, title, toggle }) => {
   const { Dark, setDark } = context;
   return (
     <motion.div
-      className={`h-fit 
-      ${Dark ? 'Dark2' : 'Light4'}
+      className={`h-fit  py-20
+      ${Dark ? 'Dark2' : ' bg-white/90'}
       `}
       initial={"Offscreen"}
       whileInView={"onScreen"}
@@ -138,7 +138,7 @@ export const Body = ({ loader, message, code, title, toggle }) => {
           <div className=" ">
             <h1
               className={` text-center sm:text-xl py-10 font-Poppins1 rounded-xl
-        ${Dark ? "Dark4" : "Light6"}
+        ${Dark ? "Dark4" : " bg-white/90"}
         `}
             >
               No messages found!
@@ -156,7 +156,7 @@ export const Body = ({ loader, message, code, title, toggle }) => {
                   sm:my-4 
                   my-4
                   rounded-xl
-                  ${Dark ? " bg-gray-900" : "Light6"}
+                  ${Dark ? " bg-gray-900" : " bg-white"}
                   `}
                 >
                   <div className="">

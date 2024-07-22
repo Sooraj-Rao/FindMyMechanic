@@ -49,7 +49,7 @@ const Shop = () => {
   const GarageImage = ['../../Garage/2.jpg', '../../Garage/3.jpg', '../../Garage/4.jpg', '../../Garage/1.jpg']
 
   return (
-    <div className={`py-32  ${Dark ? "Dark2" : "Light1"}`}>
+    <div className={`py-32  ${Dark ? " Dark3" : "bg-white/90"}`}>
       <ScrollTo />
       <h1 className={`  text-center pb-10 px-2 font-Poppins2 text-2xl`}>
         {loader && `Finding shops in ${pincode} ...`}

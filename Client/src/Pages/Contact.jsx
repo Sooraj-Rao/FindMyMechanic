@@ -84,7 +84,7 @@ const Contact = ({ logged }) => {
       font-Poppins
 
      backdrop-blur-md
-    ${Dark ? "Dark2" : "Light1"}
+    ${Dark ? "Dark2" : " bg-white/80"}
   `}
         initial={"Offscreen"}
         whileInView={"onScreen"}
@@ -111,7 +111,7 @@ const Contact = ({ logged }) => {
               readOnly
               value={input.email ? input.email : "loading..."}
               disabled={logged}
-              className=" disabled:bg-zinc-400 "
+              className=" cursor-not-allowed   disabled:bg-gray-200/90 "
             />
           ) : (
             <input

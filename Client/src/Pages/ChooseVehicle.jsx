@@ -46,7 +46,7 @@ const ChooseVehicle = () => {
   };
 
   return (
-    <div className={` py-32  ${Dark ? "Dark3" : "Light3"}`}>
+    <div className={` py-32  ${Dark ? "Dark3" : "bg-white/90"}`}>
       <ScrollTo />
       <h1 className={`  text-center pb-10 px-2 font-Poppins2 text-2xl`}>
         {load

@@ -10,7 +10,7 @@ const Terms = () => {
         <>
             <ScrollTo />
             <div className={` font-Poppins1 mt-20  h-fit  pt-5 pb-20 px-3
-        ${Dark ? 'Dark2' : ' Light1  '}
+        ${Dark ? 'Dark2' : '  bg-white/90 '}
         `}>
                 <h1 className=' text-center text-2xl pb-4'>Terms And Condition</h1>
                 <div className=' flex flex-col gap-4 '>

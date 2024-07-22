@@ -80,7 +80,7 @@ const ServiceDetails = ({
   return (
     <>
       <ScrollTo />
-      <div className={`${Dark ? " Dark2" : "Light4"}`}>
+      <div className={`${Dark ? " Dark2" : " bg-white/90"}`}>
         <motion.div
           className=" h-fit pb-32 sm:mt-20 mt-10"
           initial={"Offscreen"}
@@ -106,7 +106,7 @@ const ServiceDetails = ({
             w-11/12
             xl:py-10
             py-3
-            ${Dark ? " bg-gray-900" : "Light6"}
+            ${Dark ? " bg-gray-900" : " bg-white"}
             `}
                   key={i}
                 >

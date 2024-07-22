@@ -38,7 +38,7 @@ const ViewBill = ({ Message, setbillOpen }) => {
 
 
   return (
-    <div className={`  ${Dark ? "Dark2" : "Light4"} py-2`}>
+    <div className={`  ${Dark ? "Dark3" : " bg-white/90"} py-2`}>
       <ScrollTo />
       <motion.div
         className={` h-fit py-20
@@ -73,10 +73,10 @@ const ViewBill = ({ Message, setbillOpen }) => {
           lg:flex-row
             flex-col
            gap-4
-           text-white
+           
            rounded-xl
            font-Poppins1
-           ${Dark ? " bg-gray-900" : "Light6"}
+           ${Dark ? " bg-gray-900" : " bg-white text-black"}
           `}
                   key={i}
                 >

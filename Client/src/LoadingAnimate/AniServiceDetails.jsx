@@ -6,8 +6,8 @@ const AniServiceDetails = () => {
   const { Dark } = context;
 
   return (
-    <div className={`${Dark ? "Dark2" : "Light4"}`}>
-      <div className=" h-fit pb-32 mt-10">
+    <div className={`${Dark ? "Dark2" : " bg-white/10"}`}>
+      <div className=" h-fit pb-32">
         {Array(3).fill('').map((item, i) => {
           return (
             <div
@@ -17,7 +17,7 @@ const AniServiceDetails = () => {
             w-11/12
             xl:py-9
             py-3
-            ${Dark ? " bg-gray-900" : "Light2"}
+            ${Dark ? " bg-gray-900" : " bg-white"}
             `}
               key={i}
             >
