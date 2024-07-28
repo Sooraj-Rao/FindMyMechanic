@@ -71,7 +71,7 @@ const SignIn = () => {
       sm:w-4/6
       w-5/6
       font-Poppins1
-      ${Dark ? "Dark2 border border-slate-900" : "Light1"}
+      ${Dark ? "Dark2" : " bg-slate-200"}
       `}
         initial={"Offscreen"}
         whileInView={"onScreen"}

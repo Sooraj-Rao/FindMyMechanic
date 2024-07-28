@@ -64,7 +64,7 @@ const Login = ({ logged, setlogged }) => {
   }, [FillDummy])
 
   return (
-    <div className=" py-32 sm:mt-20 mt-10 Login-Bg ">
+    <div className=" py-32 sm:mt-20 mt-10 Login-Bg  ">
       <ScrollTo />
       {
         Dummyshow &&
@@ -82,7 +82,7 @@ const Login = ({ logged, setlogged }) => {
       sm:w-4/6
       w-5/6
       font-Poppins1
-      ${Dark ? "Dark2 border border-slate-900" : "Light1"}
+      ${Dark ? "Dark2" : " bg-slate-200"}
       `}
         initial={"Offscreen"}
         whileInView={"onScreen"}
