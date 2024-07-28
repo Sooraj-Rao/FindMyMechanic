@@ -15,7 +15,9 @@ app.use(express.json());
 app.use(cors());
 app.use("/", UserRouter);
 app.use("/BookService/", BookServiceRouter);
-
+app.get("*", (req, res) => {
+  res.redirect("https://google.com/search?q=do a barrel roll");
+});
 try {
   mongoose.connect(DB_URL);
   console.log("Connected to Database");
